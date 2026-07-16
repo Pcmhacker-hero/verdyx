@@ -69,6 +69,7 @@ interface NavItem {
   shortcut?: string;
   key?: string; // single letter after "g"
   badge?: string;
+  authRequired?: boolean;
 }
 
 interface NavSection {
@@ -105,8 +106,8 @@ const navSections: NavSection[] = [
   {
     label: "You",
     items: [
-      { label: "Ask Verdiqx", to: "/search", icon: Wand2, shortcut: "G A", key: "a" },
-      { label: "Mentor", to: "/mentor", icon: Sparkles, shortcut: "G M", key: "m", badge: "2" },
+      { label: "Ask Verdiqx", to: "/search", icon: Wand2, shortcut: "G A", key: "a", authRequired: true },
+      { label: "Mentor", to: "/mentor", icon: Sparkles, shortcut: "G M", key: "m", badge: "2", authRequired: true },
       { label: "Community", to: "/community", icon: Users, shortcut: "G Y", key: "y" },
       
       { label: "Profile", to: "/profile", icon: UserCircle2, shortcut: "G U", key: "u" },
@@ -909,7 +910,8 @@ function NavGroup({
   pathname: string;
   onNavigate?: () => void;
 }) {
-
+  const user = useCurrentUser();
+  const isSignedIn = user !== null;
   return (
     <div className="space-y-0.5">
       <p className="px-2 pb-1.5 pt-1 font-mono text-2xs uppercase tracking-[0.14em] text-muted-foreground">
@@ -975,7 +977,16 @@ function NavGroup({
             key={item.label}
             to={item.to}
             aria-current={active ? "page" : undefined}
-            onClick={() => scheduleSidebarClose(onNavigate)}
+            onClick={(e) => {
+              if (item.authRequired && !isSignedIn) {
+                e.preventDefault();
+                toast.error("Login required", {
+                  description: `Please sign in to use ${item.label}.`,
+                });
+                return;
+              }
+              scheduleSidebarClose(onNavigate);
+            }}
             className={cn(
               "group relative flex h-8 items-center gap-2.5 rounded-md px-2 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
               active
