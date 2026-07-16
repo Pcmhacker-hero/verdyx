@@ -491,7 +491,15 @@ function Showcase() {
         </div>
 
         {/* Faux product panel */}
-        <div className="rounded-2xl border border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] p-6 shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30, rotateX: 8 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ y: -4, rotateX: -1, rotateY: 1 }}
+          style={{ transformStyle: "preserve-3d", transformPerspective: 1200 }}
+          className="rounded-2xl border border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] p-6 shadow-2xl"
+        >
           <div className="flex items-center justify-between border-b border-[rgb(var(--lp-ink)/10%)] pb-4">
             <div>
               <div className="text-sm font-semibold text-[rgb(var(--lp-ink))]">
@@ -513,10 +521,15 @@ function Showcase() {
               { id: "1741E", name: "Sending a Sequence Over the Network", tag: "dp", done: false },
               { id: "1620D", name: "Exact Change", tag: "brute force", done: true },
               { id: "1701D", name: "Permutation Restoration", tag: "greedy", done: false },
-            ].map((p) => (
-              <div
+            ].map((p, i) => (
+              <motion.div
                 key={p.id}
-                className="flex items-center justify-between rounded-lg border border-[rgb(var(--lp-ink)/500%)] bg-[rgb(var(--lp-ink)/2%)] px-3 py-2.5 text-sm"
+                initial={{ opacity: 0, x: -12 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ x: 3, backgroundColor: "rgb(var(--lp-ink) / 0.06)" }}
+                className="flex items-center justify-between rounded-lg border border-[rgb(var(--lp-ink)/10%)] bg-[rgb(var(--lp-ink)/2%)] px-3 py-2.5 text-sm"
               >
                 <div className="flex items-center gap-3">
                   <span
@@ -532,14 +545,20 @@ function Showcase() {
                 <span className="hidden text-[10px] uppercase tracking-widest text-[rgb(var(--lp-ink)/45%)] sm:inline">
                   {p.tag}
                 </span>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           <div className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-[rgb(var(--lp-ink)/10%)]">
-            <div className="h-full w-3/4 rounded-full bg-[rgb(var(--lp-ink)/70%)]" />
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "75%" }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="h-full rounded-full bg-[rgb(var(--lp-ink)/70%)]"
+            />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
