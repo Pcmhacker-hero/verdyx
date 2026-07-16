@@ -490,8 +490,9 @@ function MentorPage() {
       const { data } = await supabase.auth.getSession();
       if (cancelled) return;
       if (!data.session) {
-        toast.message("Please sign in to use the Mentor.");
-        navigate({ to: "/auth", search: { redirect: "/mentor" } as never });
+        toast.error("Login required", {
+          description: "Please sign in to use the Mentor.",
+        });
         setAuthState("guest");
       } else {
         setAuthState("authed");
