@@ -685,6 +685,57 @@ const TOPICS = [
 ];
 
 function TopicsMarquee() {
+  // Two counter-rotating 3D rows for depth
+  const row = (dir: "left" | "right", speed: number, tilt: number) => (
+    <div
+      className="relative flex overflow-hidden"
+      style={{
+        maskImage:
+          "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)",
+        WebkitMaskImage:
+          "linear-gradient(90deg, transparent, black 12%, black 88%, transparent)",
+      }}
+    >
+      <motion.div
+        className="flex shrink-0 gap-3 pr-3 [transform-style:preserve-3d]"
+        style={{ rotateX: tilt }}
+        animate={{ x: dir === "left" ? ["0%", "-50%"] : ["-50%", "0%"] }}
+        transition={{ duration: speed, ease: "linear", repeat: Infinity }}
+      >
+        {[...TOPICS, ...TOPICS, ...TOPICS, ...TOPICS].map((t, i) => (
+          <motion.span
+            key={`${dir}-${t}-${i}`}
+            whileHover={{
+              scale: 1.08,
+              rotateY: 8,
+              z: 30,
+              transition: { type: "spring", stiffness: 260, damping: 18 },
+            }}
+            className="whitespace-nowrap rounded-full border border-[rgb(var(--lp-ink)/12%)] bg-[rgb(var(--lp-ink)/5%)] px-4 py-1.5 text-xs text-[rgb(var(--lp-ink)/75%)] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.5)] backdrop-blur-sm [transform-style:preserve-3d] [will-change:transform]"
+          >
+            {t}
+          </motion.span>
+        ))}
+      </motion.div>
+    </div>
+  );
+
+  return (
+    <section className="relative overflow-hidden border-y border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] py-10 [perspective:1200px]">
+      {/* Aurora backing */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(120,150,255,0.12),transparent_70%)]"
+      />
+      <div className="relative flex flex-col gap-3 [transform-style:preserve-3d]">
+        {row("left", 38, 4)}
+        {row("right", 46, -4)}
+      </div>
+    </section>
+  );
+}
+
+function _TopicsMarquee_legacy() {
   return (
     <section className="relative overflow-hidden border-y border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] py-8">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[var(--lp-scrim-to)] to-[var(--lp-scrim-from)]" />
