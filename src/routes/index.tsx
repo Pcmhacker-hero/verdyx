@@ -171,7 +171,7 @@ function Hero() {
       </motion.div>
 
       {/* Nav */}
-      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-4 sm:px-10 bg-[rgb(var(--lp-bg)/60%)] backdrop-blur-xl border-b border-[rgb(var(--lp-ink)/8%)]">
+      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-4 sm:px-10 bg-[color-mix(in_oklab,var(--lp-bg)_70%,transparent)] backdrop-blur-xl border-b border-[rgb(var(--lp-ink)/8%)]">
         <Link
           to="/"
           className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/90%)] py-1 pl-1 pr-4 text-sm font-semibold text-[var(--lp-bg)] backdrop-blur"
