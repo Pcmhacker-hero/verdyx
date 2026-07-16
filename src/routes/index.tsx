@@ -1,104 +1,40 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/logo.png.asset.json";
-import { FloatingBugButton } from "@/components/app/floating-bug-button";
-import { type ReactNode, useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-import {
-  ArrowRight,
-  Bot,
-  Brain,
-  Calendar,
-  Check,
-  ChevronRight,
-  Code2,
-  Compass,
-  FileText,
-  Github,
-  Lightbulb,
-  ListChecks,
-  Map,
-  Menu,
-  MessageSquare,
-  Play,
-  PlayCircle,
-  Radar,
-  Send,
-  Sparkles,
-  Star,
-  Swords,
-  Trophy,
-  Twitter,
-  Users,
-  Video,
-  Wand2,
-  Youtube,
-  Zap,
-} from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { CFSolutionBadge } from "@/components/app/cf-solution-badge";
-
-import { supabase } from "@/integrations/supabase/client";
-import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Verdiqx — The AI operating system for competitive programmers" },
+      { title: "Verdiqx" },
       {
         name: "description",
-        content:
-          "Generate practice sheets from any Codeforces legend, get one-click AI explanations, and train with a mentor that knows your history. Verdiqx is the AI OS for CP.",
+        content: "A simple home page.",
       },
-      { property: "og:title", content: "Verdiqx — The AI operating system for competitive programmers" },
-      {
-        property: "og:description",
-        content:
-          "Generate practice sheets from any Codeforces legend, get one-click AI explanations, and train with a mentor that knows your history. Verdiqx is the AI OS for CP.",
-      },
+      { property: "og:title", content: "Verdiqx" },
+      { property: "og:description", content: "A simple home page." },
       { property: "og:type", content: "website" },
     ],
   }),
   component: LandingPage,
 });
 
-/* ============================================================
- * PAGE
- * ============================================================ */
-
 function LandingPage() {
   return (
-    <div className="relative min-h-dvh bg-background text-foreground antialiased">
-      <AuroraBackdrop />
-      
-      <MarketingNav />
-      <Hero />
-      <TrustedStrip />
-      <SectionFeatures />
-      <SectionMentorDemo />
-      <SectionSheetGenerator />
-      <SectionAiExplain />
-      <SectionVideoSolutions />
-      <SectionContests />
-      <SectionContestCalendar />
-      <SectionCompare />
-
-      <SectionRoadmap />
-      <SectionTestimonials />
-      <SectionFaq />
-      <SectionCta />
-      <MarketingFooter />
-      <FloatingBugButton />
-    </div>
+    <main className="flex min-h-dvh flex-col items-center justify-center bg-background px-6 text-center text-foreground">
+      <h1 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+        Welcome
+      </h1>
+      <p className="mt-4 max-w-md text-sm text-muted-foreground sm:text-base">
+        Get started by opening your dashboard or signing in.
+      </p>
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <Button asChild size="lg">
+          <Link to="/problems">Open Dashboard</Link>
+        </Button>
+        <Button asChild size="lg" variant="outline">
+          <Link to="/auth">Sign in</Link>
+        </Button>
+      </div>
+    </main>
   );
 }
 
