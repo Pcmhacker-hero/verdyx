@@ -505,7 +505,6 @@ function SidebarFooter({
   onNavigate,
 }: { onOpenShortcuts?: () => void; isAdmin?: boolean; onReportBug?: () => void; onNavigate?: () => void } = {}) {
   const user = useCurrentUser();
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [signingOut, setSigningOut] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -522,7 +521,10 @@ function SidebarFooter({
       queryClient.clear();
       toast.success("Signed out");
       setConfirmOpen(false);
-      navigate({ to: "/auth", replace: true });
+      // Hard navigate to fully reset router/query/auth state and avoid
+      // races with onAuthStateChange invalidation, especially on mobile
+      // where the Sheet + Dialog stack can trap focus during navigation.
+      window.location.assign("/auth");
     } catch (err) {
       toast.error((err as Error).message ?? "Could not sign out");
       setSigningOut(false);
