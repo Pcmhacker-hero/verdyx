@@ -211,7 +211,7 @@ function Hero() {
           className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/15%)] px-4 py-1.5 text-xs font-medium text-[rgb(var(--lp-ink))] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] backdrop-blur-md"
         >
           <Sparkles className="size-3.5 text-amber-300" />
-          🚀 Dominate Codeforces · Train Smarter, Rank Faster
+          Dominate Codeforces · Train Smarter, Rank Faster
         </motion.span>
 
         <motion.h1
