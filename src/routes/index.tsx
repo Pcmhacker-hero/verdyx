@@ -10,6 +10,17 @@ import {
   LineChart,
   Bot,
   Check,
+  Code2,
+  Trophy,
+  Flame,
+  Github,
+  Twitter,
+  Youtube,
+  Zap,
+  Layers,
+  Compass,
+  MessageSquare,
+  Rocket,
 } from "lucide-react";
 import heroImage from "@/assets/home-hero.jpg";
 
@@ -42,10 +53,17 @@ function LandingPage() {
     <div className="min-h-dvh bg-[#050a1a] text-white">
       <Hero />
       <Stats />
+      <TopicsMarquee />
+      <ProblemSolution />
       <Features />
+      <FeatureSpotlight />
       <HowItWorks />
       <Showcase />
+      <Compare />
+      <Integrations />
+      <Roadmap />
       <Testimonials />
+      <Faq />
       <FinalCta />
       <SiteFooter />
     </div>
