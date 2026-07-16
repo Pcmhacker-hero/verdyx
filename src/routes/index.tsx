@@ -53,7 +53,7 @@ export const Route = createFileRoute("/")({
 
 function LandingPage() {
   return (
-    <div className="min-h-dvh bg-[#050a1a] text-white">
+    <div className="landing-root min-h-dvh bg-[var(--lp-bg)] text-[rgb(var(--lp-ink))] transition-colors duration-500">
       <Hero />
       <Stats />
       <TopicsMarquee />
@@ -155,7 +155,7 @@ function Hero() {
         />
 
         {/* Depth gradients */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-[#050a1a]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-[var(--lp-bg)]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(5,10,26,0.7)_100%)]" />
 
         {/* Grain */}
@@ -173,23 +173,23 @@ function Hero() {
       <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-1.5 text-sm font-semibold text-black backdrop-blur"
+          className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/9000%)] px-4 py-1.5 text-sm font-semibold text-black backdrop-blur"
         >
-          <span className="grid size-5 place-items-center rounded-full bg-black text-white text-[10px]">
+          <span className="grid size-5 place-items-center rounded-full bg-black text-[rgb(var(--lp-ink))] text-[10px]">
             V
           </span>
           Verdiqx
         </Link>
-        <nav className="hidden items-center gap-8 text-sm text-white/80 md:flex">
-          <a href="#features" className="hover:text-white">Features</a>
-          <a href="#how" className="hover:text-white">How it works</a>
-          <a href="#showcase" className="hover:text-white">Showcase</a>
+        <nav className="hidden items-center gap-8 text-sm text-[rgb(var(--lp-ink)/8000%)] md:flex">
+          <a href="#features" className="hover:text-[rgb(var(--lp-ink))]">Features</a>
+          <a href="#how" className="hover:text-[rgb(var(--lp-ink))]">How it works</a>
+          <a href="#showcase" className="hover:text-[rgb(var(--lp-ink))]">Showcase</a>
         </nav>
         <div className="flex items-center gap-3">
-          <ThemeToggle className="border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white" />
+          <ThemeToggle className="border-[rgb(var(--lp-ink)/2500%)] bg-[rgb(var(--lp-ink)/1000%)] text-[rgb(var(--lp-ink))] hover:bg-[rgb(var(--lp-ink)/2000%)] hover:text-[rgb(var(--lp-ink))]" />
           <Button
             asChild
-            className="rounded-full bg-white text-black hover:bg-white/90"
+            className="rounded-full bg-[rgb(var(--lp-ink))] text-black hover:bg-[rgb(var(--lp-ink)/9000%)]"
           >
             <Link to="/auth">Sign up</Link>
           </Button>
@@ -206,7 +206,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           style={{ transform: "translateZ(40px)" }}
-          className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-medium text-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] backdrop-blur-md"
+          className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/1500%)] px-4 py-1.5 text-xs font-medium text-[rgb(var(--lp-ink))] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] backdrop-blur-md"
         >
           <Sparkles className="size-3.5" />
           Built for Codeforces practice
@@ -217,7 +217,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           style={{ transform: "translateZ(80px)" }}
-          className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-white [text-shadow:0_10px_40px_rgba(0,0,0,0.35)] sm:text-6xl md:text-7xl"
+          className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-[rgb(var(--lp-ink))] [text-shadow:0_10px_40px_rgba(0,0,0,0.35)] sm:text-6xl md:text-7xl"
         >
           Practice worth
           <br />
@@ -229,7 +229,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           style={{ transform: "translateZ(50px)" }}
-          className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg"
+          className="mt-6 max-w-xl text-base leading-relaxed text-[rgb(var(--lp-ink)/8500%)] sm:text-lg"
         >
           Curated problem sheets, honest progress tracking, contest reminders
           and video walkthroughs — your competitive programming workspace, in
@@ -248,7 +248,7 @@ function Hero() {
           <Button
             asChild
             size="lg"
-            className="h-12 rounded-full bg-black px-6 text-white shadow-[0_20px_50px_-15px_rgba(0,0,0,0.7)] hover:bg-black/85"
+            className="h-12 rounded-full bg-black px-6 text-[rgb(var(--lp-ink))] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.7)] hover:bg-black/85"
           >
             <Link to="/auth" className="inline-flex items-center gap-2">
               <ArrowRight className="size-4" />
@@ -262,12 +262,12 @@ function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.55 }}
           style={{ transform: "translateZ(30px)" }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/80"
+          className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[rgb(var(--lp-ink)/8000%)]"
         >
           <li>Free to use</li>
-          <li aria-hidden className="size-1 rounded-full bg-white/50" />
+          <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/5000%)]" />
           <li>Codeforces integrated</li>
-          <li aria-hidden className="size-1 rounded-full bg-white/50" />
+          <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/5000%)]" />
           <li>Video editorials built-in</li>
         </motion.ul>
       </motion.main>
@@ -283,14 +283,14 @@ function Stats() {
     { value: "24/7", label: "Contest tracker" },
   ];
   return (
-    <section className="border-y border-white/10 bg-[#0a1230]">
+    <section className="border-y border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-elev)]">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-y-8 px-6 py-14 sm:px-10 md:grid-cols-4">
         {items.map((s) => (
           <div key={s.label} className="text-center">
-            <div className="font-display text-4xl font-semibold text-white">
+            <div className="font-display text-4xl font-semibold text-[rgb(var(--lp-ink))]">
               {s.value}
             </div>
-            <div className="mt-1 text-xs uppercase tracking-[0.18em] text-white/55">
+            <div className="mt-1 text-xs uppercase tracking-[0.18em] text-[rgb(var(--lp-ink)/5500%)]">
               {s.label}
             </div>
           </div>
@@ -335,38 +335,38 @@ const FEATURES = [
 
 function Features() {
   return (
-    <section id="features" className="bg-[#050a1a] py-24 sm:py-32">
+    <section id="features" className="bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+          <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/5500%)]">
             Everything in one place
           </p>
-          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
             The workspace built{" "}
-            <em className="font-serif italic font-normal text-white/80">
+            <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
               around your practice.
             </em>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-white/70">
+          <p className="mt-4 text-base leading-relaxed text-[rgb(var(--lp-ink)/7000%)]">
             Stop juggling five tabs and a spreadsheet. Verdiqx pulls your
             problems, progress, contests and editorials into a single quiet
             surface.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-[rgb(var(--lp-ink)/1000%)] bg-[rgb(var(--lp-ink)/1000%)] sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f) => (
             <div
               key={f.title}
-             className="tilt-3d group relative bg-[#050a1a] p-8 transition-colors hover:bg-[#0a1230]"
+             className="tilt-3d group relative bg-[var(--lp-bg)] p-8 transition-colors hover:bg-[var(--lp-elev)]"
             >
-              <div className="inline-flex size-10 items-center justify-center rounded-xl bg-white/10 text-white">
+              <div className="inline-flex size-10 items-center justify-center rounded-xl bg-[rgb(var(--lp-ink)/1000%)] text-[rgb(var(--lp-ink))]">
                 <f.icon className="size-5" />
               </div>
-              <h3 className="mt-6 font-display text-xl font-semibold text-white">
+              <h3 className="mt-6 font-display text-xl font-semibold text-[rgb(var(--lp-ink))]">
                 {f.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/65">
+              <p className="mt-2 text-sm leading-relaxed text-[rgb(var(--lp-ink)/6500%)]">
                 {f.body}
               </p>
             </div>
@@ -399,22 +399,22 @@ function HowItWorks() {
   return (
     <section
       id="how"
-      className="relative border-t border-white/10 bg-gradient-to-b from-[#050a1a] to-[#0a1230] py-24 sm:py-32"
+      className="relative border-t border-[rgb(var(--lp-ink)/1000%)] bg-gradient-to-b from-[var(--lp-bg)] to-[var(--lp-elev)] py-24 sm:py-32"
     >
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-xl">
-            <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+            <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/5500%)]">
               How it works
             </p>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
               Three steps.{" "}
-              <em className="font-serif italic font-normal text-white/80">
+              <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
                 No noise.
               </em>
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-white/65">
+          <p className="max-w-sm text-sm leading-relaxed text-[rgb(var(--lp-ink)/6500%)]">
             Verdiqx is opinionated about what matters and quiet about what
             doesn't. You show up, we handle the rest.
           </p>
@@ -424,15 +424,15 @@ function HowItWorks() {
           {STEPS.map((s) => (
             <li
               key={s.n}
-             className="tilt-3d rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur"
+             className="tilt-3d rounded-2xl border border-[rgb(var(--lp-ink)/1000%)] bg-[rgb(var(--lp-ink)/3%)] p-8 backdrop-blur"
             >
-              <div className="font-mono text-xs tracking-widest text-white/45">
+              <div className="font-mono text-xs tracking-widest text-[rgb(var(--lp-ink)/4500%)]">
                 {s.n}
               </div>
-              <h3 className="mt-6 font-display text-xl font-semibold text-white">
+              <h3 className="mt-6 font-display text-xl font-semibold text-[rgb(var(--lp-ink))]">
                 {s.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/65">
+              <p className="mt-2 text-sm leading-relaxed text-[rgb(var(--lp-ink)/6500%)]">
                 {s.body}
               </p>
             </li>
@@ -453,27 +453,27 @@ function Showcase() {
   return (
     <section
       id="showcase"
-      className="border-t border-white/10 bg-[#0a1230] py-24 sm:py-32"
+      className="border-t border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-elev)] py-24 sm:py-32"
     >
       <div className="mx-auto grid max-w-6xl gap-14 px-6 sm:px-10 md:grid-cols-2 md:items-center">
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+          <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/5500%)]">
             Showcase
           </p>
-          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
             A problem list you'll{" "}
-            <em className="font-serif italic font-normal text-white/80">
+            <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
               actually finish.
             </em>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-white/70">
+          <p className="mt-4 text-base leading-relaxed text-[rgb(var(--lp-ink)/7000%)]">
             Every sheet is a real practice plan — not a wall of links. Track
             what you've solved, what you skipped, and what's worth revisiting.
           </p>
           <ul className="mt-8 space-y-3">
             {bullets.map((b) => (
-              <li key={b} className="flex items-start gap-3 text-sm text-white/80">
-                <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-white/10">
+              <li key={b} className="flex items-start gap-3 text-sm text-[rgb(var(--lp-ink)/8000%)]">
+                <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-[rgb(var(--lp-ink)/1000%)]">
                   <Check className="size-3" />
                 </span>
                 {b}
@@ -483,17 +483,17 @@ function Showcase() {
         </div>
 
         {/* Faux product panel */}
-        <div className="rounded-2xl border border-white/10 bg-[#050a1a] p-6 shadow-2xl">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="rounded-2xl border border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-bg)] p-6 shadow-2xl">
+          <div className="flex items-center justify-between border-b border-[rgb(var(--lp-ink)/1000%)] pb-4">
             <div>
-              <div className="text-sm font-semibold text-white">
+              <div className="text-sm font-semibold text-[rgb(var(--lp-ink))]">
                 Graph Theory · Ladder A
               </div>
-              <div className="text-xs text-white/55">
+              <div className="text-xs text-[rgb(var(--lp-ink)/5500%)]">
                 18 of 24 solved · 1200–1600
               </div>
             </div>
-            <div className="rounded-full bg-white/10 px-2.5 py-1 text-[10px] uppercase tracking-widest text-white/70">
+            <div className="rounded-full bg-[rgb(var(--lp-ink)/1000%)] px-2.5 py-1 text-[10px] uppercase tracking-widest text-[rgb(var(--lp-ink)/7000%)]">
               In progress
             </div>
           </div>
@@ -508,28 +508,28 @@ function Showcase() {
             ].map((p) => (
               <div
                 key={p.id}
-                className="flex items-center justify-between rounded-lg border border-white/5 bg-white/[0.02] px-3 py-2.5 text-sm"
+                className="flex items-center justify-between rounded-lg border border-[rgb(var(--lp-ink)/500%)] bg-[rgb(var(--lp-ink)/2%)] px-3 py-2.5 text-sm"
               >
                 <div className="flex items-center gap-3">
                   <span
                     className={`size-2 rounded-full ${
-                      p.done ? "bg-emerald-400" : "bg-white/25"
+                      p.done ? "bg-emerald-400" : "bg-[rgb(var(--lp-ink)/2500%)]"
                     }`}
                   />
-                  <span className="font-mono text-xs text-white/55">
+                  <span className="font-mono text-xs text-[rgb(var(--lp-ink)/5500%)]">
                     {p.id}
                   </span>
-                  <span className="text-white/90">{p.name}</span>
+                  <span className="text-[rgb(var(--lp-ink)/9000%)]">{p.name}</span>
                 </div>
-                <span className="hidden text-[10px] uppercase tracking-widest text-white/45 sm:inline">
+                <span className="hidden text-[10px] uppercase tracking-widest text-[rgb(var(--lp-ink)/4500%)] sm:inline">
                   {p.tag}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-            <div className="h-full w-3/4 rounded-full bg-white/70" />
+          <div className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-[rgb(var(--lp-ink)/1000%)]">
+            <div className="h-full w-3/4 rounded-full bg-[rgb(var(--lp-ink)/7000%)]" />
           </div>
         </div>
       </div>
@@ -560,14 +560,14 @@ const QUOTES = [
 
 function Testimonials() {
   return (
-    <section className="border-t border-white/10 bg-[#050a1a] py-24 sm:py-32">
+    <section className="border-t border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
-        <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+        <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/5500%)]">
           Loved by the grind
         </p>
-        <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
           Built by people who{" "}
-          <em className="font-serif italic font-normal text-white/80">
+          <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
             still practice.
           </em>
         </h2>
@@ -576,14 +576,14 @@ function Testimonials() {
           {QUOTES.map((q) => (
             <figure
               key={q.name}
-               className="tilt-3d flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-8"
+               className="tilt-3d flex h-full flex-col justify-between rounded-2xl border border-[rgb(var(--lp-ink)/1000%)] bg-[rgb(var(--lp-ink)/3%)] p-8"
             >
-              <blockquote className="text-base leading-relaxed text-white/85">
+              <blockquote className="text-base leading-relaxed text-[rgb(var(--lp-ink)/8500%)]">
                 &ldquo;{q.quote}&rdquo;
               </blockquote>
-              <figcaption className="mt-8 border-t border-white/10 pt-4">
-                <div className="text-sm font-semibold text-white">{q.name}</div>
-                <div className="text-xs text-white/55">{q.role}</div>
+              <figcaption className="mt-8 border-t border-[rgb(var(--lp-ink)/1000%)] pt-4">
+                <div className="text-sm font-semibold text-[rgb(var(--lp-ink))]">{q.name}</div>
+                <div className="text-xs text-[rgb(var(--lp-ink)/5500%)]">{q.role}</div>
               </figcaption>
             </figure>
           ))}
@@ -595,20 +595,20 @@ function Testimonials() {
 
 function FinalCta() {
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-[#0a1230]">
+    <section className="relative overflow-hidden border-t border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-elev)]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 -top-40 h-96 bg-[radial-gradient(closest-side,_rgba(120,150,255,0.25),_transparent)]"
       />
       <div className="relative mx-auto max-w-3xl px-6 py-28 text-center sm:px-10">
-        <h2 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-6xl">
+        <h2 className="font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-6xl">
           Start practicing today.
           <br />
-          <em className="font-serif italic font-normal text-white/85">
+          <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8500%)]">
             Show up tomorrow.
           </em>
         </h2>
-        <p className="mt-6 text-base leading-relaxed text-white/70">
+        <p className="mt-6 text-base leading-relaxed text-[rgb(var(--lp-ink)/7000%)]">
           Free to use, no credit card, no seat limits. Bring your handle and
           we'll take it from there.
         </p>
@@ -616,7 +616,7 @@ function FinalCta() {
           <Button
             asChild
             size="lg"
-            className="h-12 rounded-full bg-white px-6 text-black hover:bg-white/90"
+            className="h-12 rounded-full bg-[rgb(var(--lp-ink))] px-6 text-black hover:bg-[rgb(var(--lp-ink)/9000%)]"
           >
             <Link to="/auth" className="inline-flex items-center gap-2">
               Create your account
@@ -627,7 +627,7 @@ function FinalCta() {
             asChild
             variant="ghost"
             size="lg"
-            className="h-12 rounded-full px-6 text-white hover:bg-white/10 hover:text-white"
+            className="h-12 rounded-full px-6 text-[rgb(var(--lp-ink))] hover:bg-[rgb(var(--lp-ink)/1000%)] hover:text-[rgb(var(--lp-ink))]"
           >
             <Link to="/problems">Open dashboard</Link>
           </Button>
@@ -639,22 +639,22 @@ function FinalCta() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-[#050a1a]">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 text-sm text-white/60 sm:px-10 md:flex-row md:items-center">
-        <div className="flex items-center gap-2 text-white">
-          <span className="grid size-6 place-items-center rounded-full bg-white text-black text-[11px] font-bold">
+    <footer className="border-t border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-bg)]">
+      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 text-sm text-[rgb(var(--lp-ink)/6000%)] sm:px-10 md:flex-row md:items-center">
+        <div className="flex items-center gap-2 text-[rgb(var(--lp-ink))]">
+          <span className="grid size-6 place-items-center rounded-full bg-[rgb(var(--lp-ink))] text-black text-[11px] font-bold">
             V
           </span>
           <span className="font-semibold">Verdiqx</span>
-          <span className="text-white/40">— practice, tracked.</span>
+          <span className="text-[rgb(var(--lp-ink)/4000%)]">— practice, tracked.</span>
         </div>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <a href="#features" className="hover:text-white">Features</a>
-          <a href="#how" className="hover:text-white">How it works</a>
-          <Link to="/problems" className="hover:text-white">Dashboard</Link>
-          <Link to="/auth" className="hover:text-white">Sign in</Link>
+          <a href="#features" className="hover:text-[rgb(var(--lp-ink))]">Features</a>
+          <a href="#how" className="hover:text-[rgb(var(--lp-ink))]">How it works</a>
+          <Link to="/problems" className="hover:text-[rgb(var(--lp-ink))]">Dashboard</Link>
+          <Link to="/auth" className="hover:text-[rgb(var(--lp-ink))]">Sign in</Link>
         </div>
-        <div className="text-xs text-white/40">
+        <div className="text-xs text-[rgb(var(--lp-ink)/4000%)]">
           © {new Date().getFullYear()} Verdiqx
         </div>
       </div>
@@ -684,14 +684,14 @@ const TOPICS = [
 
 function TopicsMarquee() {
   return (
-    <section className="relative overflow-hidden border-y border-white/10 bg-[#050a1a] py-8">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#050a1a] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#050a1a] to-transparent" />
+    <section className="relative overflow-hidden border-y border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-bg)] py-8">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[var(--lp-scrim-to)] to-[var(--lp-scrim-from)]" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[var(--lp-scrim-to)] to-[var(--lp-scrim-from)]" />
       <div className="flex gap-3 overflow-x-auto px-6 sm:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {[...TOPICS, ...TOPICS].map((t, i) => (
           <span
             key={`${t}-${i}`}
-            className="whitespace-nowrap rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs text-white/70"
+            className="whitespace-nowrap rounded-full border border-[rgb(var(--lp-ink)/1000%)] bg-[rgb(var(--lp-ink)/4%)] px-4 py-1.5 text-xs text-[rgb(var(--lp-ink)/7000%)]"
           >
             {t}
           </span>
@@ -715,15 +715,15 @@ function ProblemSolution() {
     "Local-time reminders before every round",
   ];
   return (
-    <section className="border-b border-white/10 bg-[#050a1a] py-24 sm:py-32">
+    <section className="border-b border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+          <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/5500%)]">
             Why Verdiqx
           </p>
-          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
             Practice is hard.{" "}
-            <em className="font-serif italic font-normal text-white/80">
+            <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
               The tooling shouldn't be.
             </em>
           </h2>
@@ -734,7 +734,7 @@ function ProblemSolution() {
             <div className="text-xs uppercase tracking-[0.2em] text-red-300/80">
               Without Verdiqx
             </div>
-            <ul className="mt-6 space-y-3 text-sm text-white/75">
+            <ul className="mt-6 space-y-3 text-sm text-[rgb(var(--lp-ink)/7500%)]">
               {pain.map((p) => (
                 <li key={p} className="flex items-start gap-3">
                   <span className="mt-2 size-1.5 shrink-0 rounded-full bg-red-400/70" />
@@ -747,7 +747,7 @@ function ProblemSolution() {
             <div className="text-xs uppercase tracking-[0.2em] text-emerald-300/80">
               With Verdiqx
             </div>
-            <ul className="mt-6 space-y-3 text-sm text-white/85">
+            <ul className="mt-6 space-y-3 text-sm text-[rgb(var(--lp-ink)/8500%)]">
               {cure.map((c) => (
                 <li key={c} className="flex items-start gap-3">
                   <Check className="mt-0.5 size-4 shrink-0 text-emerald-300" />
@@ -764,27 +764,27 @@ function ProblemSolution() {
 
 function FeatureSpotlight() {
   return (
-    <section className="border-t border-white/10 bg-gradient-to-b from-[#050a1a] via-[#08102a] to-[#050a1a] py-24 sm:py-32">
+    <section className="border-t border-[rgb(var(--lp-ink)/1000%)] bg-gradient-to-b from-[var(--lp-bg)] via-[var(--lp-panel)] to-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-6xl space-y-24 px-6 sm:px-10">
         {/* Row 1 */}
         <div className="grid gap-14 md:grid-cols-2 md:items-center">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[10px] uppercase tracking-widest text-white/70">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/1000%)] px-3 py-1 text-[10px] uppercase tracking-widest text-[rgb(var(--lp-ink)/7000%)]">
               <Zap className="size-3" /> Mastery engine
             </div>
-            <h3 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+            <h3 className="mt-4 font-display text-3xl font-semibold text-[rgb(var(--lp-ink))] sm:text-4xl">
               Know exactly where you stand,{" "}
-              <em className="font-serif italic font-normal text-white/80">
+              <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
                 topic by topic.
               </em>
             </h3>
-            <p className="mt-4 text-base leading-relaxed text-white/70">
+            <p className="mt-4 text-base leading-relaxed text-[rgb(var(--lp-ink)/7000%)]">
               Every solve, skip, and mistake feeds a per-topic score. See the
               tag you keep failing, the range you've outgrown, and the next
               problem worth your time.
             </p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-[#040816] p-6">
+          <div className="rounded-2xl border border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-panel)] p-6">
             {[
               { name: "Graphs", pct: 82 },
               { name: "DP", pct: 61 },
@@ -794,12 +794,12 @@ function FeatureSpotlight() {
             ].map((t) => (
               <div key={t.name} className="py-2.5">
                 <div className="flex justify-between text-xs">
-                  <span className="text-white/80">{t.name}</span>
-                  <span className="font-mono text-white/55">{t.pct}%</span>
+                  <span className="text-[rgb(var(--lp-ink)/8000%)]">{t.name}</span>
+                  <span className="font-mono text-[rgb(var(--lp-ink)/5500%)]">{t.pct}%</span>
                 </div>
-                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-[rgb(var(--lp-ink)/1000%)]">
                   <div
-                    className="h-full rounded-full bg-white/80"
+                    className="h-full rounded-full bg-[rgb(var(--lp-ink)/8000%)]"
                     style={{ width: `${t.pct}%` }}
                   />
                 </div>
@@ -810,10 +810,10 @@ function FeatureSpotlight() {
 
         {/* Row 2 reversed */}
         <div className="grid gap-14 md:grid-cols-2 md:items-center">
-          <div className="order-2 md:order-1 rounded-2xl border border-white/10 bg-[#040816] p-6">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs text-white/60">
+          <div className="order-2 md:order-1 rounded-2xl border border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-panel)] p-6">
+            <div className="flex items-center justify-between border-b border-[rgb(var(--lp-ink)/1000%)] pb-3 text-xs text-[rgb(var(--lp-ink)/6000%)]">
               <span className="font-mono">Round #952 · Div 2</span>
-              <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] uppercase tracking-widest">
+              <span className="rounded-full bg-[rgb(var(--lp-ink)/1000%)] px-2 py-0.5 text-[10px] uppercase tracking-widest">
                 in 2h 14m
               </span>
             </div>
@@ -825,25 +825,25 @@ function FeatureSpotlight() {
               ].map((c) => (
                 <div
                   key={c.t}
-                  className="flex items-center justify-between rounded-lg bg-white/[0.03] px-3 py-2.5 text-sm"
+                  className="flex items-center justify-between rounded-lg bg-[rgb(var(--lp-ink)/3%)] px-3 py-2.5 text-sm"
                 >
-                  <span className="text-white/85">{c.t}</span>
-                  <span className="font-mono text-xs text-white/50">{c.d}</span>
+                  <span className="text-[rgb(var(--lp-ink)/8500%)]">{c.t}</span>
+                  <span className="font-mono text-xs text-[rgb(var(--lp-ink)/5000%)]">{c.d}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="order-1 md:order-2">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[10px] uppercase tracking-widest text-white/70">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/1000%)] px-3 py-1 text-[10px] uppercase tracking-widest text-[rgb(var(--lp-ink)/7000%)]">
               <CalendarDays className="size-3" /> Contest radar
             </div>
-            <h3 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+            <h3 className="mt-4 font-display text-3xl font-semibold text-[rgb(var(--lp-ink))] sm:text-4xl">
               Never miss a round{" "}
-              <em className="font-serif italic font-normal text-white/80">
+              <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
                 that matters.
               </em>
             </h3>
-            <p className="mt-4 text-base leading-relaxed text-white/70">
+            <p className="mt-4 text-base leading-relaxed text-[rgb(var(--lp-ink)/7000%)]">
               A single calendar for Codeforces, AtCoder, CodeChef and more.
               Filter by division, set gentle reminders, add rounds to your own
               calendar in one click.
@@ -854,36 +854,36 @@ function FeatureSpotlight() {
         {/* Row 3 */}
         <div className="grid gap-14 md:grid-cols-2 md:items-center">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[10px] uppercase tracking-widest text-white/70">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/1000%)] px-3 py-1 text-[10px] uppercase tracking-widest text-[rgb(var(--lp-ink)/7000%)]">
               <Bot className="size-3" /> Mentor
             </div>
-            <h3 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+            <h3 className="mt-4 font-display text-3xl font-semibold text-[rgb(var(--lp-ink))] sm:text-4xl">
               Hints when you're stuck,{" "}
-              <em className="font-serif italic font-normal text-white/80">
+              <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
                 never the answer.
               </em>
             </h3>
-            <p className="mt-4 text-base leading-relaxed text-white/70">
+            <p className="mt-4 text-base leading-relaxed text-[rgb(var(--lp-ink)/7000%)]">
               Ask for a nudge and get one — a question, a technique to try, a
               pattern to recognize. The mentor refuses to spoil the ending.
             </p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-[#040816] p-6 font-mono text-xs leading-relaxed text-white/80">
-            <div className="text-white/45">you</div>
+          <div className="rounded-2xl border border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-panel)] p-6 font-mono text-xs leading-relaxed text-[rgb(var(--lp-ink)/8000%)]">
+            <div className="text-[rgb(var(--lp-ink)/4500%)]">you</div>
             <div className="mt-1">
               I've tried DP on this but it's O(n²). Help?
             </div>
-            <div className="mt-5 text-white/45">mentor</div>
-            <div className="mt-1 text-white/90">
+            <div className="mt-5 text-[rgb(var(--lp-ink)/4500%)]">mentor</div>
+            <div className="mt-1 text-[rgb(var(--lp-ink)/9000%)]">
               Which quantity is monotone as you sweep from left to right? If
               you find one, a data structure over indices might drop the inner
               loop.
             </div>
             <div className="mt-5 flex gap-2">
-              <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] uppercase tracking-widest">
+              <span className="rounded-full bg-[rgb(var(--lp-ink)/1000%)] px-2 py-1 text-[10px] uppercase tracking-widest">
                 nudge
               </span>
-              <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] uppercase tracking-widest">
+              <span className="rounded-full bg-[rgb(var(--lp-ink)/1000%)] px-2 py-1 text-[10px] uppercase tracking-widest">
                 no spoilers
               </span>
             </div>
@@ -904,40 +904,40 @@ function Compare() {
     { f: "Free, no paywall", verdiqx: true, others: "Freemium" },
   ];
   return (
-    <section className="border-t border-white/10 bg-[#050a1a] py-24 sm:py-32">
+    <section className="border-t border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-5xl px-6 sm:px-10">
-        <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+        <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/5500%)]">
           Compare
         </p>
-        <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
           What you get{" "}
-          <em className="font-serif italic font-normal text-white/80">
+          <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
             versus everywhere else.
           </em>
         </h2>
 
-        <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
-          <div className="grid grid-cols-[1.6fr_1fr_1fr] border-b border-white/10 bg-white/[0.03] text-xs uppercase tracking-widest text-white/60">
+        <div className="mt-12 overflow-hidden rounded-2xl border border-[rgb(var(--lp-ink)/1000%)]">
+          <div className="grid grid-cols-[1.6fr_1fr_1fr] border-b border-[rgb(var(--lp-ink)/1000%)] bg-[rgb(var(--lp-ink)/3%)] text-xs uppercase tracking-widest text-[rgb(var(--lp-ink)/6000%)]">
             <div className="px-6 py-4">Feature</div>
-            <div className="px-6 py-4 text-white">Verdiqx</div>
+            <div className="px-6 py-4 text-[rgb(var(--lp-ink))]">Verdiqx</div>
             <div className="px-6 py-4">Elsewhere</div>
           </div>
           {rows.map((r, i) => (
             <div
               key={r.f}
               className={`grid grid-cols-[1.6fr_1fr_1fr] items-center text-sm ${
-                i % 2 === 0 ? "bg-transparent" : "bg-white/[0.02]"
+                i % 2 === 0 ? "bg-transparent" : "bg-[rgb(var(--lp-ink)/2%)]"
               }`}
             >
-              <div className="px-6 py-4 text-white/85">{r.f}</div>
+              <div className="px-6 py-4 text-[rgb(var(--lp-ink)/8500%)]">{r.f}</div>
               <div className="px-6 py-4">
                 <Check className="size-4 text-emerald-300" />
               </div>
-              <div className="px-6 py-4 text-white/60">
+              <div className="px-6 py-4 text-[rgb(var(--lp-ink)/6000%)]">
                 {r.others === false ? (
-                  <span className="text-white/30">—</span>
+                  <span className="text-[rgb(var(--lp-ink)/3000%)]">—</span>
                 ) : r.others === true ? (
-                  <Check className="size-4 text-white/50" />
+                  <Check className="size-4 text-[rgb(var(--lp-ink)/5000%)]" />
                 ) : (
                   r.others
                 )}
@@ -960,34 +960,34 @@ function Integrations() {
     { icon: Youtube, name: "YouTube" },
   ];
   return (
-    <section className="border-t border-white/10 bg-[#0a1230] py-24 sm:py-28">
+    <section className="border-t border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-elev)] py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+            <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/5500%)]">
               Integrations
             </p>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
               Plays well with{" "}
-              <em className="font-serif italic font-normal text-white/80">
+              <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
                 your stack.
               </em>
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-white/65">
+          <p className="max-w-sm text-sm leading-relaxed text-[rgb(var(--lp-ink)/6500%)]">
             Pull data from where you already practice. No re-solving, no
             manual imports.
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3 md:grid-cols-6">
+        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[rgb(var(--lp-ink)/1000%)] bg-[rgb(var(--lp-ink)/1000%)] sm:grid-cols-3 md:grid-cols-6">
           {items.map((it) => (
             <div
               key={it.name}
-              className="flex flex-col items-center justify-center gap-3 bg-[#0a1230] py-10 text-center transition-colors hover:bg-[#0e174a]"
+              className="flex flex-col items-center justify-center gap-3 bg-[var(--lp-elev)] py-10 text-center transition-colors hover:bg-[var(--lp-elev)]"
             >
-              <it.icon className="size-6 text-white/75" />
-              <span className="text-xs uppercase tracking-widest text-white/60">
+              <it.icon className="size-6 text-[rgb(var(--lp-ink)/7500%)]" />
+              <span className="text-xs uppercase tracking-widest text-[rgb(var(--lp-ink)/6000%)]">
                 {it.name}
               </span>
             </div>
@@ -1026,26 +1026,26 @@ function Roadmap() {
     },
   ];
   return (
-    <section className="border-t border-white/10 bg-[#050a1a] py-24 sm:py-32">
+    <section className="border-t border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
-        <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+        <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/5500%)]">
           Roadmap
         </p>
-        <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
           Built in public,{" "}
-          <em className="font-serif italic font-normal text-white/80">
+          <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
             shipped every week.
           </em>
         </h2>
 
-        <ol className="relative mt-14 space-y-8 border-l border-white/10 pl-8">
+        <ol className="relative mt-14 space-y-8 border-l border-[rgb(var(--lp-ink)/1000%)] pl-8">
           {items.map((r) => (
             <li key={r.title} className="relative">
-              <span className="absolute -left-[41px] top-1 grid size-8 place-items-center rounded-full border border-white/15 bg-[#0a1230]">
-                <r.icon className="size-4 text-white/80" />
+              <span className="absolute -left-[41px] top-1 grid size-8 place-items-center rounded-full border border-[rgb(var(--lp-ink)/1500%)] bg-[var(--lp-elev)]">
+                <r.icon className="size-4 text-[rgb(var(--lp-ink)/8000%)]" />
               </span>
               <div className="flex flex-wrap items-center gap-3">
-                <h3 className="font-display text-xl font-semibold text-white">
+                <h3 className="font-display text-xl font-semibold text-[rgb(var(--lp-ink))]">
                   {r.title}
                 </h3>
                 <span
@@ -1054,13 +1054,13 @@ function Roadmap() {
                       ? "bg-emerald-400/15 text-emerald-300"
                       : r.status === "In beta"
                       ? "bg-amber-400/15 text-amber-200"
-                      : "bg-white/10 text-white/70"
+                      : "bg-[rgb(var(--lp-ink)/1000%)] text-[rgb(var(--lp-ink)/7000%)]"
                   }`}
                 >
                   {r.status}
                 </span>
               </div>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/65">
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[rgb(var(--lp-ink)/6500%)]">
                 {r.body}
               </p>
             </li>
@@ -1096,33 +1096,33 @@ const FAQS = [
 
 function Faq() {
   return (
-    <section className="border-t border-white/10 bg-[#050a1a] py-24 sm:py-32">
+    <section className="border-t border-[rgb(var(--lp-ink)/1000%)] bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-6 sm:px-10">
-        <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+        <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/5500%)]">
           Questions
         </p>
-        <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
           Everything else,{" "}
-          <em className="font-serif italic font-normal text-white/80">
+          <em className="font-serif italic font-normal text-[rgb(var(--lp-ink)/8000%)]">
             answered.
           </em>
         </h2>
 
-        <div className="mt-12 divide-y divide-white/10 border-y border-white/10">
+        <div className="mt-12 divide-y divide-[rgb(var(--lp-ink)/1000%)] border-y border-[rgb(var(--lp-ink)/1000%)]">
           {FAQS.map((f) => (
             <details
               key={f.q}
               className="group py-5"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left">
-                <span className="font-display text-lg font-medium text-white">
+                <span className="font-display text-lg font-medium text-[rgb(var(--lp-ink))]">
                   {f.q}
                 </span>
-                <span className="grid size-7 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition-transform group-open:rotate-45">
+                <span className="grid size-7 shrink-0 place-items-center rounded-full border border-[rgb(var(--lp-ink)/1500%)] text-[rgb(var(--lp-ink)/7000%)] transition-transform group-open:rotate-45">
                   +
                 </span>
               </summary>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[rgb(var(--lp-ink)/7000%)]">
                 {f.a}
               </p>
             </details>
