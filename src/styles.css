@@ -429,6 +429,29 @@
 }
 
 /* ============================================================
+ * Premium 3D tilt — subtle perspective lift on hover
+ * ============================================================ */
+@utility tilt-3d {
+  transform-style: preserve-3d;
+  transition: transform 500ms var(--ease-out-quart), box-shadow 500ms var(--ease-out-quart);
+  will-change: transform;
+}
+.tilt-3d:hover {
+  transform: perspective(1000px) rotateX(4deg) rotateY(-6deg) translateY(-4px) translateZ(6px);
+  box-shadow:
+    0 24px 60px -20px rgba(0, 0, 0, 0.6),
+    0 2px 0 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt-3d,
+  .tilt-3d:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
  * Coming Soon — premium 3D badge
  * ============================================================ */
 .coming-soon-badge {
