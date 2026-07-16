@@ -237,14 +237,6 @@ function Hero() {
                 animation: "shimmer 4s linear infinite",
               }}
             />
-            <span
-              aria-hidden
-              className="absolute inset-0 rounded-2xl"
-              style={{
-                background:
-                  "linear-gradient(140deg, #ffffff 0%, #e8eef7 45%, #c9d5e8 100%)",
-              }}
-            />
             {/* CF wordmark — three colored bars like the CF logo */}
             <span
               className="relative z-10 flex items-end gap-[3px]"
