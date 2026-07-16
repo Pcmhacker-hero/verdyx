@@ -1151,27 +1151,8 @@ function MasteryCard() {
         style={{ rotateX: rX, rotateY: rY, transformStyle: "preserve-3d" }}
         className="group relative rounded-2xl border border-[rgb(var(--lp-ink)/12%)] bg-[var(--lp-panel)] p-6 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.55)] [will-change:transform]"
       >
-        {/* dynamic sheen */}
-        <motion.div
-          aria-hidden
-          style={{
-            background: `radial-gradient(400px circle at ${gX.get()} ${gY.get()}, rgba(120,150,255,0.22), transparent 60%)`,
-            left: gX,
-            top: gY,
-          }}
-          className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(300px_circle_at_var(--x,50%)_var(--y,50%),rgba(120,150,255,0.22),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        />
-        <motion.div
-          aria-hidden
-          style={{
-            background: useTransform(
-              [gX, gY],
-              ([x, y]) =>
-                `radial-gradient(360px circle at ${x} ${y}, rgba(150,180,255,0.22), transparent 60%)`
-            ) as unknown as string,
-          }}
-          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        />
+        {/* Dynamic cursor sheen */}
+        <Sheen gX={gX} gY={gY} />
 
         <div
           className="relative flex items-center justify-between border-b border-[rgb(var(--lp-ink)/10%)] pb-3"
