@@ -1113,3 +1113,149 @@ function Faq() {
     </section>
   );
 }
+
+function MasteryCard() {
+  const topics = [
+    { name: "Graphs", pct: 82 },
+    { name: "DP", pct: 61 },
+    { name: "Number Theory", pct: 44 },
+    { name: "Greedy", pct: 74 },
+    { name: "Data Structures", pct: 58 },
+  ];
+  const cardRef = useRef<HTMLDivElement>(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 120, damping: 18 });
+  const sy = useSpring(my, { stiffness: 120, damping: 18 });
+  const rY = useTransform(sx, [-0.5, 0.5], [12, -12]);
+  const rX = useTransform(sy, [-0.5, 0.5], [-10, 10]);
+  const gX = useTransform(sx, [-0.5, 0.5], ["20%", "80%"]);
+  const gY = useTransform(sy, [-0.5, 0.5], ["10%", "90%"]);
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - r.left) / r.width - 0.5);
+    my.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const onLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
+
+  return (
+    <div className="[perspective:1400px]">
+      <motion.div
+        ref={cardRef}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+        style={{ rotateX: rX, rotateY: rY, transformStyle: "preserve-3d" }}
+        className="group relative rounded-2xl border border-[rgb(var(--lp-ink)/12%)] bg-[var(--lp-panel)] p-6 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.55)] [will-change:transform]"
+      >
+        {/* dynamic sheen */}
+        <motion.div
+          aria-hidden
+          style={{
+            background: `radial-gradient(400px circle at ${gX.get()} ${gY.get()}, rgba(120,150,255,0.22), transparent 60%)`,
+            left: gX,
+            top: gY,
+          }}
+          className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(300px_circle_at_var(--x,50%)_var(--y,50%),rgba(120,150,255,0.22),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+        <motion.div
+          aria-hidden
+          style={{
+            background: useTransform(
+              [gX, gY],
+              ([x, y]) =>
+                `radial-gradient(360px circle at ${x} ${y}, rgba(150,180,255,0.22), transparent 60%)`
+            ) as unknown as string,
+          }}
+          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+
+        <div
+          className="relative flex items-center justify-between border-b border-[rgb(var(--lp-ink)/10%)] pb-3"
+          style={{ transform: "translateZ(40px)" }}
+        >
+          <div>
+            <div className="text-xs uppercase tracking-[0.18em] text-[rgb(var(--lp-ink)/55%)]">
+              Topic mastery
+            </div>
+            <div className="mt-1 font-display text-lg font-semibold text-[rgb(var(--lp-ink))]">
+              Last 30 days
+            </div>
+          </div>
+          <div className="rounded-full bg-[rgb(var(--lp-ink)/10%)] px-2.5 py-1 text-[10px] uppercase tracking-widest text-[rgb(var(--lp-ink)/70%)]">
+            live
+          </div>
+        </div>
+
+        <div
+          className="relative mt-4 space-y-3"
+          style={{ transform: "translateZ(30px)" }}
+        >
+          {topics.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{
+                duration: 0.6,
+                delay: 0.1 + i * 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <div className="flex justify-between text-xs">
+                <span className="text-[rgb(var(--lp-ink)/85%)]">{t.name}</span>
+                <motion.span
+                  className="font-mono text-[rgb(var(--lp-ink)/60%)]"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 + i * 0.08, duration: 0.5 }}
+                >
+                  {t.pct}%
+                </motion.span>
+              </div>
+              <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-[rgb(var(--lp-ink)/8%)] shadow-[inset_0_1px_2px_rgba(0,0,0,0.15)]">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${t.pct}%` }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{
+                    duration: 1.1,
+                    delay: 0.2 + i * 0.1,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="relative h-full rounded-full bg-gradient-to-r from-[rgb(120,150,255)] via-[rgb(150,180,255)] to-[rgb(200,220,255)] shadow-[0_0_20px_rgba(120,150,255,0.6)]"
+                >
+                  <motion.div
+                    aria-hidden
+                    className="absolute inset-y-0 -left-1/2 w-1/2 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.6),transparent)]"
+                    animate={{ x: ["0%", "400%"] }}
+                    transition={{
+                      duration: 2.2,
+                      delay: 1.2 + i * 0.15,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: "easeInOut",
+                    }}
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div
+          className="relative mt-6 flex items-center justify-between border-t border-[rgb(var(--lp-ink)/10%)] pt-4 text-xs text-[rgb(var(--lp-ink)/55%)]"
+          style={{ transform: "translateZ(20px)" }}
+        >
+          <span>Avg mastery</span>
+          <span className="font-mono text-[rgb(var(--lp-ink))]">63.8%</span>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
