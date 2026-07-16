@@ -69,6 +69,7 @@ interface NavItem {
   shortcut?: string;
   key?: string; // single letter after "g"
   badge?: string;
+  authRequired?: boolean;
 }
 
 interface NavSection {
