@@ -245,17 +245,28 @@ function Hero() {
           style={{ transform: "translateZ(70px)" }}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          className="mt-8"
+          className="mt-10 flex flex-col items-center gap-3 sm:flex-row"
         >
           <Button
             asChild
             size="lg"
-            className="h-12 rounded-full bg-black px-6 text-[rgb(var(--lp-ink))] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.7)] hover:bg-black/85"
+            className="group relative h-14 overflow-hidden rounded-full bg-gradient-to-r from-[#3B82F6] via-[#6366F1] to-[#8B5CF6] px-8 text-base font-semibold text-white shadow-[0_20px_60px_-15px_rgba(99,102,241,0.75)] transition-transform hover:scale-[1.03] hover:shadow-[0_25px_70px_-15px_rgba(99,102,241,0.9)]"
           >
             <Link to="/auth" className="inline-flex items-center gap-2">
-              <ArrowRight className="size-4" />
-              Get started
+              <Sparkles className="size-5" />
+              Start Training Free
+              <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
             </Link>
+          </Button>
+          <Button
+            asChild
+            variant="ghost"
+            size="lg"
+            className="h-14 rounded-full px-6 text-base font-medium text-[rgb(var(--lp-ink))] hover:bg-[rgb(var(--lp-ink)/10%)] hover:text-[rgb(var(--lp-ink))]"
+          >
+            <a href="#features" className="inline-flex items-center gap-2">
+              See how it works
+            </a>
           </Button>
         </motion.div>
 
