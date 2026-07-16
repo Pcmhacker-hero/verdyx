@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
@@ -28,54 +28,6 @@ import {
 import heroImage from "@/assets/home-hero.jpg";
 import logoAsset from "@/assets/logo.png.asset.json";
 
-// Premium Codeforces logo — official 3-bar mark (red / yellow / blue)
-// rendered with gradient fills, inner highlight and soft glow.
-function CodeforcesLogo({ className = "size-6" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-label="Codeforces"
-      role="img"
-    >
-      <defs>
-        <linearGradient id="cf-red" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ff6b6b" />
-          <stop offset="100%" stopColor="#d1132b" />
-        </linearGradient>
-        <linearGradient id="cf-yellow" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ffe57a" />
-          <stop offset="100%" stopColor="#f5a300" />
-        </linearGradient>
-        <linearGradient id="cf-blue" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#5aa9ff" />
-          <stop offset="100%" stopColor="#1a53d1" />
-        </linearGradient>
-        <filter id="cf-glow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="1.4" result="b" />
-          <feMerge>
-            <feMergeNode in="b" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <g filter="url(#cf-glow)">
-        {/* left / red — short */}
-        <rect x="6" y="22" width="9" height="20" rx="2" fill="url(#cf-red)" />
-        {/* middle / yellow — medium */}
-        <rect x="19.5" y="14" width="9" height="28" rx="2" fill="url(#cf-yellow)" />
-        {/* right / blue — tall */}
-        <rect x="33" y="6" width="9" height="36" rx="2" fill="url(#cf-blue)" />
-      </g>
-      {/* subtle top highlights for glassy premium look */}
-      <rect x="6" y="22" width="9" height="6" rx="2" fill="white" fillOpacity="0.18" />
-      <rect x="19.5" y="14" width="9" height="6" rx="2" fill="white" fillOpacity="0.18" />
-      <rect x="33" y="6" width="9" height="6" rx="2" fill="white" fillOpacity="0.18" />
-    </svg>
-  );
-}
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -101,15 +53,8 @@ export const Route = createFileRoute("/")({
 });
 
 function LandingPage() {
-  const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24, mass: 0.3 });
   return (
     <div className="landing-root min-h-dvh bg-[var(--lp-bg)] text-[rgb(var(--lp-ink))] transition-colors duration-500">
-      <motion.div
-        aria-hidden
-        style={{ scaleX: progress, transformOrigin: "0% 50%" }}
-        className="fixed inset-x-0 top-0 z-[60] h-[3px] bg-gradient-to-r from-sky-400 via-violet-500 to-fuchsia-500 shadow-[0_0_18px_rgba(139,92,246,0.6)]"
-      />
       <Hero />
       <Stats />
       <TopicsMarquee />
@@ -226,7 +171,7 @@ function Hero() {
       </motion.div>
 
       {/* Nav */}
-      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-4 sm:px-10 bg-[color-mix(in_oklab,var(--lp-bg)_70%,transparent)] backdrop-blur-xl border-b border-[rgb(var(--lp-ink)/8%)]">
+      <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
         <Link
           to="/"
           className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/90%)] py-1 pl-1 pr-4 text-sm font-semibold text-[var(--lp-bg)] backdrop-blur"
@@ -323,10 +268,7 @@ function Hero() {
         >
            <li>✨ Free to use</li>
            <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
-           <li className="inline-flex items-center gap-1.5">
-             <CodeforcesLogo className="size-4 drop-shadow-[0_2px_6px_rgba(255,107,107,0.45)]" />
-             Codeforces integrated
-           </li>
+           <li>⚡ Codeforces integrated</li>
            <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
            <li>🎬 Video editorials built-in</li>
         </motion.ul>
@@ -1050,7 +992,7 @@ function Compare() {
 
 function Integrations() {
   const items = [
-    { icon: CodeforcesLogo, name: "Codeforces" },
+    { icon: Code2, name: "Codeforces" },
     { icon: Trophy, name: "AtCoder" },
     { icon: Layers, name: "CodeChef" },
     { icon: Flame, name: "LeetCode" },
@@ -1077,32 +1019,17 @@ function Integrations() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[rgb(var(--lp-ink)/10%)] bg-[rgb(var(--lp-ink)/10%)] sm:grid-cols-3 md:grid-cols-5 [perspective:1200px]">
-          {items.map((it, i) => (
-            <motion.div
+        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[rgb(var(--lp-ink)/10%)] bg-[rgb(var(--lp-ink)/10%)] sm:grid-cols-3 md:grid-cols-5">
+          {items.map((it) => (
+            <div
               key={it.name}
-              initial={{ opacity: 0, y: 24, rotateX: 14 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6, rotateX: -6, rotateY: 6, scale: 1.03 }}
-              style={{ transformStyle: "preserve-3d" }}
-              className="group relative flex flex-col items-center justify-center gap-3 bg-[var(--lp-elev)] py-10 text-center [will-change:transform]"
+              className="flex flex-col items-center justify-center gap-3 bg-[var(--lp-elev)] py-10 text-center transition-colors hover:bg-[var(--lp-elev)]"
             >
-              <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-400/0 via-violet-500/0 to-fuchsia-500/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:from-sky-400/10 group-hover:via-violet-500/10 group-hover:to-fuchsia-500/10" />
-              <motion.div
-                style={{ transform: "translateZ(30px)" }}
-                className="relative"
-              >
-                <it.icon className="size-6 text-[rgb(var(--lp-ink)/75%)] transition-colors group-hover:text-[rgb(var(--lp-ink))]" />
-              </motion.div>
-              <span
-                style={{ transform: "translateZ(20px)" }}
-                className="relative text-xs uppercase tracking-widest text-[rgb(var(--lp-ink)/60%)] transition-colors group-hover:text-[rgb(var(--lp-ink)/90%)]"
-              >
+              <it.icon className="size-6 text-[rgb(var(--lp-ink)/75%)]" />
+              <span className="text-xs uppercase tracking-widest text-[rgb(var(--lp-ink)/60%)]">
                 {it.name}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
