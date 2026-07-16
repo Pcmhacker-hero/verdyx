@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { CommandMenu } from "@/components/app/command-menu";
 import {
   Sparkles,
   ArrowRight,
@@ -54,17 +53,6 @@ export const Route = createFileRoute("/")({
 });
 
 function LandingPage() {
-  const [cmdOpen, setCmdOpen] = useState(false);
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        setCmdOpen((v) => !v);
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, []);
   return (
     <div className="landing-root min-h-dvh bg-[var(--lp-bg)] text-[rgb(var(--lp-ink))] transition-colors duration-500">
       <Hero />
@@ -82,7 +70,6 @@ function LandingPage() {
       <Faq />
       <FinalCta />
       <SiteFooter />
-      <CommandMenu open={cmdOpen} onOpenChange={setCmdOpen} />
     </div>
   );
 }

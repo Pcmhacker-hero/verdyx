@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -15,6 +15,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { supabase } from "@/integrations/supabase/client";
 import { useSheetAutoMigration } from "@/hooks/use-sheets";
+import { CommandMenu } from "@/components/app/command-menu";
 
 function NotFoundComponent() {
   return (
@@ -175,10 +176,33 @@ function RootComponent() {
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <SheetMigrationRunner />
         <Outlet />
+        <GlobalCommandPalette />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
   );
+}
+
+// Provides ⌘K / Ctrl+K on routes that don't render <AppShell /> (landing, auth,
+// public profile, etc.). AppShell already owns the shortcut on its pages and
+// bumps window.__appShellMounted while mounted; we defer to it there.
+function GlobalCommandPalette() {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const isTypingTarget = (t: EventTarget | null) =>
+      t instanceof HTMLElement &&
+      (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+    const handler = (e: KeyboardEvent) => {
+      if (!((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k")) return;
+      if ((window as unknown as { __appShellMounted?: number }).__appShellMounted) return;
+      if (isTypingTarget(e.target)) return;
+      e.preventDefault();
+      setOpen((v) => !v);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+  return <CommandMenu open={open} onOpenChange={setOpen} />;
 }
 
 function SheetMigrationRunner() {
