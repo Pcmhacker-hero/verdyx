@@ -452,6 +452,39 @@
 }
 
 /* ============================================================
+ * Landing page palette — switches with the .dark class
+ * ============================================================ */
+.landing-root {
+  /* light (default) — warm cream + deep-blue ink */
+  --lp-bg: #eef1f6;
+  --lp-elev: #ffffff;
+  --lp-panel: #f6f8fc;
+  --lp-ink: 10 15 30;             /* rgb triplet for opacity utilities */
+  --lp-border: rgba(10, 15, 30, 0.10);
+  --lp-border-strong: rgba(10, 15, 30, 0.16);
+  --lp-scrim-from: rgba(255, 255, 255, 0);
+  --lp-scrim-to: rgba(238, 241, 246, 1);
+}
+.dark .landing-root {
+  /* dark — original deep-blue dawn */
+  --lp-bg: #050a1a;
+  --lp-elev: #0a1230;
+  --lp-panel: #040816;
+  --lp-ink: 255 255 255;
+  --lp-border: rgba(255, 255, 255, 0.10);
+  --lp-border-strong: rgba(255, 255, 255, 0.16);
+  --lp-scrim-from: rgba(5, 10, 26, 0);
+  --lp-scrim-to: rgba(5, 10, 26, 1);
+}
+
+/* Hero sits over a dark image in both themes — pin ink to white */
+.landing-hero {
+  --lp-ink: 255 255 255;
+  --lp-border: rgba(255, 255, 255, 0.12);
+  --lp-border-strong: rgba(255, 255, 255, 0.20);
+}
+
+/* ============================================================
  * Coming Soon — premium 3D badge
  * ============================================================ */
 .coming-soon-badge {
