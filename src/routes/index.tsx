@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Curated sheets, problem tracking, contest calendars and video walkthroughs.",
+          "Curated sheets, problem tracking, contest calendars and video walkthroughs — an organized workspace for competitive programmers.",
       },
       { property: "og:type", content: "website" },
     ],
