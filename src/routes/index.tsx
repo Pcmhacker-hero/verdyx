@@ -74,10 +74,36 @@ function LandingPage() {
 }
 
 function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 60, damping: 15 });
+  const sy = useSpring(my, { stiffness: 60, damping: 15 });
+  const rotateY = useTransform(sx, [-0.5, 0.5], [8, -8]);
+  const rotateX = useTransform(sy, [-0.5, 0.5], [-6, 6]);
+  const bgX = useTransform(sx, [-0.5, 0.5], [20, -20]);
+  const bgY = useTransform(sy, [-0.5, 0.5], [10, -10]);
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - r.left) / r.width - 0.5);
+    my.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const onLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
+
   return (
-    <section className="relative overflow-hidden">
+    <section
+      ref={heroRef}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      className="relative overflow-hidden [perspective:1400px]"
+    >
       {/* Hero background */}
-      <img
+      <motion.img
+        style={{ x: bgX, y: bgY, scale: 1.06 }}
         src={heroImage}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
@@ -105,52 +131,92 @@ function Hero() {
           <a href="#how" className="hover:text-white">How it works</a>
           <a href="#showcase" className="hover:text-white">Showcase</a>
         </nav>
-        <Button
-          asChild
-          className="rounded-full bg-white text-black hover:bg-white/90"
-        >
-          <Link to="/auth">Sign up</Link>
-        </Button>
+        <div className="flex items-center gap-3">
+          <ThemeToggle className="border-white/25 bg-white/10 text-white hover:bg-white/20 hover:text-white" />
+          <Button
+            asChild
+            className="rounded-full bg-white text-black hover:bg-white/90"
+          >
+            <Link to="/auth">Sign up</Link>
+          </Button>
+        </div>
       </header>
 
       {/* Hero content */}
-      <main className="relative z-10 mx-auto flex min-h-[calc(100dvh-88px)] max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-8 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+      <motion.main
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative z-10 mx-auto flex min-h-[calc(100dvh-88px)] max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-8 text-center [will-change:transform]"
+      >
+        <motion.span
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          style={{ transform: "translateZ(40px)" }}
+          className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-medium text-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] backdrop-blur-md"
+        >
           <Sparkles className="size-3.5" />
           Built for Codeforces practice
-        </span>
+        </motion.span>
 
-        <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          style={{ transform: "translateZ(80px)" }}
+          className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-white [text-shadow:0_10px_40px_rgba(0,0,0,0.35)] sm:text-6xl md:text-7xl"
+        >
           Practice worth
           <br />
           <em className="font-serif italic font-normal">showing up for.</em>
-        </h1>
+        </motion.h1>
 
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          style={{ transform: "translateZ(50px)" }}
+          className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg"
+        >
           Curated problem sheets, honest progress tracking, contest reminders
           and video walkthroughs — your competitive programming workspace, in
           one calm place.
-        </p>
+        </motion.p>
 
-        <Button
-          asChild
-          size="lg"
-          className="mt-8 h-12 rounded-full bg-black px-6 text-white hover:bg-black/85"
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          style={{ transform: "translateZ(70px)" }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+          className="mt-8"
         >
-          <Link to="/auth" className="inline-flex items-center gap-2">
-            <ArrowRight className="size-4" />
-            Get started
-          </Link>
-        </Button>
+          <Button
+            asChild
+            size="lg"
+            className="h-12 rounded-full bg-black px-6 text-white shadow-[0_20px_50px_-15px_rgba(0,0,0,0.7)] hover:bg-black/85"
+          >
+            <Link to="/auth" className="inline-flex items-center gap-2">
+              <ArrowRight className="size-4" />
+              Get started
+            </Link>
+          </Button>
+        </motion.div>
 
-        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/80">
+        <motion.ul
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.55 }}
+          style={{ transform: "translateZ(30px)" }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/80"
+        >
           <li>Free to use</li>
           <li aria-hidden className="size-1 rounded-full bg-white/50" />
           <li>Codeforces integrated</li>
           <li aria-hidden className="size-1 rounded-full bg-white/50" />
           <li>Video editorials built-in</li>
-        </ul>
-      </main>
+        </motion.ul>
+      </motion.main>
     </section>
   );
 }
