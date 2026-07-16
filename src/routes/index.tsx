@@ -1047,7 +1047,7 @@ function Compare() {
 
 function Integrations() {
   const items = [
-    { icon: Code2, name: "Codeforces" },
+    { icon: CodeforcesLogo, name: "Codeforces" },
     { icon: Trophy, name: "AtCoder" },
     { icon: Layers, name: "CodeChef" },
     { icon: Flame, name: "LeetCode" },
