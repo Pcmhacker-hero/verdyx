@@ -103,7 +103,7 @@ function Hero() {
       ref={heroRef}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="relative overflow-hidden [perspective:1600px]"
+      className="landing-hero relative overflow-hidden [perspective:1600px]"
     >
       {/* Hero background — layered 3D */}
       <motion.div
