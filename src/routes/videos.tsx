@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Loader2, PlayCircle, Search, Youtube, Plus, X } from "lucide-react";
@@ -61,7 +61,6 @@ function parseProblemId(raw: string): { key: string; contestId: string; index: s
 
 function VideosPage() {
   const search = useServerFn(searchVideos);
-  const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [problem, setProblem] = useState<{ key: string; contestId: string; index: string } | null>(
     null,
@@ -120,8 +119,9 @@ function VideosPage() {
   const showMore = async () => {
     const { data: sess } = await supabase.auth.getSession();
     if (!sess.session) {
-      toast.message("Please sign in to view more video solutions.");
-      navigate({ to: "/auth", search: { redirect: "/videos" } as never });
+      toast.error("Login required", {
+        description: "Please sign in to view more video solutions.",
+      });
       return;
     }
     if (visible < results.length) {
