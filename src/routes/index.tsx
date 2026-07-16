@@ -253,7 +253,7 @@ function Hero() {
             size="lg"
             className="h-12 rounded-full bg-black px-6 text-[rgb(var(--lp-ink))] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.7)] hover:bg-black/85"
           >
-            <Link to="/auth" className="inline-flex items-center gap-2">
+            <Link to="/problems" className="inline-flex items-center gap-2">
               <ArrowRight className="size-4" />
               Get started
             </Link>
