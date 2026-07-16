@@ -26,6 +26,7 @@ import {
   Rocket,
 } from "lucide-react";
 import heroImage from "@/assets/home-hero.jpg";
+import logoAsset from "@/assets/logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
