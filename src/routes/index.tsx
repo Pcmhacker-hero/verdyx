@@ -221,9 +221,9 @@ function Hero() {
           style={{ transform: "translateZ(80px)" }}
           className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-[rgb(var(--lp-ink))] [text-shadow:0_10px_40px_rgba(0,0,0,0.35)] sm:text-6xl md:text-7xl"
         >
-          Practice worth
+          Master Codeforces,
           <br />
-          <em className="font-serif italic font-normal">showing up for.</em>
+          <em className="font-serif italic font-normal">one rating at a time.</em>
         </motion.h1>
 
         <motion.p
