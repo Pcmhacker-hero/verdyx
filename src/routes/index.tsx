@@ -157,8 +157,8 @@ function Hero() {
         {/* Depth gradients — react to theme */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-[var(--lp-bg)]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,var(--lp-bg)_100%)] opacity-70" />
-        {/* Warm tint in light mode only */}
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,220,180,0.28),rgba(255,180,200,0.18)_40%,transparent_75%)] opacity-0 [.landing-root:not(.dark_*)_&]:opacity-100 transition-opacity duration-700" />
+        {/* Warm dawn tint in light mode only */}
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,215,175,0.32),rgba(255,170,190,0.20)_40%,transparent_75%)] opacity-100 dark:opacity-0 transition-opacity duration-700" />
 
         {/* Grain */}
         <div
