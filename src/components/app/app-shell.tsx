@@ -106,8 +106,8 @@ const navSections: NavSection[] = [
   {
     label: "You",
     items: [
-      { label: "Ask Verdiqx", to: "/search", icon: Wand2, shortcut: "G A", key: "a" },
-      { label: "Mentor", to: "/mentor", icon: Sparkles, shortcut: "G M", key: "m", badge: "2" },
+      { label: "Ask Verdiqx", to: "/search", icon: Wand2, shortcut: "G A", key: "a", authRequired: true },
+      { label: "Mentor", to: "/mentor", icon: Sparkles, shortcut: "G M", key: "m", badge: "2", authRequired: true },
       { label: "Community", to: "/community", icon: Users, shortcut: "G Y", key: "y" },
       
       { label: "Profile", to: "/profile", icon: UserCircle2, shortcut: "G U", key: "u" },
