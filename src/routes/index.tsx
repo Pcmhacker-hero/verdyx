@@ -1026,17 +1026,32 @@ function Integrations() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[rgb(var(--lp-ink)/10%)] bg-[rgb(var(--lp-ink)/10%)] sm:grid-cols-3 md:grid-cols-5">
-          {items.map((it) => (
-            <div
+        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[rgb(var(--lp-ink)/10%)] bg-[rgb(var(--lp-ink)/10%)] sm:grid-cols-3 md:grid-cols-5 [perspective:1200px]">
+          {items.map((it, i) => (
+            <motion.div
               key={it.name}
-              className="flex flex-col items-center justify-center gap-3 bg-[var(--lp-elev)] py-10 text-center transition-colors hover:bg-[var(--lp-elev)]"
+              initial={{ opacity: 0, y: 24, rotateX: 14 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, rotateX: -6, rotateY: 6, scale: 1.03 }}
+              style={{ transformStyle: "preserve-3d" }}
+              className="group relative flex flex-col items-center justify-center gap-3 bg-[var(--lp-elev)] py-10 text-center [will-change:transform]"
             >
-              <it.icon className="size-6 text-[rgb(var(--lp-ink)/75%)]" />
-              <span className="text-xs uppercase tracking-widest text-[rgb(var(--lp-ink)/60%)]">
+              <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-400/0 via-violet-500/0 to-fuchsia-500/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:from-sky-400/10 group-hover:via-violet-500/10 group-hover:to-fuchsia-500/10" />
+              <motion.div
+                style={{ transform: "translateZ(30px)" }}
+                className="relative"
+              >
+                <it.icon className="size-6 text-[rgb(var(--lp-ink)/75%)] transition-colors group-hover:text-[rgb(var(--lp-ink))]" />
+              </motion.div>
+              <span
+                style={{ transform: "translateZ(20px)" }}
+                className="relative text-xs uppercase tracking-widest text-[rgb(var(--lp-ink)/60%)] transition-colors group-hover:text-[rgb(var(--lp-ink)/90%)]"
+              >
                 {it.name}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
