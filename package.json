@@ -54,6 +54,12 @@
     "vite-tsconfig-paths": "^6.0.2",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
+  "overrides": {
+    "js-yaml": "^4.3.0"
+  },
+  "resolutions": {
+    "js-yaml": "^4.3.0"
+  },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
     "@lovable.dev/vite-tanstack-config": "2.7.4",
