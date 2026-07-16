@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
@@ -53,8 +53,15 @@ export const Route = createFileRoute("/")({
 });
 
 function LandingPage() {
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24, mass: 0.3 });
   return (
     <div className="landing-root min-h-dvh bg-[var(--lp-bg)] text-[rgb(var(--lp-ink))] transition-colors duration-500">
+      <motion.div
+        aria-hidden
+        style={{ scaleX: progress, transformOrigin: "0% 50%" }}
+        className="fixed inset-x-0 top-0 z-[60] h-[3px] bg-gradient-to-r from-sky-400 via-violet-500 to-fuchsia-500 shadow-[0_0_18px_rgba(139,92,246,0.6)]"
+      />
       <Hero />
       <Stats />
       <TopicsMarquee />
