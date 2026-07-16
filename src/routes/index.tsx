@@ -538,3 +538,474 @@ function SiteFooter() {
     </footer>
   );
 }
+
+/* ================= Additional sections ================= */
+
+const TOPICS = [
+  "Dynamic Programming",
+  "Graphs",
+  "Number Theory",
+  "Greedy",
+  "Data Structures",
+  "Binary Search",
+  "Segment Trees",
+  "DP on Trees",
+  "Bitmasks",
+  "Geometry",
+  "Strings",
+  "Combinatorics",
+  "Flows",
+  "Game Theory",
+  "Interactive",
+];
+
+function TopicsMarquee() {
+  return (
+    <section className="relative overflow-hidden border-y border-white/10 bg-[#050a1a] py-8">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#050a1a] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#050a1a] to-transparent" />
+      <div className="flex gap-3 overflow-x-auto px-6 sm:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {[...TOPICS, ...TOPICS].map((t, i) => (
+          <span
+            key={`${t}-${i}`}
+            className="whitespace-nowrap rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs text-white/70"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ProblemSolution() {
+  const pain = [
+    "Solved lists lost in 12 browser tabs",
+    "No idea which topic is actually weak",
+    "Editorials scattered across YouTube",
+    "Contests missed because timezones",
+  ];
+  const cure = [
+    "One workspace, one source of truth",
+    "Topic mastery + mistake tags surfaced",
+    "Editorial videos next to each problem",
+    "Local-time reminders before every round",
+  ];
+  return (
+    <section className="border-b border-white/10 bg-[#050a1a] py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-6 sm:px-10">
+        <div className="max-w-2xl">
+          <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+            Why Verdiqx
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            Practice is hard.{" "}
+            <em className="font-serif italic font-normal text-white/80">
+              The tooling shouldn't be.
+            </em>
+          </h2>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <div className="rounded-2xl border border-red-400/20 bg-red-500/[0.04] p-8">
+            <div className="text-xs uppercase tracking-[0.2em] text-red-300/80">
+              Without Verdiqx
+            </div>
+            <ul className="mt-6 space-y-3 text-sm text-white/75">
+              {pain.map((p) => (
+                <li key={p} className="flex items-start gap-3">
+                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-red-400/70" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.04] p-8">
+            <div className="text-xs uppercase tracking-[0.2em] text-emerald-300/80">
+              With Verdiqx
+            </div>
+            <ul className="mt-6 space-y-3 text-sm text-white/85">
+              {cure.map((c) => (
+                <li key={c} className="flex items-start gap-3">
+                  <Check className="mt-0.5 size-4 shrink-0 text-emerald-300" />
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FeatureSpotlight() {
+  return (
+    <section className="border-t border-white/10 bg-gradient-to-b from-[#050a1a] via-[#08102a] to-[#050a1a] py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl space-y-24 px-6 sm:px-10">
+        {/* Row 1 */}
+        <div className="grid gap-14 md:grid-cols-2 md:items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[10px] uppercase tracking-widest text-white/70">
+              <Zap className="size-3" /> Mastery engine
+            </div>
+            <h3 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+              Know exactly where you stand,{" "}
+              <em className="font-serif italic font-normal text-white/80">
+                topic by topic.
+              </em>
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-white/70">
+              Every solve, skip, and mistake feeds a per-topic score. See the
+              tag you keep failing, the range you've outgrown, and the next
+              problem worth your time.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-[#040816] p-6">
+            {[
+              { name: "Graphs", pct: 82 },
+              { name: "DP", pct: 61 },
+              { name: "Number Theory", pct: 44 },
+              { name: "Greedy", pct: 74 },
+              { name: "Data Structures", pct: 58 },
+            ].map((t) => (
+              <div key={t.name} className="py-2.5">
+                <div className="flex justify-between text-xs">
+                  <span className="text-white/80">{t.name}</span>
+                  <span className="font-mono text-white/55">{t.pct}%</span>
+                </div>
+                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-white/80"
+                    style={{ width: `${t.pct}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 reversed */}
+        <div className="grid gap-14 md:grid-cols-2 md:items-center">
+          <div className="order-2 md:order-1 rounded-2xl border border-white/10 bg-[#040816] p-6">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs text-white/60">
+              <span className="font-mono">Round #952 · Div 2</span>
+              <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] uppercase tracking-widest">
+                in 2h 14m
+              </span>
+            </div>
+            <div className="mt-4 space-y-2">
+              {[
+                { t: "Educational Codeforces Round 168", d: "Tomorrow · 20:35" },
+                { t: "AtCoder Beginner Contest 379", d: "Sat · 17:30" },
+                { t: "Codeforces Round 953 (Div 3)", d: "Sun · 20:05" },
+              ].map((c) => (
+                <div
+                  key={c.t}
+                  className="flex items-center justify-between rounded-lg bg-white/[0.03] px-3 py-2.5 text-sm"
+                >
+                  <span className="text-white/85">{c.t}</span>
+                  <span className="font-mono text-xs text-white/50">{c.d}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="order-1 md:order-2">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[10px] uppercase tracking-widest text-white/70">
+              <CalendarDays className="size-3" /> Contest radar
+            </div>
+            <h3 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+              Never miss a round{" "}
+              <em className="font-serif italic font-normal text-white/80">
+                that matters.
+              </em>
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-white/70">
+              A single calendar for Codeforces, AtCoder, CodeChef and more.
+              Filter by division, set gentle reminders, add rounds to your own
+              calendar in one click.
+            </p>
+          </div>
+        </div>
+
+        {/* Row 3 */}
+        <div className="grid gap-14 md:grid-cols-2 md:items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[10px] uppercase tracking-widest text-white/70">
+              <Bot className="size-3" /> Mentor
+            </div>
+            <h3 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+              Hints when you're stuck,{" "}
+              <em className="font-serif italic font-normal text-white/80">
+                never the answer.
+              </em>
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-white/70">
+              Ask for a nudge and get one — a question, a technique to try, a
+              pattern to recognize. The mentor refuses to spoil the ending.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-[#040816] p-6 font-mono text-xs leading-relaxed text-white/80">
+            <div className="text-white/45">you</div>
+            <div className="mt-1">
+              I've tried DP on this but it's O(n²). Help?
+            </div>
+            <div className="mt-5 text-white/45">mentor</div>
+            <div className="mt-1 text-white/90">
+              Which quantity is monotone as you sweep from left to right? If
+              you find one, a data structure over indices might drop the inner
+              loop.
+            </div>
+            <div className="mt-5 flex gap-2">
+              <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] uppercase tracking-widest">
+                nudge
+              </span>
+              <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] uppercase tracking-widest">
+                no spoilers
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Compare() {
+  const rows = [
+    { f: "Curated sheets by rating band", verdiqx: true, others: "Kind of" },
+    { f: "Mistake tags & spaced review", verdiqx: true, others: false },
+    { f: "Editorial videos inline", verdiqx: true, others: false },
+    { f: "Unified contest calendar", verdiqx: true, others: "Some" },
+    { f: "AI mentor without spoilers", verdiqx: true, others: false },
+    { f: "Free, no paywall", verdiqx: true, others: "Freemium" },
+  ];
+  return (
+    <section className="border-t border-white/10 bg-[#050a1a] py-24 sm:py-32">
+      <div className="mx-auto max-w-5xl px-6 sm:px-10">
+        <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+          Compare
+        </p>
+        <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          What you get{" "}
+          <em className="font-serif italic font-normal text-white/80">
+            versus everywhere else.
+          </em>
+        </h2>
+
+        <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
+          <div className="grid grid-cols-[1.6fr_1fr_1fr] border-b border-white/10 bg-white/[0.03] text-xs uppercase tracking-widest text-white/60">
+            <div className="px-6 py-4">Feature</div>
+            <div className="px-6 py-4 text-white">Verdiqx</div>
+            <div className="px-6 py-4">Elsewhere</div>
+          </div>
+          {rows.map((r, i) => (
+            <div
+              key={r.f}
+              className={`grid grid-cols-[1.6fr_1fr_1fr] items-center text-sm ${
+                i % 2 === 0 ? "bg-transparent" : "bg-white/[0.02]"
+              }`}
+            >
+              <div className="px-6 py-4 text-white/85">{r.f}</div>
+              <div className="px-6 py-4">
+                <Check className="size-4 text-emerald-300" />
+              </div>
+              <div className="px-6 py-4 text-white/60">
+                {r.others === false ? (
+                  <span className="text-white/30">—</span>
+                ) : r.others === true ? (
+                  <Check className="size-4 text-white/50" />
+                ) : (
+                  r.others
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Integrations() {
+  const items = [
+    { icon: Code2, name: "Codeforces" },
+    { icon: Trophy, name: "AtCoder" },
+    { icon: Layers, name: "CodeChef" },
+    { icon: Flame, name: "LeetCode" },
+    { icon: Github, name: "GitHub" },
+    { icon: Youtube, name: "YouTube" },
+  ];
+  return (
+    <section className="border-t border-white/10 bg-[#0a1230] py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-6 sm:px-10">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+              Integrations
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              Plays well with{" "}
+              <em className="font-serif italic font-normal text-white/80">
+                your stack.
+              </em>
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-relaxed text-white/65">
+            Pull data from where you already practice. No re-solving, no
+            manual imports.
+          </p>
+        </div>
+
+        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3 md:grid-cols-6">
+          {items.map((it) => (
+            <div
+              key={it.name}
+              className="flex flex-col items-center justify-center gap-3 bg-[#0a1230] py-10 text-center transition-colors hover:bg-[#0e174a]"
+            >
+              <it.icon className="size-6 text-white/75" />
+              <span className="text-xs uppercase tracking-widest text-white/60">
+                {it.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Roadmap() {
+  const items = [
+    {
+      icon: Rocket,
+      status: "Shipped",
+      title: "Curated sheets & tracker",
+      body: "Ladder sheets across every rating band with per-problem notes.",
+    },
+    {
+      icon: Compass,
+      status: "Shipped",
+      title: "Contest radar",
+      body: "Multi-platform contest calendar with local-time reminders.",
+    },
+    {
+      icon: Bot,
+      status: "In beta",
+      title: "AI mentor",
+      body: "Hint-only assistant tuned for competitive programming patterns.",
+    },
+    {
+      icon: MessageSquare,
+      status: "Next",
+      title: "Study groups",
+      body: "Practice with friends, share sheets and compare mistake logs.",
+    },
+  ];
+  return (
+    <section className="border-t border-white/10 bg-[#050a1a] py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-6 sm:px-10">
+        <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+          Roadmap
+        </p>
+        <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          Built in public,{" "}
+          <em className="font-serif italic font-normal text-white/80">
+            shipped every week.
+          </em>
+        </h2>
+
+        <ol className="relative mt-14 space-y-8 border-l border-white/10 pl-8">
+          {items.map((r) => (
+            <li key={r.title} className="relative">
+              <span className="absolute -left-[41px] top-1 grid size-8 place-items-center rounded-full border border-white/15 bg-[#0a1230]">
+                <r.icon className="size-4 text-white/80" />
+              </span>
+              <div className="flex flex-wrap items-center gap-3">
+                <h3 className="font-display text-xl font-semibold text-white">
+                  {r.title}
+                </h3>
+                <span
+                  className={`rounded-full px-2 py-0.5 text-[10px] uppercase tracking-widest ${
+                    r.status === "Shipped"
+                      ? "bg-emerald-400/15 text-emerald-300"
+                      : r.status === "In beta"
+                      ? "bg-amber-400/15 text-amber-200"
+                      : "bg-white/10 text-white/70"
+                  }`}
+                >
+                  {r.status}
+                </span>
+              </div>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/65">
+                {r.body}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+const FAQS = [
+  {
+    q: "Is Verdiqx really free?",
+    a: "Yes. Every feature above is free while we're in early access. No credit card, no seat limits, no dark-pattern trials.",
+  },
+  {
+    q: "Do I need a Codeforces account?",
+    a: "You can browse without one. To sync your solved set and rating history, you just paste your handle — no OAuth, no password.",
+  },
+  {
+    q: "Will the AI mentor spoil solutions?",
+    a: "No. It's tuned to give hints, ask leading questions and suggest techniques. It refuses to write full solutions.",
+  },
+  {
+    q: "Which judges do you support?",
+    a: "Codeforces is first-class today. AtCoder, CodeChef and LeetCode integrations are rolling out over the next release cycle.",
+  },
+  {
+    q: "Can I import my own problem list?",
+    a: "Yes. Paste a list of problem URLs or IDs and Verdiqx builds a sheet with tags, ratings and editorials attached.",
+  },
+];
+
+function Faq() {
+  return (
+    <section className="border-t border-white/10 bg-[#050a1a] py-24 sm:py-32">
+      <div className="mx-auto max-w-4xl px-6 sm:px-10">
+        <p className="text-xs uppercase tracking-[0.2em] text-white/55">
+          Questions
+        </p>
+        <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          Everything else,{" "}
+          <em className="font-serif italic font-normal text-white/80">
+            answered.
+          </em>
+        </h2>
+
+        <div className="mt-12 divide-y divide-white/10 border-y border-white/10">
+          {FAQS.map((f) => (
+            <details
+              key={f.q}
+              className="group py-5"
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left">
+                <span className="font-display text-lg font-medium text-white">
+                  {f.q}
+                </span>
+                <span className="grid size-7 shrink-0 place-items-center rounded-full border border-white/15 text-white/70 transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
+                {f.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
