@@ -304,7 +304,7 @@ function Features() {
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="group relative bg-[#050a1a] p-8 transition-colors hover:bg-[#0a1230]"
+             className="tilt-3d group relative bg-[#050a1a] p-8 transition-colors hover:bg-[#0a1230]"
             >
               <div className="inline-flex size-10 items-center justify-center rounded-xl bg-white/10 text-white">
                 <f.icon className="size-5" />
@@ -370,7 +370,7 @@ function HowItWorks() {
           {STEPS.map((s) => (
             <li
               key={s.n}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur"
+             className="tilt-3d rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur"
             >
               <div className="font-mono text-xs tracking-widest text-white/45">
                 {s.n}
@@ -522,7 +522,7 @@ function Testimonials() {
           {QUOTES.map((q) => (
             <figure
               key={q.name}
-              className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-8"
+               className="tilt-3d flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-8"
             >
               <blockquote className="text-base leading-relaxed text-white/85">
                 &ldquo;{q.quote}&rdquo;
