@@ -735,24 +735,7 @@ function TopicsMarquee() {
   );
 }
 
-function _TopicsMarquee_legacy() {
-  return (
-    <section className="relative overflow-hidden border-y border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] py-8">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[var(--lp-scrim-to)] to-[var(--lp-scrim-from)]" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[var(--lp-scrim-to)] to-[var(--lp-scrim-from)]" />
-      <div className="flex gap-3 overflow-x-auto px-6 sm:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {[...TOPICS, ...TOPICS].map((t, i) => (
-          <span
-            key={`${t}-${i}`}
-            className="whitespace-nowrap rounded-full border border-[rgb(var(--lp-ink)/10%)] bg-[rgb(var(--lp-ink)/4%)] px-4 py-1.5 text-xs text-[rgb(var(--lp-ink)/70%)]"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-    </section>
-  );
-}
+
 
 function ProblemSolution() {
   const pain = [
