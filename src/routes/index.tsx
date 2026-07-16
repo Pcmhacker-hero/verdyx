@@ -624,7 +624,7 @@ function FinalCta() {
           <Button
             asChild
             size="lg"
-            className="h-12 rounded-full bg-[rgb(var(--lp-ink))] px-6 text-black hover:bg-[rgb(var(--lp-ink)/90%)]"
+            className="h-12 rounded-full bg-[rgb(var(--lp-ink))] px-6 text-[var(--lp-bg)] hover:bg-[rgb(var(--lp-ink)/90%)]"
           >
             <Link to="/auth" className="inline-flex items-center gap-2">
               Create your account
@@ -650,8 +650,8 @@ function SiteFooter() {
     <footer className="border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)]">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 text-sm text-[rgb(var(--lp-ink)/60%)] sm:px-10 md:flex-row md:items-center">
         <div className="flex items-center gap-2 text-[rgb(var(--lp-ink))]">
-          <span className="grid size-6 place-items-center rounded-full bg-[rgb(var(--lp-ink))] text-black text-[11px] font-bold">
-            V
+          <span className="relative grid size-6 place-items-center overflow-hidden rounded-full shadow-[0_6px_20px_-4px_rgba(56,132,255,0.55)]">
+            <img src={logoAsset.url} alt="Verdiqx logo" className="size-full object-cover" />
           </span>
           <span className="font-semibold">Verdiqx</span>
           <span className="text-[rgb(var(--lp-ink)/40%)]">— practice, tracked.</span>
