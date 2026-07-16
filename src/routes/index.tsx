@@ -210,8 +210,8 @@ function Hero() {
           style={{ transform: "translateZ(40px)" }}
           className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/15%)] px-4 py-1.5 text-xs font-medium text-[rgb(var(--lp-ink))] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] backdrop-blur-md"
         >
-          <Sparkles className="size-3.5" />
-          Dominate Codeforces · Train Smarter, Rank Faster
+          <Sparkles className="size-3.5 text-amber-300" />
+          🚀 Dominate Codeforces · Train Smarter, Rank Faster
         </motion.span>
 
         <motion.h1
@@ -266,11 +266,11 @@ function Hero() {
           style={{ transform: "translateZ(30px)" }}
           className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[rgb(var(--lp-ink)/80%)]"
         >
-          <li>Free to use</li>
-          <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
-          <li>Codeforces integrated</li>
-          <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
-          <li>Video editorials built-in</li>
+           <li>✨ Free to use</li>
+           <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
+           <li>⚡ Codeforces integrated</li>
+           <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
+           <li>🎬 Video editorials built-in</li>
         </motion.ul>
       </motion.main>
     </section>
