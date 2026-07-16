@@ -505,7 +505,6 @@ function SidebarFooter({
   onNavigate,
 }: { onOpenShortcuts?: () => void; isAdmin?: boolean; onReportBug?: () => void; onNavigate?: () => void } = {}) {
   const user = useCurrentUser();
-  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [signingOut, setSigningOut] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
