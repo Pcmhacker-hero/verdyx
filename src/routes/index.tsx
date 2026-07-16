@@ -203,58 +203,6 @@ function Hero() {
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="relative z-10 mx-auto flex min-h-[calc(100dvh-88px)] max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-8 text-center [will-change:transform]"
       >
-        <motion.div
-          initial={{ opacity: 0, y: -12, rotateX: -20 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          style={{ transform: "translateZ(90px)", transformStyle: "preserve-3d" }}
-          className="mb-6"
-        >
-          <motion.a
-            href="https://codeforces.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Codeforces"
-            whileHover={{ scale: 1.06, rotateY: 8, rotateX: -6 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 260, damping: 18 }}
-            className="group relative inline-flex h-16 w-16 items-center justify-center rounded-2xl outline-none focus-visible:ring-4 focus-visible:ring-[#1F8ACB]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent motion-reduce:transition-none"
-            style={{
-              transformStyle: "preserve-3d",
-              background:
-                "linear-gradient(140deg, #ffffff 0%, #e8eef7 45%, #c9d5e8 100%)",
-              boxShadow:
-                "0 20px 50px -12px rgba(31,138,203,0.55), 0 8px 20px -6px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(0,0,0,0.1)",
-            }}
-          >
-            {/* Animated aurora ring */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -inset-[2px] rounded-2xl opacity-70 blur-[6px] transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:animate-none"
-              style={{
-                background:
-                  "conic-gradient(from 0deg, #1F8ACB, #E60000, #FFB800, #1F8ACB)",
-                animation: "shimmer 4s linear infinite",
-              }}
-            />
-            {/* CF wordmark — three colored bars like the CF logo */}
-            <span
-              className="relative z-10 flex items-end gap-[3px]"
-              style={{ transform: "translateZ(20px)" }}
-            >
-              <span className="block h-4 w-[5px] rounded-[1px] bg-[#1F8ACB] shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
-              <span className="block h-6 w-[5px] rounded-[1px] bg-[#1F8ACB] shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
-              <span className="block h-8 w-[5px] rounded-[1px] bg-[#E60000] shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
-              <span className="block h-6 w-[5px] rounded-[1px] bg-[#FFB800] shadow-[0_1px_2px_rgba(0,0,0,0.15)]" />
-            </span>
-            {/* Glass highlight */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-x-2 top-1 h-4 rounded-full bg-white/60 blur-[2px]"
-            />
-          </motion.a>
-        </motion.div>
-
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
