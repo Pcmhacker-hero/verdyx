@@ -1240,3 +1240,26 @@ function MasteryCard() {
     </div>
   );
 }
+
+function Sheen({
+  gX,
+  gY,
+}: {
+  gX: import("framer-motion").MotionValue<string>;
+  gY: import("framer-motion").MotionValue<string>;
+}) {
+  const bg = useTransform(
+    [gX, gY] as unknown as import("framer-motion").MotionValue<string>[],
+    (v) => {
+      const [x, y] = v as unknown as [string, string];
+      return `radial-gradient(360px circle at ${x} ${y}, rgba(150,180,255,0.22), transparent 60%)`;
+    }
+  );
+  return (
+    <motion.div
+      aria-hidden
+      style={{ background: bg }}
+      className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+    />
+  );
+}
