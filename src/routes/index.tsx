@@ -165,6 +165,8 @@ function Hero() {
         {/* Depth gradients — pinned to dark hero regardless of theme */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-[#050a1a]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#050a1a_100%)] opacity-70" />
+        {/* Strong bottom fade — kills the light horizon band in both themes */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-b from-transparent via-[#050a1a]/85 to-[#050a1a]" />
 
         {/* Grain */}
         <div
