@@ -218,7 +218,7 @@ function Hero() {
             whileHover={{ scale: 1.06, rotateY: 8, rotateX: -6 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 260, damping: 18 }}
-            className="group relative inline-flex h-16 w-16 items-center justify-center rounded-2xl"
+            className="group relative inline-flex h-16 w-16 items-center justify-center rounded-2xl outline-none focus-visible:ring-4 focus-visible:ring-[#1F8ACB]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent motion-reduce:transition-none"
             style={{
               transformStyle: "preserve-3d",
               background:
@@ -230,7 +230,7 @@ function Hero() {
             {/* Animated aurora ring */}
             <span
               aria-hidden
-              className="pointer-events-none absolute -inset-[2px] rounded-2xl opacity-70 blur-[6px] transition-opacity duration-500 group-hover:opacity-100"
+              className="pointer-events-none absolute -inset-[2px] rounded-2xl opacity-70 blur-[6px] transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:animate-none"
               style={{
                 background:
                   "conic-gradient(from 0deg, #1F8ACB, #E60000, #FFB800, #1F8ACB)",
