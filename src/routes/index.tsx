@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Sparkles,
   ArrowRight,
@@ -71,6 +73,34 @@ function LandingPage() {
       <FinalCta />
       <SiteFooter />
     </div>
+  );
+}
+
+function HeaderAuthCta() {
+  const user = useCurrentUser();
+  if (user) {
+    return (
+      <Link
+        to="/profile"
+        aria-label="Open your profile"
+        className="inline-flex items-center gap-2 rounded-full bg-white/95 py-1 pl-1 pr-3 text-sm font-semibold text-slate-900 shadow-[0_6px_20px_-4px_rgba(56,132,255,0.35)] backdrop-blur transition-colors hover:bg-white"
+      >
+        <Avatar className="size-7 ring-1 ring-inset ring-black/10">
+          <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
+            {user.initials}
+          </AvatarFallback>
+        </Avatar>
+        <span className="max-w-[9rem] truncate">{user.name}</span>
+      </Link>
+    );
+  }
+  return (
+    <Button
+      asChild
+      className="rounded-full bg-[rgb(var(--lp-ink))] text-black hover:bg-[rgb(var(--lp-ink)/90%)]"
+    >
+      <Link to="/auth">Sign up</Link>
+    </Button>
   );
 }
 
@@ -190,12 +220,7 @@ function Hero() {
         </nav>
         <div className="flex items-center gap-3">
           <ThemeToggle className="border-[rgb(var(--lp-ink)/25%)] bg-[rgb(var(--lp-ink)/10%)] text-[rgb(var(--lp-ink))] hover:bg-[rgb(var(--lp-ink)/20%)] hover:text-[rgb(var(--lp-ink))]" />
-          <Button
-            asChild
-            className="rounded-full bg-[rgb(var(--lp-ink))] text-black hover:bg-[rgb(var(--lp-ink)/90%)]"
-          >
-            <Link to="/auth">Sign up</Link>
-          </Button>
+          <HeaderAuthCta />
         </div>
       </header>
 
