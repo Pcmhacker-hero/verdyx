@@ -404,8 +404,9 @@ function SearchPage() {
       const { data } = await supabase.auth.getSession();
       if (cancelled) return;
       if (!data.session) {
-        toast.message("Please sign in to use Ask Verdiqx.");
-        navigate({ to: "/auth", search: { redirect: "/search" } as never });
+        toast.error("Login required", {
+          description: "Please sign in to use Ask Verdiqx.",
+        });
         setAuthState("guest");
       } else {
         setAuthState("authed");
