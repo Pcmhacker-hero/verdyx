@@ -786,28 +786,7 @@ function FeatureSpotlight() {
               problem worth your time.
             </p>
           </div>
-          <div className="rounded-2xl border border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-panel)] p-6">
-            {[
-              { name: "Graphs", pct: 82 },
-              { name: "DP", pct: 61 },
-              { name: "Number Theory", pct: 44 },
-              { name: "Greedy", pct: 74 },
-              { name: "Data Structures", pct: 58 },
-            ].map((t) => (
-              <div key={t.name} className="py-2.5">
-                <div className="flex justify-between text-xs">
-                  <span className="text-[rgb(var(--lp-ink)/80%)]">{t.name}</span>
-                  <span className="font-mono text-[rgb(var(--lp-ink)/55%)]">{t.pct}%</span>
-                </div>
-                <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-[rgb(var(--lp-ink)/10%)]">
-                  <div
-                    className="h-full rounded-full bg-[rgb(var(--lp-ink)/80%)]"
-                    style={{ width: `${t.pct}%` }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+          <MasteryCard />
         </div>
 
         {/* Row 2 reversed */}
