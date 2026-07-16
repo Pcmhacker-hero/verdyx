@@ -285,7 +285,7 @@ function Stats() {
     { value: "24/7", label: "🏆 Contest tracker" },
   ];
   return (
-    <section className="border-y border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-elev)]">
+    <section className="bg-[var(--lp-elev)]">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-y-8 px-6 py-14 sm:px-10 md:grid-cols-4">
         {items.map((s) => (
           <div key={s.label} className="text-center">
@@ -407,7 +407,7 @@ function HowItWorks() {
   return (
     <section
       id="how"
-      className="relative border-t border-[rgb(var(--lp-ink)/10%)] bg-gradient-to-b from-[var(--lp-bg)] to-[var(--lp-elev)] py-24 sm:py-32"
+      className="relative bg-gradient-to-b from-[var(--lp-bg)] to-[var(--lp-elev)] py-24 sm:py-32"
     >
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
@@ -461,7 +461,7 @@ function Showcase() {
   return (
     <section
       id="showcase"
-      className="border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-elev)] py-24 sm:py-32"
+      className="bg-[var(--lp-elev)] py-24 sm:py-32"
     >
       <div className="mx-auto grid max-w-6xl gap-14 px-6 sm:px-10 md:grid-cols-2 md:items-center">
         <div>
@@ -587,7 +587,7 @@ const QUOTES = [
 
 function Testimonials() {
   return (
-    <section className="border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] py-24 sm:py-32">
+    <section className="bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/55%)]">
           Loved by the grind
@@ -622,7 +622,7 @@ function Testimonials() {
 
 function FinalCta() {
   return (
-    <section className="relative overflow-hidden border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-elev)]">
+    <section className="relative overflow-hidden bg-[var(--lp-elev)]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 -top-40 h-96 bg-[radial-gradient(closest-side,_rgba(120,150,255,0.25),_transparent)]"
@@ -746,7 +746,7 @@ function TopicsMarquee() {
   );
 
   return (
-    <section className="relative overflow-hidden border-y border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] py-10 [perspective:1200px]">
+    <section className="relative overflow-hidden bg-[var(--lp-bg)] py-10 [perspective:1200px]">
       {/* Aurora backing */}
       <div
         aria-hidden
@@ -825,7 +825,7 @@ function ProblemSolution() {
 
 function FeatureSpotlight() {
   return (
-    <section className="border-t border-[rgb(var(--lp-ink)/10%)] bg-gradient-to-b from-[var(--lp-bg)] via-[var(--lp-panel)] to-[var(--lp-bg)] py-24 sm:py-32">
+    <section className="bg-gradient-to-b from-[var(--lp-bg)] via-[var(--lp-panel)] to-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-6xl space-y-24 px-6 sm:px-10">
         {/* Row 1 */}
         <div className="grid gap-14 md:grid-cols-2 md:items-center">
@@ -944,7 +944,7 @@ function Compare() {
     { f: "Free, no paywall", verdiqx: true, others: "Freemium" },
   ];
   return (
-    <section className="border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] py-24 sm:py-32">
+    <section className="bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-5xl px-6 sm:px-10">
         <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/55%)]">
           Compare
@@ -999,7 +999,7 @@ function Integrations() {
     { icon: Github, name: "GitHub" },
   ];
   return (
-    <section className="border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-elev)] py-24 sm:py-28">
+    <section className="bg-[var(--lp-elev)] py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
@@ -1065,7 +1065,7 @@ function Roadmap() {
     },
   ];
   return (
-    <section className="border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] py-24 sm:py-32">
+    <section className="bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/55%)]">
           Roadmap
@@ -1135,7 +1135,7 @@ const FAQS = [
 
 function Faq() {
   return (
-    <section className="border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)] py-24 sm:py-32">
+    <section className="bg-[var(--lp-bg)] py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-6 sm:px-10">
         <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/55%)]">
           Questions
