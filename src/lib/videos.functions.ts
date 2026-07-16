@@ -1,5 +1,4 @@
 import { createServerFn } from "@tanstack/react-start";
-import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
 
 export interface VideoResult {
@@ -79,7 +78,6 @@ async function fetchYouTube(query: string): Promise<VideoResult[]> {
 }
 
 export const searchVideos = createServerFn({ method: "GET" })
-  .middleware([requireSupabaseAuth])
   .inputValidator((data: { query: string }) => {
     if (!data || typeof data.query !== "string" || !data.query.trim()) {
       throw new Error("query is required");
