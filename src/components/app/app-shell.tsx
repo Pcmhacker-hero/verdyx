@@ -121,6 +121,21 @@ const DESIGN_SYSTEM_NAV: NavItem = { label: "Design System", to: "/design-system
 const isDev = import.meta.env.DEV;
 let sidebarCollapsedPreference = false;
 const SIDEBAR_COLLAPSED_STORAGE_KEY = "verdiqx-sidebar-collapsed";
+const SIGN_OUT_REDIRECT_DELAY_MS = 900;
+
+function clearAuthStorage() {
+  if (typeof window === "undefined") return;
+  const shouldRemove = (key: string) =>
+    key === "supabase.auth.token" ||
+    (key.startsWith("sb-") && (key.endsWith("-auth-token") || key.includes("auth-token-code-verifier")));
+
+  [window.localStorage, window.sessionStorage].forEach((storage) => {
+    for (let i = storage.length - 1; i >= 0; i -= 1) {
+      const key = storage.key(i);
+      if (key && shouldRemove(key)) storage.removeItem(key);
+    }
+  });
+}
 
 function rememberSidebarCollapsed(collapsed: boolean) {
   sidebarCollapsedPreference = collapsed;
@@ -507,28 +522,38 @@ function SidebarFooter({
   const user = useCurrentUser();
   const queryClient = useQueryClient();
   const [signingOut, setSigningOut] = useState(false);
-  const [confirmOpen, setConfirmOpen] = useState(false);
+  const signingOutRef = useRef(false);
+  const redirectedRef = useRef(false);
   const name = user?.name ?? "Guest";
   const initials = user?.initials ?? "?";
 
-  const handleSignOut = async () => {
-    if (signingOut) return;
+  const finishSignOut = () => {
+    if (redirectedRef.current) return;
+    redirectedRef.current = true;
+    clearAuthStorage();
+    queryClient.clear();
+    window.location.replace("/auth");
+  };
+
+  const handleSignOut = () => {
+    if (signingOutRef.current) return;
+    signingOutRef.current = true;
     setSigningOut(true);
-    try {
-      await queryClient.cancelQueries();
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
-      queryClient.clear();
-      toast.success("Signed out");
-      setConfirmOpen(false);
-      // Hard navigate to fully reset router/query/auth state and avoid
-      // races with onAuthStateChange invalidation, especially on mobile
-      // where the Sheet + Dialog stack can trap focus during navigation.
-      window.location.assign("/auth");
-    } catch (err) {
-      toast.error((err as Error).message ?? "Could not sign out");
-      setSigningOut(false);
-    }
+    void queryClient.cancelQueries().catch(() => undefined);
+    queryClient.clear();
+
+    const redirectTimer = window.setTimeout(finishSignOut, SIGN_OUT_REDIRECT_DELAY_MS);
+    void supabase.auth
+      .signOut()
+      .catch((err) => {
+        console.warn("Sign out request failed; clearing local session instead.", err);
+      })
+      .finally(() => {
+        window.clearTimeout(redirectTimer);
+        finishSignOut();
+      });
+
+    clearAuthStorage();
   };
 
   const handleOpenShortcuts = () => {
@@ -556,7 +581,7 @@ function SidebarFooter({
           <button
             type="button"
             data-sidebar-keep-open="true"
-            onClick={() => setConfirmOpen(true)}
+            onClick={handleSignOut}
             disabled={signingOut}
             aria-busy={signingOut}
             className="mb-2 flex h-9 w-full items-center gap-2.5 rounded-md px-2 text-sm text-muted-foreground outline-none transition-colors hover:bg-sidebar-accent hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-transparent disabled:hover:text-muted-foreground"
@@ -568,39 +593,6 @@ function SidebarFooter({
             )}
             <span className="truncate">{signingOut ? "Signing out…" : "Sign out"}</span>
           </button>
-          <Dialog open={confirmOpen} onOpenChange={(o) => !signingOut && setConfirmOpen(o)}>
-            <DialogContent className="sm:max-w-sm">
-              <DialogHeader>
-                <DialogTitle>Sign out?</DialogTitle>
-                <DialogDescription>
-                  You'll need to sign back in to access your workspace.
-                </DialogDescription>
-              </DialogHeader>
-              <DialogFooter>
-                <Button
-                  variant="ghost"
-                  onClick={() => setConfirmOpen(false)}
-                  disabled={signingOut}
-                >
-                  <span aria-hidden="true" className="mr-1.5">🙅</span>
-                  No
-                </Button>
-                <Button onClick={handleSignOut} disabled={signingOut}>
-                  {signingOut ? (
-                    <>
-                      <Loader2 className="mr-1.5 size-4 animate-spin" />
-                      Signing out…
-                    </>
-                  ) : (
-                    <>
-                      <span aria-hidden="true" className="mr-1.5">✅</span>
-                      Yes
-                    </>
-                  )}
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
         </>
       ) : null}
 
