@@ -268,7 +268,15 @@ function Hero() {
         >
            <li>✨ Free to use</li>
            <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
-           <li>⚡ Codeforces integrated</li>
+           <li className="inline-flex items-center gap-1.5">
+             <span aria-hidden className="inline-flex items-end gap-[2px] align-middle">
+               <span className="block h-2 w-[3px] rounded-[1px] bg-[#1F8ACB]" />
+               <span className="block h-3 w-[3px] rounded-[1px] bg-[#1F8ACB]" />
+               <span className="block h-4 w-[3px] rounded-[1px] bg-[#E60000]" />
+               <span className="block h-3 w-[3px] rounded-[1px] bg-[#FFB800]" />
+             </span>
+             Codeforces integrated
+           </li>
            <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
            <li>🎬 Video editorials built-in</li>
         </motion.ul>
