@@ -477,6 +477,13 @@
   --lp-scrim-to: rgba(5, 10, 26, 1);
 }
 
+/* Hero sits over a dark image in both themes — pin ink to white */
+.landing-hero {
+  --lp-ink: 255 255 255;
+  --lp-border: rgba(255, 255, 255, 0.12);
+  --lp-border-strong: rgba(255, 255, 255, 0.20);
+}
+
 /* ============================================================
  * Coming Soon — premium 3D badge
  * ============================================================ */
