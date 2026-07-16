@@ -120,8 +120,9 @@ function VideosPage() {
   const showMore = async () => {
     const { data: sess } = await supabase.auth.getSession();
     if (!sess.session) {
-      toast.message("Please sign in to view more video solutions.");
-      navigate({ to: "/auth", search: { redirect: "/videos" } as never });
+      toast.error("Login required", {
+        description: "Please sign in to view more video solutions.",
+      });
       return;
     }
     if (visible < results.length) {
