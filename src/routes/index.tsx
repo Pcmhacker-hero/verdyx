@@ -174,10 +174,11 @@ function Hero() {
       <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
         <Link
           to="/"
+          aria-label="Verdiqx — home"
           className="inline-flex items-center gap-2 rounded-full bg-white/95 py-1 pl-1 pr-4 text-sm font-semibold text-slate-900 backdrop-blur"
         >
-          <span className="relative grid size-6 place-items-center overflow-hidden rounded-full shadow-[0_6px_20px_-4px_rgba(56,132,255,0.55)]">
-            <img src={logoAsset.url} alt="Verdiqx logo" className="size-full object-cover" />
+          <span aria-hidden="true" className="relative grid size-6 place-items-center overflow-hidden rounded-full shadow-[0_6px_20px_-4px_rgba(56,132,255,0.55)]">
+            <img src={logoAsset.url} alt="" className="size-full object-cover" />
             <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
           </span>
           Verdiqx
@@ -677,8 +678,8 @@ function SiteFooter() {
     <footer className="border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-bg)]">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 text-sm text-[rgb(var(--lp-ink)/60%)] sm:px-10 md:flex-row md:items-center">
         <div className="flex items-center gap-2 text-[rgb(var(--lp-ink))]">
-          <span className="relative grid size-6 place-items-center overflow-hidden rounded-full shadow-[0_6px_20px_-4px_rgba(56,132,255,0.55)]">
-            <img src={logoAsset.url} alt="Verdiqx logo" className="size-full object-cover" />
+          <span aria-hidden="true" className="relative grid size-6 place-items-center overflow-hidden rounded-full shadow-[0_6px_20px_-4px_rgba(56,132,255,0.55)]">
+            <img src={logoAsset.url} alt="" className="size-full object-cover" />
           </span>
           <span className="font-semibold">Verdiqx</span>
           <span className="text-[rgb(var(--lp-ink)/40%)]">— practice, tracked.</span>
