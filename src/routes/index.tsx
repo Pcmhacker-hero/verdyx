@@ -192,12 +192,7 @@ function Hero() {
         </nav>
         <div className="flex items-center gap-3">
           <ThemeToggle className="border-[rgb(var(--lp-ink)/25%)] bg-[rgb(var(--lp-ink)/10%)] text-[rgb(var(--lp-ink))] hover:bg-[rgb(var(--lp-ink)/20%)] hover:text-[rgb(var(--lp-ink))]" />
-          <Button
-            asChild
-            className="rounded-full bg-[rgb(var(--lp-ink))] text-black hover:bg-[rgb(var(--lp-ink)/90%)]"
-          >
-            <Link to="/auth">Sign up</Link>
-          </Button>
+          <HeaderAuthCta />
         </div>
       </header>
 
