@@ -972,7 +972,6 @@ function Integrations() {
     { icon: Layers, name: "CodeChef" },
     { icon: Flame, name: "LeetCode" },
     { icon: Github, name: "GitHub" },
-    { icon: Youtube, name: "YouTube" },
   ];
   return (
     <section className="border-t border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-elev)] py-24 sm:py-28">
