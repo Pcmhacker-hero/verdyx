@@ -28,6 +28,54 @@ import {
 import heroImage from "@/assets/home-hero.jpg";
 import logoAsset from "@/assets/logo.png.asset.json";
 
+// Premium Codeforces logo — official 3-bar mark (red / yellow / blue)
+// rendered with gradient fills, inner highlight and soft glow.
+function CodeforcesLogo({ className = "size-6" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Codeforces"
+      role="img"
+    >
+      <defs>
+        <linearGradient id="cf-red" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#ff6b6b" />
+          <stop offset="100%" stopColor="#d1132b" />
+        </linearGradient>
+        <linearGradient id="cf-yellow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#ffe57a" />
+          <stop offset="100%" stopColor="#f5a300" />
+        </linearGradient>
+        <linearGradient id="cf-blue" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#5aa9ff" />
+          <stop offset="100%" stopColor="#1a53d1" />
+        </linearGradient>
+        <filter id="cf-glow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="1.4" result="b" />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <g filter="url(#cf-glow)">
+        {/* left / red — short */}
+        <rect x="6" y="22" width="9" height="20" rx="2" fill="url(#cf-red)" />
+        {/* middle / yellow — medium */}
+        <rect x="19.5" y="14" width="9" height="28" rx="2" fill="url(#cf-yellow)" />
+        {/* right / blue — tall */}
+        <rect x="33" y="6" width="9" height="36" rx="2" fill="url(#cf-blue)" />
+      </g>
+      {/* subtle top highlights for glassy premium look */}
+      <rect x="6" y="22" width="9" height="6" rx="2" fill="white" fillOpacity="0.18" />
+      <rect x="19.5" y="14" width="9" height="6" rx="2" fill="white" fillOpacity="0.18" />
+      <rect x="33" y="6" width="9" height="6" rx="2" fill="white" fillOpacity="0.18" />
+    </svg>
+  );
+}
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
