@@ -910,7 +910,8 @@ function NavGroup({
   pathname: string;
   onNavigate?: () => void;
 }) {
-
+  const user = useCurrentUser();
+  const isSignedIn = user !== null;
   return (
     <div className="space-y-0.5">
       <p className="px-2 pb-1.5 pt-1 font-mono text-2xs uppercase tracking-[0.14em] text-muted-foreground">
@@ -976,7 +977,16 @@ function NavGroup({
             key={item.label}
             to={item.to}
             aria-current={active ? "page" : undefined}
-            onClick={() => scheduleSidebarClose(onNavigate)}
+            onClick={(e) => {
+              if (item.authRequired && !isSignedIn) {
+                e.preventDefault();
+                toast.error("Login required", {
+                  description: `Please sign in to use ${item.label}.`,
+                });
+                return;
+              }
+              scheduleSidebarClose(onNavigate);
+            }}
             className={cn(
               "group relative flex h-8 items-center gap-2.5 rounded-md px-2 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring",
               active
