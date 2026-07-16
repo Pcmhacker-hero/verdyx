@@ -154,9 +154,11 @@ function Hero() {
           className="pointer-events-none absolute -bottom-40 -right-40 size-[50vmax] rounded-full bg-[radial-gradient(closest-side,rgba(80,120,255,0.35),transparent_70%)] blur-3xl"
         />
 
-        {/* Depth gradients */}
+        {/* Depth gradients — react to theme */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-[var(--lp-bg)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(5,10,26,0.7)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,var(--lp-bg)_100%)] opacity-70" />
+        {/* Warm tint in light mode only */}
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,220,180,0.28),rgba(255,180,200,0.18)_40%,transparent_75%)] opacity-0 [.landing-root:not(.dark_*)_&]:opacity-100 transition-opacity duration-700" />
 
         {/* Grain */}
         <div
