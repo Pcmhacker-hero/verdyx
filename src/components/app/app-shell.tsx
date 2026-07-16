@@ -180,6 +180,16 @@ export function AppShell({ children, breadcrumb, actions }: AppShellProps) {
     }
   }, []);
 
+  // Signals to the global root palette that AppShell owns the ⌘K shortcut here.
+  useEffect(() => {
+    (window as unknown as { __appShellMounted?: number }).__appShellMounted =
+      ((window as unknown as { __appShellMounted?: number }).__appShellMounted ?? 0) + 1;
+    return () => {
+      const w = window as unknown as { __appShellMounted?: number };
+      w.__appShellMounted = Math.max(0, (w.__appShellMounted ?? 1) - 1);
+    };
+  }, []);
+
   // Close mobile drawer + auto-collapse desktop sidebar on route change (not first mount)
   const prevPathRef = useRef(pathname);
   useEffect(() => {
