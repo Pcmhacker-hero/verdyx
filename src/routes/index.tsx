@@ -81,8 +81,12 @@ function Hero() {
   const sy = useSpring(my, { stiffness: 60, damping: 15 });
   const rotateY = useTransform(sx, [-0.5, 0.5], [8, -8]);
   const rotateX = useTransform(sy, [-0.5, 0.5], [-6, 6]);
-  const bgX = useTransform(sx, [-0.5, 0.5], [20, -20]);
-  const bgY = useTransform(sy, [-0.5, 0.5], [10, -10]);
+  const bgX = useTransform(sx, [-0.5, 0.5], [30, -30]);
+  const bgY = useTransform(sy, [-0.5, 0.5], [18, -18]);
+  const bgRotY = useTransform(sx, [-0.5, 0.5], [-3, 3]);
+  const bgRotX = useTransform(sy, [-0.5, 0.5], [2, -2]);
+  const glowX = useTransform(sx, [-0.5, 0.5], ["35%", "65%"]);
+  const glowY = useTransform(sy, [-0.5, 0.5], ["25%", "55%"]);
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -99,21 +103,71 @@ function Hero() {
       ref={heroRef}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="relative overflow-hidden [perspective:1400px]"
+      className="relative overflow-hidden [perspective:1600px]"
     >
-      {/* Hero background */}
-      <motion.img
-        style={{ x: bgX, y: bgY, scale: 1.06 }}
-        src={heroImage}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover"
-        width={1920}
-        height={1280}
-      />
-      <div
+      {/* Hero background — layered 3D */}
+      <motion.div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60"
-      />
+        style={{
+          x: bgX,
+          y: bgY,
+          rotateX: bgRotX,
+          rotateY: bgRotY,
+          transformStyle: "preserve-3d",
+        }}
+        className="absolute inset-[-4%] [transform-style:preserve-3d]"
+      >
+        <motion.img
+          src={heroImage}
+          alt=""
+          width={1920}
+          height={1280}
+          initial={{ scale: 1.15, opacity: 0 }}
+          animate={{
+            scale: [1.15, 1.22, 1.15],
+            opacity: 1,
+          }}
+          transition={{
+            opacity: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
+            scale: {
+              duration: 22,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+          className="absolute inset-0 h-full w-full object-cover [will-change:transform]"
+          style={{ transform: "translateZ(-80px)" }}
+        />
+
+        {/* Aurora glows */}
+        <motion.div
+          aria-hidden
+          animate={{ opacity: [0.55, 0.85, 0.55] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          style={{ left: glowX, top: glowY, transform: "translate(-50%, -50%) translateZ(-20px)" }}
+          className="pointer-events-none absolute size-[60vmax] rounded-full bg-[radial-gradient(closest-side,rgba(120,150,255,0.35),transparent_70%)] blur-3xl"
+        />
+        <motion.div
+          aria-hidden
+          animate={{ opacity: [0.35, 0.6, 0.35] }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+          className="pointer-events-none absolute -bottom-40 -right-40 size-[50vmax] rounded-full bg-[radial-gradient(closest-side,rgba(80,120,255,0.35),transparent_70%)] blur-3xl"
+        />
+
+        {/* Depth gradients */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-[#050a1a]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(5,10,26,0.7)_100%)]" />
+
+        {/* Grain */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.7'/></svg>\")",
+          }}
+        />
+      </motion.div>
 
       {/* Nav */}
       <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
