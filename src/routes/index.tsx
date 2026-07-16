@@ -323,7 +323,10 @@ function Hero() {
         >
            <li>✨ Free to use</li>
            <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
-           <li>⚡ Codeforces integrated</li>
+           <li className="inline-flex items-center gap-1.5">
+             <CodeforcesLogo className="size-4 drop-shadow-[0_2px_6px_rgba(255,107,107,0.45)]" />
+             Codeforces integrated
+           </li>
            <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
            <li>🎬 Video editorials built-in</li>
         </motion.ul>
