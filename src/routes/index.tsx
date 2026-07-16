@@ -210,8 +210,8 @@ function Hero() {
           style={{ transform: "translateZ(40px)" }}
           className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--lp-ink)/15%)] px-4 py-1.5 text-xs font-medium text-[rgb(var(--lp-ink))] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5)] backdrop-blur-md"
         >
-          <Sparkles className="size-3.5" />
-          Dominate Codeforces · Train Smarter, Rank Faster
+          <Sparkles className="size-3.5 text-amber-300" />
+          🚀 Dominate Codeforces · Train Smarter, Rank Faster
         </motion.span>
 
         <motion.h1
@@ -266,11 +266,11 @@ function Hero() {
           style={{ transform: "translateZ(30px)" }}
           className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[rgb(var(--lp-ink)/80%)]"
         >
-          <li>Free to use</li>
-          <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
-          <li>Codeforces integrated</li>
-          <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
-          <li>Video editorials built-in</li>
+           <li>✨ Free to use</li>
+           <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
+           <li>⚡ Codeforces integrated</li>
+           <li aria-hidden className="size-1 rounded-full bg-[rgb(var(--lp-ink)/50%)]" />
+           <li>🎬 Video editorials built-in</li>
         </motion.ul>
       </motion.main>
     </section>
@@ -279,10 +279,10 @@ function Hero() {
 
 function Stats() {
   const items = [
-    { value: "12k+", label: "Curated problems" },
-    { value: "40+", label: "Practice sheets" },
-    { value: "300+", label: "Video editorials" },
-    { value: "24/7", label: "Contest tracker" },
+    { value: "12k+", label: "🧩 Curated problems" },
+    { value: "40+", label: "📚 Practice sheets" },
+    { value: "300+", label: "🎬 Video editorials" },
+    { value: "24/7", label: "🏆 Contest tracker" },
   ];
   return (
     <section className="border-y border-[rgb(var(--lp-ink)/10%)] bg-[var(--lp-elev)]">
@@ -305,32 +305,38 @@ function Stats() {
 const FEATURES = [
   {
     icon: BookOpen,
-    title: "Curated sheets",
+    title: "📚 Curated sheets",
+    accent: "from-amber-400/25 to-orange-500/10 text-amber-300",
     body: "Handpicked problem sets from top competitive programmers, grouped by topic and difficulty.",
   },
   {
     icon: Target,
-    title: "Problem tracker",
+    title: "🎯 Problem tracker",
+    accent: "from-rose-400/25 to-pink-500/10 text-rose-300",
     body: "Log every attempt, tag your mistakes, and revisit weak spots with spaced repetition.",
   },
   {
     icon: CalendarDays,
-    title: "Contest calendar",
+    title: "🏆 Contest calendar",
+    accent: "from-sky-400/25 to-blue-500/10 text-sky-300",
     body: "Never miss a round. See upcoming contests from Codeforces, AtCoder and more in one view.",
   },
   {
     icon: PlayCircle,
-    title: "Video walkthroughs",
+    title: "🎬 Video walkthroughs",
+    accent: "from-fuchsia-400/25 to-purple-500/10 text-fuchsia-300",
     body: "Embedded editorials from trusted creators, matched to the exact problem you're solving.",
   },
   {
     icon: LineChart,
-    title: "Progress analytics",
+    title: "📈 Progress analytics",
+    accent: "from-emerald-400/25 to-teal-500/10 text-emerald-300",
     body: "Rating history, topic mastery and streaks — honest metrics, no vanity numbers.",
   },
   {
     icon: Bot,
-    title: "AI mentor",
+    title: "🤖 AI mentor",
+    accent: "from-violet-400/25 to-indigo-500/10 text-violet-300",
     body: "Stuck on a problem? Get hints that guide you, never solutions that spoil the moment.",
   },
 ];
@@ -362,7 +368,7 @@ function Features() {
               key={f.title}
              className="tilt-3d group relative bg-[var(--lp-bg)] p-8 transition-colors hover:bg-[var(--lp-elev)]"
             >
-              <div className="inline-flex size-10 items-center justify-center rounded-xl bg-[rgb(var(--lp-ink)/10%)] text-[rgb(var(--lp-ink))]">
+              <div className={`inline-flex size-10 items-center justify-center rounded-xl bg-gradient-to-br ${f.accent} ring-1 ring-white/10`}>
                 <f.icon className="size-5" />
               </div>
               <h3 className="mt-6 font-display text-xl font-semibold text-[rgb(var(--lp-ink))]">
@@ -382,17 +388,17 @@ function Features() {
 const STEPS = [
   {
     n: "01",
-    title: "Link your handle",
+    title: "🔗 Link your handle",
     body: "Connect your Codeforces handle in seconds. We pull your solved set and rating history automatically.",
   },
   {
     n: "02",
-    title: "Pick a sheet",
+    title: "📚 Pick a sheet",
     body: "Start with a curated ladder or build your own. Filter by rating, tag or difficulty in one click.",
   },
   {
     n: "03",
-    title: "Practice and reflect",
+    title: "⚡ Practice and reflect",
     body: "Solve, log mistakes, watch the editorial. Come back tomorrow — Verdiqx remembers where you left off.",
   },
 ];
