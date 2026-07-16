@@ -630,7 +630,7 @@ function Testimonials() {
 
 function FinalCta() {
   return (
-    <section className="relative overflow-hidden bg-[var(--lp-elev)]">
+    <section className="relative overflow-hidden bg-[var(--lp-bg)]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 -top-40 h-96 bg-[radial-gradient(closest-side,_rgba(120,150,255,0.25),_transparent)]"
