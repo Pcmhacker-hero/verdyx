@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { Sparkles, ArrowRight } from "lucide-react";
+import heroImage from "@/assets/home-hero.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -8,13 +10,16 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Verdiqx helps competitive programmers organize practice with curated sheets, problem tracking, contest calendars and video walkthroughs.",
+          "Curated sheets, problem tracking, contest calendars and video walkthroughs — an organized workspace for competitive programmers.",
       },
-      { property: "og:title", content: "Verdiqx — Practice tools for competitive programmers" },
+      {
+        property: "og:title",
+        content: "Verdiqx — Practice tools for competitive programmers",
+      },
       {
         property: "og:description",
         content:
-          "Curated sheets, problem tracking, contest calendars and video walkthroughs for competitive programmers.",
+          "Curated sheets, problem tracking, contest calendars and video walkthroughs.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -22,147 +27,79 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
-const FEATURES = [
-  {
-    title: "Practice sheets",
-    body: "Curated problem sets organized by topic and difficulty so you always know what to solve next.",
-  },
-  {
-    title: "Problem tracker",
-    body: "Keep a record of solved problems, mistakes and revision notes across your Codeforces history.",
-  },
-  {
-    title: "Contest calendar",
-    body: "Upcoming rounds from major judges in one place, with reminders before each contest starts.",
-  },
-  {
-    title: "Video walkthroughs",
-    body: "Look up any Codeforces problem and pull the best available YouTube editorial in a click.",
-  },
-];
-
 function LandingPage() {
   return (
-    <div className="min-h-dvh bg-background text-foreground">
-      <header className="border-b border-border/60">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-6">
-          <Link to="/" className="text-sm font-semibold tracking-tight">
-            Verdiqx
-          </Link>
-          <nav className="flex items-center gap-2 text-sm">
-            <Link
-              to="/problems"
-              className="hidden text-muted-foreground hover:text-foreground sm:inline"
-            >
-              Dashboard
-            </Link>
-            <Button asChild size="sm" variant="ghost">
-              <Link to="/auth">Sign in</Link>
-            </Button>
-          </nav>
-        </div>
+    <div className="relative min-h-dvh overflow-hidden bg-background text-white">
+      {/* Hero background */}
+      <img
+        src={heroImage}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        width={1920}
+        height={1280}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60"
+      />
+
+      {/* Nav */}
+      <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-1.5 text-sm font-semibold text-black backdrop-blur"
+        >
+          <span className="grid size-5 place-items-center rounded-full bg-black text-white text-[10px]">
+            V
+          </span>
+          Verdiqx
+        </Link>
+        <Button
+          asChild
+          className="rounded-full bg-white text-black hover:bg-white/90"
+        >
+          <Link to="/auth">Sign up</Link>
+        </Button>
       </header>
 
-      <main className="mx-auto max-w-5xl px-6">
-        <section className="py-20 sm:py-28">
-          <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            Practice tools for competitive programmers.
-          </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Verdiqx is a small toolkit for organizing your Codeforces practice —
-            sheets, tracking, contest reminders and editorials in one place.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <Link to="/problems">Open Dashboard</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link to="/auth">Create an account</Link>
-            </Button>
-          </div>
-        </section>
+      {/* Hero content */}
+      <main className="relative z-10 mx-auto flex min-h-[calc(100dvh-88px)] max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-8 text-center">
+        <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+          <Sparkles className="size-3.5" />
+          Built for Codeforces practice
+        </span>
 
-        <section className="border-t border-border/60 py-16">
-          <h2 className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
-            What's inside
-          </h2>
-          <div className="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
-            {FEATURES.map((f) => (
-              <div key={f.title}>
-                <h3 className="text-base font-semibold">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {f.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
+          Practice worth
+          <br />
+          <em className="font-serif italic font-normal">showing up for.</em>
+        </h1>
 
-        <section className="border-t border-border/60 py-16">
-          <h2 className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
-            How it works
-          </h2>
-          <ol className="mt-8 space-y-6">
-            <li className="flex gap-4">
-              <span className="text-sm font-mono text-muted-foreground">01</span>
-              <div>
-                <div className="text-base font-semibold">Sign in</div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Create an account and connect your Codeforces handle.
-                </p>
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-sm font-mono text-muted-foreground">02</span>
-              <div>
-                <div className="text-base font-semibold">Pick a sheet</div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Choose from curated problem sets or generate one for a topic.
-                </p>
-              </div>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-sm font-mono text-muted-foreground">03</span>
-              <div>
-                <div className="text-base font-semibold">Practice and track</div>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Solve, log mistakes, and watch editorials when you're stuck.
-                </p>
-              </div>
-            </li>
-          </ol>
-        </section>
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
+          Curated problem sheets, honest progress tracking, contest reminders
+          and video walkthroughs — your competitive programming workspace, in
+          one calm place.
+        </p>
 
-        <section className="border-t border-border/60 py-16">
-          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">
-                Ready to start?
-              </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                It's free to try. No setup required.
-              </p>
-            </div>
-            <Button asChild size="lg">
-              <Link to="/auth">Get started</Link>
-            </Button>
-          </div>
-        </section>
+        <Button
+          asChild
+          size="lg"
+          className="mt-8 h-12 rounded-full bg-black px-6 text-white hover:bg-black/85"
+        >
+          <Link to="/auth" className="inline-flex items-center gap-2">
+            <ArrowRight className="size-4" />
+            Get started
+          </Link>
+        </Button>
+
+        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/80">
+          <li>Free to use</li>
+          <li aria-hidden className="size-1 rounded-full bg-white/50" />
+          <li>Codeforces integrated</li>
+          <li aria-hidden className="size-1 rounded-full bg-white/50" />
+          <li>Video editorials built-in</li>
+        </ul>
       </main>
-
-      <footer className="border-t border-border/60">
-        <div className="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <div>© {new Date().getFullYear()} Verdiqx</div>
-          <div className="flex gap-4">
-            <Link to="/problems" className="hover:text-foreground">
-              Dashboard
-            </Link>
-            <Link to="/auth" className="hover:text-foreground">
-              Sign in
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
