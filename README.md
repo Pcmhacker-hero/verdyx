@@ -7,7 +7,7 @@
 *Practice smarter. Debug faster. Rate higher.*
 
 <p>
-  <img src="./public/og-image.png" alt="Verdiqx — AI-powered Codeforces training platform" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/c30864ae-38a9-4519-bc18-f0ddaf0f17b8/verdiqx-hero-preview.png" alt="Verdiqx — AI-powered Codeforces training platform" width="920" />
 </p>
 
 <p>
