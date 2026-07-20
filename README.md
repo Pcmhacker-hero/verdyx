@@ -123,15 +123,20 @@ back.
 
 ## 📸 Screenshots
 
-> Replace the placeholders in `docs/screenshots/` with real captures.
+See the live app for a full walkthrough: **<https://verdyx.lovable.app>**
 
-| | |
-| --- | --- |
-| ![Landing](./docs/screenshots/landing.png) **Landing** — animated hero, features, and roadmap. | ![Dashboard](./docs/screenshots/dashboard.png) **Dashboard** — rating graph, streaks, next-to-solve. |
-| ![Profile](./docs/screenshots/profile.png) **Profile** — CF handle, tag mastery, mistake log. | ![Contests](./docs/screenshots/contests.png) **Contest tracker** — upcoming rounds with countdown. |
-| ![Analytics](./docs/screenshots/analytics.png) **Analytics** — rating deltas and topic heatmap. | ![Mentor](./docs/screenshots/mentor.png) **AI Mentor** — chat with image + PDF attachments. |
-| ![Problems](./docs/screenshots/problems.png) **Problem explorer** — filter by rating, tag, contest. | ![Sheets](./docs/screenshots/sheets.png) **Custom sheet builder** — curated practice sets. |
-| ![Settings](./docs/screenshots/settings.png) **Settings** — profile, handle, preferences. | ![Simulator](./docs/screenshots/simulator.png) **Virtual contest simulator**. |
+Key surfaces to explore:
+
+- **Landing** — animated hero, features, and roadmap
+- **Dashboard** — rating graph, streaks, next-to-solve
+- **Profile** — CF handle, tag mastery, mistake log
+- **Contest tracker** — upcoming rounds with countdown
+- **Analytics** — rating deltas and topic heatmap
+- **AI Mentor** — chat with image + PDF attachments
+- **Problem explorer** — filter by rating, tag, contest
+- **Custom sheet builder** — curated practice sets
+- **Settings** — profile, handle, preferences
+- **Virtual contest simulator** — race the clock on past rounds
 
 ---
 
@@ -435,10 +440,9 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ## 📬 Contact
 
 <p>
-  <a href="https://github.com/your-handle"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-your--handle-181717?logo=github&style=for-the-badge" /></a>
-  <a href="https://www.linkedin.com/in/your-handle"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-your--handle-0a66c2?logo=linkedin&style=for-the-badge" /></a>
-  <a href="https://your-portfolio.dev"><img alt="Portfolio" src="https://img.shields.io/badge/Portfolio-your--portfolio.dev-8b5cf6?style=for-the-badge" /></a>
-  <a href="mailto:you@example.com"><img alt="Email" src="https://img.shields.io/badge/Email-you%40example.com-ea4335?logo=gmail&logoColor=white&style=for-the-badge" /></a>
+  <a href="https://github.com/Pcmhacker-hero"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-Pcmhacker--hero-181717?logo=github&style=for-the-badge" /></a>
+  <a href="https://linkedin.com/in/prakash-meena-a46906324"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Prakash%20Meena-0a66c2?logo=linkedin&style=for-the-badge" /></a>
+  <a href="mailto:pcmeena511@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-pcmeena511%40gmail.com-ea4335?logo=gmail&logoColor=white&style=for-the-badge" /></a>
 </p>
 
 <div align="center">
