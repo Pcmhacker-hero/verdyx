@@ -11,11 +11,10 @@
 </p>
 
 <p>
-  <a href="https://github.com/your-org/verdiqx/actions"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/your-org/verdiqx/ci.yml?branch=main&label=build&logo=github&style=for-the-badge" /></a>
-  <a href="./LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-8b5cf6?style=for-the-badge" /></a>
-  <a href="https://github.com/your-org/verdiqx/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/your-org/verdiqx?style=for-the-badge&logo=github&color=facc15" /></a>
-  <a href="https://github.com/your-org/verdiqx/network/members"><img alt="Forks" src="https://img.shields.io/github/forks/your-org/verdiqx?style=for-the-badge&logo=github" /></a>
-  <a href="https://github.com/your-org/verdiqx/issues"><img alt="Issues" src="https://img.shields.io/github/issues/your-org/verdiqx?style=for-the-badge&logo=github" /></a>
+  <a href="https://verdyx.lovable.app"><img alt="Live" src="https://img.shields.io/badge/live-verdyx.lovable.app-8b5cf6?style=for-the-badge&logo=vercel&logoColor=white" /></a>
+  <a href="./LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-38bdf8?style=for-the-badge" /></a>
+  <img alt="TypeScript" src="https://img.shields.io/badge/typescript-strict-3178c6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img alt="React" src="https://img.shields.io/badge/react-19-149eca?style=for-the-badge&logo=react&logoColor=white" />
 </p>
 
 <p>
