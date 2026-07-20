@@ -219,7 +219,7 @@ verdiqx/
 ### 1 — Clone
 
 ```bash
-git clone https://github.com/your-org/verdiqx.git
+git clone https://github.com/Pcmhacker-hero/verdiqx.git
 cd verdiqx
 ```
 
