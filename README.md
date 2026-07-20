@@ -39,6 +39,10 @@
 </p>
 
 <p>
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/3c26d1ec-6a80-4bc1-acb9-9f4a4095a883/verdiqx-profile-preview.png" alt="Verdiqx — Profile with activity heatmap and stats" width="920" />
+</p>
+
+<p>
   <a href="https://verdyx.lovable.app"><img alt="Live" src="https://img.shields.io/badge/live-verdyx.lovable.app-8b5cf6?style=for-the-badge&logo=vercel&logoColor=white" /></a>
   <a href="./LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-38bdf8?style=for-the-badge" /></a>
   <img alt="TypeScript" src="https://img.shields.io/badge/typescript-strict-3178c6?style=for-the-badge&logo=typescript&logoColor=white" />
