@@ -99,7 +99,7 @@ function HeaderAuthCta() {
       asChild
       className="rounded-full bg-[rgb(var(--lp-ink))] text-black hover:bg-[rgb(var(--lp-ink)/90%)]"
     >
-      <Link to="/auth">Sign up</Link>
+      <Link to="/auth" search={{ mode: "signup" }}>Sign up</Link>
     </Button>
   );
 }
