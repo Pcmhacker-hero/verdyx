@@ -158,11 +158,6 @@ export const updateMyProfile = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
-export const linkCodeforcesHandle = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
-  .inputValidator((raw: unknown) => raw as { handle?: unknown })
-  .handler(async () => ({ ok: true as const }));
-
 /**
  * Fills profile display name / avatar from the auth provider metadata
  * (e.g. Google name + picture) when those fields are still empty.
@@ -197,7 +192,7 @@ export const syncProfileFromAuthIdentity = createServerFn({ method: "POST" })
     return { ok: true as const };
   });
 
-const _linkCodeforcesHandlePlaceholder = createServerFn({ method: "POST" })
+export const linkCodeforcesHandle = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((raw: unknown) => {
     const d = (raw ?? {}) as { handle?: unknown };
