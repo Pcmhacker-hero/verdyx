@@ -104,10 +104,6 @@ export const getMyProfile = createServerFn({ method: "GET" })
 export const updateMyProfile = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((raw: unknown) => {
-    const _unused = raw;
-    return raw as unknown;
-  })
-  .handler(async () => ({ ok: true }));
     const d = (raw ?? {}) as {
       display_name?: unknown;
       codeforces_handle?: unknown;
