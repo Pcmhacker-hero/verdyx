@@ -55,7 +55,12 @@ function isLovableHost(): boolean {
   return h === "localhost" || h === "127.0.0.1" || h.endsWith(".lovable.app") || h.endsWith(".lovable.dev");
 }
 
-async function startOAuth(provider: "google" | "apple", returnUrl: string) {
+type OAuthOutcome = { error?: { message?: string } | null; redirected?: boolean };
+
+async function startOAuth(
+  provider: "google" | "apple",
+  returnUrl: string,
+): Promise<OAuthOutcome> {
   // On Lovable-hosted origins we use the managed broker (iframe/preview safe).
   if (isLovableHost()) {
     return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
@@ -65,8 +70,8 @@ async function startOAuth(provider: "google" | "apple", returnUrl: string) {
     provider,
     options: { redirectTo: returnUrl },
   });
-  if (error) return { error } as { error: { message: string } };
-  return { redirected: true } as { redirected: true };
+  if (error) return { error };
+  return { redirected: true };
 }
 
 function AuthPage() {
@@ -223,9 +228,8 @@ function AuthPage() {
               : "One minute to your first mission."}
           </p>
 
-          {socialAvailable && (
-            <>
-              <Button
+          <>
+            <Button
                 type="button"
                 variant="outline"
                 className="mt-6 h-11 w-full rounded-full"
@@ -240,6 +244,7 @@ function AuthPage() {
                 Continue with Google
               </Button>
 
+            {appleAvailable && (
               <Button
                 type="button"
                 variant="outline"
@@ -254,15 +259,14 @@ function AuthPage() {
                 )}
                 Continue with Apple
               </Button>
+            )}
 
-              <div className="my-5 flex items-center gap-3 text-[11px] uppercase tracking-widest text-muted-foreground">
-                <div className="h-px flex-1 bg-border/60" />
-                or email
-                <div className="h-px flex-1 bg-border/60" />
-              </div>
-            </>
-          )}
-          {!socialAvailable && <div className="mt-6" />}
+            <div className="my-5 flex items-center gap-3 text-[11px] uppercase tracking-widest text-muted-foreground">
+              <div className="h-px flex-1 bg-border/60" />
+              or email
+              <div className="h-px flex-1 bg-border/60" />
+            </div>
+          </>
 
           <form onSubmit={onSubmit} className="space-y-3">
             {mode === "signup" && (
