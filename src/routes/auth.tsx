@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
+import { syncProfileFromAuthIdentity } from "@/lib/profile.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -54,11 +55,23 @@ function isLovableHost(): boolean {
   return h === "localhost" || h === "127.0.0.1" || h.endsWith(".lovable.app") || h.endsWith(".lovable.dev");
 }
 
-async function startOAuth(provider: "google" | "apple", returnUrl: string) {
-  // Social sign-in is issued by the managed broker, which only exists on
-  // Lovable-hosted origins. Elsewhere we surface email sign-in instead of
-  // hitting Supabase directly (no provider secret is configured there).
-  return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
+type OAuthOutcome = { error?: { message?: string } | null; redirected?: boolean };
+
+async function startOAuth(
+  provider: "google" | "apple",
+  returnUrl: string,
+): Promise<OAuthOutcome> {
+  // On Lovable-hosted origins we use the managed broker (iframe/preview safe).
+  if (isLovableHost()) {
+    return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
+  }
+  // Elsewhere (Vercel, custom hosts) go straight through Supabase OAuth.
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider,
+    options: { redirectTo: returnUrl },
+  });
+  if (error) return { error };
+  return { redirected: true };
 }
 
 function AuthPage() {
@@ -73,10 +86,10 @@ function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [appleLoading, setAppleLoading] = useState(false);
-  const [socialAvailable, setSocialAvailable] = useState(false);
+  const [appleAvailable, setAppleAvailable] = useState(false);
 
   useEffect(() => {
-    setSocialAvailable(isLovableHost());
+    setAppleAvailable(isLovableHost());
   }, []);
 
   // If already signed in (or session hydrates after OAuth return), bounce to target
@@ -88,6 +101,7 @@ function AuthPage() {
     const { data: sub } = supabase.auth.onAuthStateChange((event, session) => {
       if (cancelled) return;
       if ((event === "SIGNED_IN" || event === "INITIAL_SESSION") && session) {
+        void syncProfileFromAuthIdentity().catch(() => {});
         navigate({ to: target, replace: true });
       }
     });
@@ -214,9 +228,8 @@ function AuthPage() {
               : "One minute to your first mission."}
           </p>
 
-          {socialAvailable && (
-            <>
-              <Button
+          <>
+            <Button
                 type="button"
                 variant="outline"
                 className="mt-6 h-11 w-full rounded-full"
@@ -231,6 +244,7 @@ function AuthPage() {
                 Continue with Google
               </Button>
 
+            {appleAvailable && (
               <Button
                 type="button"
                 variant="outline"
@@ -245,15 +259,14 @@ function AuthPage() {
                 )}
                 Continue with Apple
               </Button>
+            )}
 
-              <div className="my-5 flex items-center gap-3 text-[11px] uppercase tracking-widest text-muted-foreground">
-                <div className="h-px flex-1 bg-border/60" />
-                or email
-                <div className="h-px flex-1 bg-border/60" />
-              </div>
-            </>
-          )}
-          {!socialAvailable && <div className="mt-6" />}
+            <div className="my-5 flex items-center gap-3 text-[11px] uppercase tracking-widest text-muted-foreground">
+              <div className="h-px flex-1 bg-border/60" />
+              or email
+              <div className="h-px flex-1 bg-border/60" />
+            </div>
+          </>
 
           <form onSubmit={onSubmit} className="space-y-3">
             {mode === "signup" && (

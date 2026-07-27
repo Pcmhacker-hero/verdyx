@@ -36,7 +36,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -604,6 +604,7 @@ function SidebarFooter({
           className="flex min-w-0 flex-1 items-center gap-2.5 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <Avatar className="size-7">
+            {user?.avatarUrl ? <AvatarImage src={user.avatarUrl} alt={name} /> : null}
             <AvatarFallback className="bg-primary/10 text-2xs font-medium text-primary">
               {initials}
             </AvatarFallback>
@@ -1143,6 +1144,7 @@ function Header({
           </Link>
         </Button>
         <Avatar className="size-7 shrink-0">
+          {user?.avatarUrl ? <AvatarImage src={user.avatarUrl} alt={user.name} /> : null}
           <AvatarFallback className="bg-primary/10 text-2xs font-medium text-primary">
             {user?.initials ?? "?"}
           </AvatarFallback>

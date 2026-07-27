@@ -158,6 +158,40 @@ export const updateMyProfile = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
+/**
+ * Fills profile display name / avatar from the auth provider metadata
+ * (e.g. Google name + picture) when those fields are still empty.
+ */
+export const syncProfileFromAuthIdentity = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const meta = ((context.claims as { user_metadata?: Record<string, unknown> })
+      .user_metadata ?? {}) as Record<string, unknown>;
+    const str = (v: unknown) => (typeof v === "string" && v.trim() ? v.trim() : null);
+    const name = str(meta.display_name) ?? str(meta.full_name) ?? str(meta.name);
+    const picture = str(meta.avatar_url) ?? str(meta.picture);
+
+    const { data: profile } = await context.supabase
+      .from("profiles")
+      .select("display_name, avatar_url")
+      .eq("id", context.userId)
+      .maybeSingle();
+    if (!profile) return { ok: false as const };
+
+    const patch: Record<string, string> = {};
+    if (!profile.display_name && name) patch.display_name = name.slice(0, 60);
+    if (!profile.avatar_url && picture) patch.avatar_url = picture.slice(0, 500);
+    if (!Object.keys(patch).length) return { ok: true as const };
+
+    const { error } = await context.supabase
+      .from("profiles")
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .update(patch as any)
+      .eq("id", context.userId);
+    if (error) throw new Error(error.message);
+    return { ok: true as const };
+  });
+
 export const linkCodeforcesHandle = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((raw: unknown) => {
