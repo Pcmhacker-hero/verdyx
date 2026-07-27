@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
-type AuthSearch = { next?: string };
+type AuthSearch = { next?: string; mode?: "signin" | "signup" };
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -30,6 +30,7 @@ export const Route = createFileRoute("/auth")({
   }),
   validateSearch: (raw: Record<string, unknown>): AuthSearch => ({
     next: typeof raw.next === "string" && raw.next.startsWith("/") ? raw.next : undefined,
+    mode: raw.mode === "signup" ? "signup" : "signin",
   }),
   component: AuthPage,
 });
@@ -69,10 +70,10 @@ async function startOAuth(provider: "google" | "apple", returnUrl: string) {
 
 function AuthPage() {
   const navigate = useNavigate();
-  const { next } = useSearch({ from: "/auth" });
+  const { next, mode: initialMode } = useSearch({ from: "/auth" });
   const target = safeNext(next);
 
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
+  const [mode, setMode] = useState<"signin" | "signup">(initialMode ?? "signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
