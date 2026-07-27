@@ -109,14 +109,20 @@ export const searchVideos = createServerFn({ method: "GET" })
     return { query: data.query.trim().slice(0, 200) };
   })
   .handler(async ({ data }): Promise<VideoResult[]> => {
+    const isAuthed = Boolean(getRequestHeader("authorization"));
+    const ip = getRequestIP({ xForwardedFor: true }) ?? "unknown";
+    checkRateLimit(`${isAuthed ? "auth" : "anon"}:${ip}`, isAuthed ? AUTH_LIMIT : ANON_LIMIT);
+
     const base = data.query;
-    const queries = [
+    const allQueries = [
       `${base} solution editorial`,
       `${base} solution`,
       `${base} explained`,
       `${base} tutorial`,
       base,
     ];
+    // Cap outbound scrapes: guests get 2, signed-in users get the full set.
+    const queries = isAuthed ? allQueries : allQueries.slice(0, 2);
 
     const merged: VideoResult[] = [];
     const seen = new Set<string>();
