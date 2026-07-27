@@ -1,4 +1,28 @@
 import { createServerFn } from "@tanstack/react-start";
+import { getRequestHeader, getRequestIP } from "@tanstack/react-start/server";
+
+/**
+ * Abuse guard: this endpoint is intentionally reachable by signed-out visitors
+ * (guests can look up editorials), so it is throttled per caller and the number
+ * of outbound scrapes per call is capped so it cannot be used as a relay.
+ */
+const RATE_WINDOW_MS = 60_000;
+const ANON_LIMIT = 6;
+const AUTH_LIMIT = 20;
+const hits = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimit(key: string, limit: number) {
+  const now = Date.now();
+  const entry = hits.get(key);
+  if (!entry || entry.resetAt < now) {
+    hits.set(key, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return;
+  }
+  entry.count += 1;
+  if (entry.count > limit) {
+    throw new Error("Too many video searches. Please wait a moment and try again.");
+  }
+}
 
 
 export interface VideoResult {
