@@ -5,6 +5,7 @@ export interface CurrentUserInfo {
   name: string;
   initials: string;
   email: string | null;
+  avatarUrl: string | null;
 }
 
 function computeInitials(name: string): string {
@@ -39,8 +40,17 @@ export function useCurrentUser(): CurrentUserInfo | null {
         "";
       const emailPrefix = user.email ? user.email.split("@")[0] : "";
       const name = (metaName || emailPrefix || "User").toString();
+      const avatarUrl =
+        (typeof meta.avatar_url === "string" && meta.avatar_url) ||
+        (typeof meta.picture === "string" && meta.picture) ||
+        null;
       if (!cancelled) {
-        setInfo({ name, initials: computeInitials(name), email: user.email ?? null });
+        setInfo({
+          name,
+          initials: computeInitials(name),
+          email: user.email ?? null,
+          avatarUrl,
+        });
       }
     }
 
