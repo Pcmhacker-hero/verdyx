@@ -55,17 +55,10 @@ function isLovableHost(): boolean {
 }
 
 async function startOAuth(provider: "google" | "apple", returnUrl: string) {
-  if (isLovableHost()) {
-    return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
-  }
-  const { error } = await supabase.auth.signInWithOAuth({
-    provider,
-    options: { redirectTo: returnUrl },
-  });
-  return { error: error ?? undefined, redirected: !error } as {
-    error?: { message?: string };
-    redirected?: boolean;
-  };
+  // Social sign-in is issued by the managed broker, which only exists on
+  // Lovable-hosted origins. Elsewhere we surface email sign-in instead of
+  // hitting Supabase directly (no provider secret is configured there).
+  return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
 }
 
 function AuthPage() {
@@ -80,6 +73,11 @@ function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [appleLoading, setAppleLoading] = useState(false);
+  const [socialAvailable, setSocialAvailable] = useState(false);
+
+  useEffect(() => {
+    setSocialAvailable(isLovableHost());
+  }, []);
 
   // If already signed in (or session hydrates after OAuth return), bounce to target
   useEffect(() => {
