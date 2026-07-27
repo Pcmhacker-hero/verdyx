@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
+import { syncProfileFromAuthIdentity } from "@/lib/profile.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -55,10 +56,17 @@ function isLovableHost(): boolean {
 }
 
 async function startOAuth(provider: "google" | "apple", returnUrl: string) {
-  // Social sign-in is issued by the managed broker, which only exists on
-  // Lovable-hosted origins. Elsewhere we surface email sign-in instead of
-  // hitting Supabase directly (no provider secret is configured there).
-  return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
+  // On Lovable-hosted origins we use the managed broker (iframe/preview safe).
+  if (isLovableHost()) {
+    return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
+  }
+  // Elsewhere (Vercel, custom hosts) go straight through Supabase OAuth.
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider,
+    options: { redirectTo: returnUrl },
+  });
+  if (error) return { error } as { error: { message: string } };
+  return { redirected: true } as { redirected: true };
 }
 
 function AuthPage() {
@@ -73,10 +81,10 @@ function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [appleLoading, setAppleLoading] = useState(false);
-  const [socialAvailable, setSocialAvailable] = useState(false);
+  const [appleAvailable, setAppleAvailable] = useState(false);
 
   useEffect(() => {
-    setSocialAvailable(isLovableHost());
+    setAppleAvailable(isLovableHost());
   }, []);
 
   // If already signed in (or session hydrates after OAuth return), bounce to target
@@ -88,6 +96,7 @@ function AuthPage() {
     const { data: sub } = supabase.auth.onAuthStateChange((event, session) => {
       if (cancelled) return;
       if ((event === "SIGNED_IN" || event === "INITIAL_SESSION") && session) {
+        void syncProfileFromAuthIdentity().catch(() => {});
         navigate({ to: target, replace: true });
       }
     });
