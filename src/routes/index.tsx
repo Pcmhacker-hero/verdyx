@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Sparkles,
   ArrowRight,
@@ -86,6 +86,7 @@ function HeaderAuthCta() {
         className="inline-flex items-center gap-2 rounded-full bg-white/95 py-1 pl-1 pr-3 text-sm font-semibold text-slate-900 shadow-[0_6px_20px_-4px_rgba(56,132,255,0.35)] backdrop-blur transition-colors hover:bg-white"
       >
         <Avatar className="size-7 ring-1 ring-inset ring-black/10">
+          {user.avatarUrl ? <AvatarImage src={user.avatarUrl} alt={user.name} /> : null}
           <AvatarFallback className="bg-primary text-primary-foreground text-xs font-semibold">
             {user.initials}
           </AvatarFallback>
