@@ -214,41 +214,46 @@ function AuthPage() {
               : "One minute to your first mission."}
           </p>
 
-          <Button
-            type="button"
-            variant="outline"
-            className="mt-6 h-11 w-full rounded-full"
-            onClick={onGoogle}
-            disabled={googleLoading || appleLoading || loading}
-          >
-            {googleLoading ? (
-              <Loader2 className="mr-2 size-4 animate-spin" />
-            ) : (
-              <GoogleIcon className="mr-2 size-4" />
-            )}
-            Continue with Google
-          </Button>
+          {socialAvailable && (
+            <>
+              <Button
+                type="button"
+                variant="outline"
+                className="mt-6 h-11 w-full rounded-full"
+                onClick={onGoogle}
+                disabled={googleLoading || appleLoading || loading}
+              >
+                {googleLoading ? (
+                  <Loader2 className="mr-2 size-4 animate-spin" />
+                ) : (
+                  <GoogleIcon className="mr-2 size-4" />
+                )}
+                Continue with Google
+              </Button>
 
-          <Button
-            type="button"
-            variant="outline"
-            className="mt-3 h-11 w-full rounded-full"
-            onClick={onApple}
-            disabled={appleLoading || googleLoading || loading}
-          >
-            {appleLoading ? (
-              <Loader2 className="mr-2 size-4 animate-spin" />
-            ) : (
-              <AppleIcon className="mr-2 size-4" />
-            )}
-            Continue with Apple
-          </Button>
+              <Button
+                type="button"
+                variant="outline"
+                className="mt-3 h-11 w-full rounded-full"
+                onClick={onApple}
+                disabled={appleLoading || googleLoading || loading}
+              >
+                {appleLoading ? (
+                  <Loader2 className="mr-2 size-4 animate-spin" />
+                ) : (
+                  <AppleIcon className="mr-2 size-4" />
+                )}
+                Continue with Apple
+              </Button>
 
-          <div className="my-5 flex items-center gap-3 text-[11px] uppercase tracking-widest text-muted-foreground">
-            <div className="h-px flex-1 bg-border/60" />
-            or email
-            <div className="h-px flex-1 bg-border/60" />
-          </div>
+              <div className="my-5 flex items-center gap-3 text-[11px] uppercase tracking-widest text-muted-foreground">
+                <div className="h-px flex-1 bg-border/60" />
+                or email
+                <div className="h-px flex-1 bg-border/60" />
+              </div>
+            </>
+          )}
+          {!socialAvailable && <div className="mt-6" />}
 
           <form onSubmit={onSubmit} className="space-y-3">
             {mode === "signup" && (
