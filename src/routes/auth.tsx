@@ -41,6 +41,32 @@ function safeNext(next: string | undefined): string {
   return next;
 }
 
+/**
+ * The Lovable managed OAuth broker is served from `/~oauth/*`, a path that only
+ * exists behind Lovable's proxy (lovable.app / custom domains attached to it).
+ * On third-party hosts (Vercel, Netlify, self-hosted) that path 404s, so we
+ * fall back to Supabase's own OAuth redirect flow.
+ */
+function isLovableHost(): boolean {
+  if (typeof window === "undefined") return true;
+  const h = window.location.hostname;
+  return h === "localhost" || h === "127.0.0.1" || h.endsWith(".lovable.app") || h.endsWith(".lovable.dev");
+}
+
+async function startOAuth(provider: "google" | "apple", returnUrl: string) {
+  if (isLovableHost()) {
+    return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
+  }
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider,
+    options: { redirectTo: returnUrl },
+  });
+  return { error: error ?? undefined, redirected: !error } as {
+    error?: { message?: string };
+    redirected?: boolean;
+  };
+}
+
 function AuthPage() {
   const navigate = useNavigate();
   const { next } = useSearch({ from: "/auth" });
@@ -105,9 +131,7 @@ function AuthPage() {
       // redirect_uri MUST be a public same-origin URL. Return to /auth with
       // ?next=<target>; the "already signed in" effect below navigates on.
       const returnUrl = `${window.location.origin}/auth?next=${encodeURIComponent(target)}`;
-      const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: returnUrl,
-      });
+      const result = await startOAuth("google", returnUrl);
       if (result.error) {
         toast.error(result.error.message ?? "Google sign-in failed");
         return;
@@ -125,9 +149,7 @@ function AuthPage() {
     setAppleLoading(true);
     try {
       const returnUrl = `${window.location.origin}/auth?next=${encodeURIComponent(target)}`;
-      const result = await lovable.auth.signInWithOAuth("apple", {
-        redirect_uri: returnUrl,
-      });
+      const result = await startOAuth("apple", returnUrl);
       if (result.error) {
         toast.error(result.error.message ?? "Apple sign-in failed");
         return;
