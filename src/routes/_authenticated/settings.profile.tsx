@@ -20,6 +20,7 @@ import { toast } from "sonner";
 
 import { AppShell } from "@/components/app/app-shell";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { notifyProfileUpdated } from "@/hooks/use-current-user";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -159,6 +160,7 @@ function ProfileSettingsPage() {
       if (upErr) throw upErr;
       await updateFn({ data: { avatar_url: path } });
       await qc.invalidateQueries({ queryKey: ["my-profile"] });
+      notifyProfileUpdated();
       toast.success("Avatar updated");
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Upload failed");
@@ -171,6 +173,7 @@ function ProfileSettingsPage() {
     try {
       await updateFn({ data: { avatar_url: null } });
       await qc.invalidateQueries({ queryKey: ["my-profile"] });
+      notifyProfileUpdated();
       toast.success("Avatar removed");
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Remove failed");
