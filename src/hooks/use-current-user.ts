@@ -1,5 +1,14 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+
+export const PROFILE_UPDATED_EVENT = "verdiqx:profile-updated";
+
+/** Notify all mounted useCurrentUser() consumers to reload name/avatar. */
+export function notifyProfileUpdated() {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event(PROFILE_UPDATED_EVENT));
+  }
+}
 
 export interface CurrentUserInfo {
   name: string;
@@ -21,6 +30,8 @@ function computeInitials(name: string): string {
  */
 export function useCurrentUser(): CurrentUserInfo | null {
   const [info, setInfo] = useState<CurrentUserInfo | null>(null);
+  const [nonce, setNonce] = useState(0);
+  const bump = useCallback(() => setNonce((n) => n + 1), []);
 
   useEffect(() => {
     let cancelled = false;
@@ -39,11 +50,35 @@ export function useCurrentUser(): CurrentUserInfo | null {
         (typeof meta.name === "string" && meta.name) ||
         "";
       const emailPrefix = user.email ? user.email.split("@")[0] : "";
-      const name = (metaName || emailPrefix || "User").toString();
-      const avatarUrl =
+      let name = (metaName || emailPrefix || "User").toString();
+      let avatarUrl: string | null =
         (typeof meta.avatar_url === "string" && meta.avatar_url) ||
         (typeof meta.picture === "string" && meta.picture) ||
         null;
+
+      // The profile row is the source of truth: it holds uploaded avatars
+      // (stored as a private storage path) and the edited display name.
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("display_name, avatar_url, cf_title_photo")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (profile?.display_name) name = profile.display_name;
+      const stored = profile?.avatar_url ?? null;
+      if (stored) {
+        if (/^https?:\/\//i.test(stored)) {
+          avatarUrl = stored;
+        } else {
+          const { data: signed } = await supabase.storage
+            .from("avatars")
+            .createSignedUrl(stored, 60 * 60 * 24);
+          if (signed?.signedUrl) avatarUrl = signed.signedUrl;
+        }
+      } else if (!avatarUrl && profile?.cf_title_photo) {
+        avatarUrl = profile.cf_title_photo;
+      }
+
       if (!cancelled) {
         setInfo({
           name,
@@ -60,11 +95,13 @@ export function useCurrentUser(): CurrentUserInfo | null {
         load();
       }
     });
+    window.addEventListener(PROFILE_UPDATED_EVENT, bump);
     return () => {
       cancelled = true;
       sub.subscription.unsubscribe();
+      window.removeEventListener(PROFILE_UPDATED_EVENT, bump);
     };
-  }, []);
+  }, [nonce, bump]);
 
   return info;
 }
