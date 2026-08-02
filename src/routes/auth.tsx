@@ -57,9 +57,6 @@ function isLovableHost(): boolean {
 
 type OAuthOutcome = { error?: { message?: string } | null; redirected?: boolean };
 
-const SOCIAL_UNAVAILABLE_MESSAGE =
-  "Google sign-in isn't available on this domain yet. Please continue with email, or use the official Verdiqx app.";
-
 async function startOAuth(
   provider: "google" | "apple",
   returnUrl: string,
@@ -68,11 +65,15 @@ async function startOAuth(
   if (isLovableHost()) {
     return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
   }
-  // Elsewhere (Vercel, custom hosts) the managed OAuth credentials are not
-  // available to the Supabase provider, so a direct redirect fails with
-  // "Unsupported provider: missing OAuth secret". Fail fast with a clear
-  // message instead of sending the user to an error page.
-  return { error: { message: SOCIAL_UNAVAILABLE_MESSAGE } };
+  // Elsewhere (Vercel, custom hosts) the broker's /~oauth/* path does not
+  // exist, so use Supabase's own redirect flow. This requires the project's
+  // own Google OAuth client ID/secret to be configured in auth settings.
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider,
+    options: { redirectTo: returnUrl },
+  });
+  if (error) return { error: { message: error.message } };
+  return { redirected: true };
 }
 
 function AuthPage() {
