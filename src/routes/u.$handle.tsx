@@ -31,10 +31,14 @@ import {
  * ROUTE
  * ============================================================ */
 
+/** Canonical public origin. Override with VITE_SITE_URL per deployment. */
+const SITE_URL =
+  (import.meta.env['VITE_SITE_URL'] as string | undefined) ?? "https://verdyxy.vercel.app";
+
 export const Route = createFileRoute("/u/$handle")({
   head: ({ params }) => {
     const p = PROFILE;
-    const url = `https://verdiqx.lovable.app/u/${params.handle}`;
+    const url = `${SITE_URL}/u/${params.handle}`;
     const title = `${p.name} · ${p.rating} on Codeforces · Verdiqx`;
     const description = `${p.tagline} — ${p.stats.solves.toLocaleString()} problems solved, ${p.stats.contests} rated contests, ${p.streak}-day streak.`;
     return {
@@ -381,7 +385,7 @@ function ShareButton() {
       const url =
         typeof window !== "undefined"
           ? window.location.href
-          : `https://verdiqx.lovable.app/u/${PROFILE.handle}`;
+          : `${SITE_URL}/u/${PROFILE.handle}`;
       await navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
