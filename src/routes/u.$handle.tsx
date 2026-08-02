@@ -31,6 +31,10 @@ import {
  * ROUTE
  * ============================================================ */
 
+/** Canonical public origin. Override with VITE_SITE_URL per deployment. */
+const SITE_URL =
+  (import.meta.env['VITE_SITE_URL'] as string | undefined) ?? "https://verdyxy.vercel.app";
+
 export const Route = createFileRoute("/u/$handle")({
   head: ({ params }) => {
     const p = PROFILE;
