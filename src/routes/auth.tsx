@@ -14,6 +14,7 @@ import { toast } from "sonner";
 type AuthSearch = { next?: string; mode?: "signin" | "signup" };
 
 export const Route = createFileRoute("/auth")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Sign in · Verdiqx" },
