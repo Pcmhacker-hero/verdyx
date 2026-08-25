@@ -615,3 +615,22 @@
     animation: none;
   }
 }
+
+/* ============================================================
+ * PLATFORM WATERMARK — hide Lovable preview/published badge
+ * ============================================================ */
+[class*="lovable-branding"],
+[id*="lovable-branding"],
+[class*="lovable-badge"],
+[id*="lovable-badge"],
+[class*="lovable-watermark"],
+[id*="lovable-watermark"],
+[class*="lovable-logo"],
+[id*="lovable-logo"],
+a[href*="lovable.app"][target="_blank"]:not([href*="verdiqx"]) {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
