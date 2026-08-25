@@ -44,18 +44,10 @@ function safeNext(next: string | undefined): string {
   return next;
 }
 
-/**
- * The Lovable managed OAuth broker is served from `/~oauth/*`, a path that only
- * exists behind Lovable's proxy (lovable.app / custom domains attached to it).
- * On third-party hosts (Vercel, Netlify, self-hosted) that path 404s, so we
- * fall back to Supabase's own OAuth redirect flow.
- */
 function isLovableHost(): boolean {
   if (typeof window === "undefined") return true;
   const h = window.location.hostname;
   return (
-    h === "localhost" ||
-    h === "127.0.0.1" ||
     h.endsWith(".lovable.app") ||
     h.endsWith(".lovable.dev") ||
     h.endsWith(".lovableproject.com") ||
@@ -67,22 +59,19 @@ function isLovableHost(): boolean {
 
 type OAuthOutcome = { error?: { message?: string } | null; redirected?: boolean };
 
-const SOCIAL_UNAVAILABLE_MESSAGE =
-  "Google sign-in isn't available on this domain yet. Please continue with email, or use the official Verdiqx app.";
-
 async function startOAuth(
   provider: "google" | "apple",
   returnUrl: string,
 ): Promise<OAuthOutcome> {
-  // On Lovable-hosted origins we use the managed broker (iframe/preview safe).
   if (isLovableHost()) {
     return lovable.auth.signInWithOAuth(provider, { redirect_uri: returnUrl });
   }
-  // Elsewhere (Vercel, custom hosts) the managed OAuth credentials are not
-  // available to the Supabase provider, so a direct redirect fails with
-  // "Unsupported provider: missing OAuth secret". Fail fast with a clear
-  // message instead of sending the user to an error page.
-  return { error: { message: SOCIAL_UNAVAILABLE_MESSAGE } };
+
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider,
+    options: { redirectTo: returnUrl },
+  });
+  return { error, redirected: !error };
 }
 
 function AuthPage() {
