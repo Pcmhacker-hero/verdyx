@@ -244,9 +244,9 @@ verdiqx/
 ## 🚀 Installation
 
 ### Prerequisites
-- **Bun** ≥ 1.1 (or Node ≥ 20)
-- A **Lovable Cloud** project (Supabase under the hood) — free tier is enough
-- A **Lovable AI Gateway** API key for the AI mentor
+- **Bun** ≥ 1.1 (or Node.js ≥ 20)
+- A **Supabase** project (PostgreSQL database with Auth) — free at [supabase.com](https://supabase.com)
+- A **Google Gemini API Key** (free at [aistudio.google.com](https://aistudio.google.com/)) or **OpenAI API Key** for the AI mentor
 
 ### 1 — Clone
 
@@ -290,7 +290,7 @@ Then open <http://localhost:8080>.
 Create a `.env` from the template below.
 
 ```dotenv
-# ─── Lovable Cloud / Supabase (public — safe to expose to the browser) ───
+# ─── Supabase (public — safe to expose to the browser) ───
 VITE_SUPABASE_URL="https://<project-ref>.supabase.co"
 VITE_SUPABASE_PUBLISHABLE_KEY="sb_publishable_..."
 VITE_SUPABASE_PROJECT_ID="<project-ref>"
@@ -300,7 +300,14 @@ SUPABASE_URL="https://<project-ref>.supabase.co"
 SUPABASE_PUBLISHABLE_KEY="sb_publishable_..."
 SUPABASE_PROJECT_ID="<project-ref>"
 
-# ─── Lovable AI Gateway (server-only, required for /mentor & AI features) ───
+# ─── AI Mentor Model Provider (required for /mentor & AI features) ───
+# Option 1: Google Gemini API (free tier at aistudio.google.com)
+GEMINI_API_KEY="AIzaSy..."
+
+# Option 2: OpenAI API (platform.openai.com)
+OPENAI_API_KEY="sk-..."
+
+# Option 3 (optional): Lovable AI Gateway key
 LOVABLE_API_KEY="lov_..."
 
 # ─── Optional: transactional email via Resend (auth emails, notifications) ───

@@ -95,7 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Curated sheets, problem tracking, contest calendars and video walkthroughs — an organized workspace for competitive programmers.",
       },
-      { name: "author", content: "Verdiqx Labs" },
+      { name: "author", content: "Prakash" },
       { name: "theme-color", content: "#3884FF" },
       { property: "og:title", content: "Verdiqx — Practice tools for competitive programmers" },
       {
@@ -107,8 +107,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Verdiqx — Practice tools for competitive programmers" },
       { name: "twitter:description", content: "Curated sheets, problem tracking, contest calendars and video walkthroughs — an organized workspace for competitive programmers." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/txESMfZbdXPGMVTJOjmvAS6Zyng1/social-images/social-1784190130403-CleanShot_2026-07-16_at_13.51.53_2x.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/txESMfZbdXPGMVTJOjmvAS6Zyng1/social-images/social-1784190130403-CleanShot_2026-07-16_at_13.51.53_2x.webp" },
+      { property: "og:image", content: "/icon-512.png" },
+      { name: "twitter:image", content: "/icon-512.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

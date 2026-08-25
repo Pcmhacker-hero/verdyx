@@ -34,7 +34,7 @@ import {
 export const Route = createFileRoute("/u/$handle")({
   head: ({ params }) => {
     const p = PROFILE;
-    const url = `https://verdiqx.lovable.app/u/${params.handle}`;
+    const url = `/u/${params.handle}`;
     const title = `${p.name} · ${p.rating} on Codeforces · Verdiqx`;
     const description = `${p.tagline} — ${p.stats.solves.toLocaleString()} problems solved, ${p.stats.contests} rated contests, ${p.streak}-day streak.`;
     return {
@@ -381,7 +381,7 @@ function ShareButton() {
       const url =
         typeof window !== "undefined"
           ? window.location.href
-          : `https://verdiqx.lovable.app/u/${PROFILE.handle}`;
+          : `/u/${PROFILE.handle}`;
       await navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
