@@ -335,6 +335,12 @@ export function useUpdateProgress(id: string | undefined) {
     onError: (_e, _v, ctx) => {
       if (id && ctx?.prev !== undefined) qc.setQueryData(sheetKey(id), ctx.prev);
     },
+    onSettled: () => {
+      if (id) {
+        qc.invalidateQueries({ queryKey: sheetKey(id) });
+        qc.invalidateQueries({ queryKey: SHEETS_KEY });
+      }
+    },
   });
 }
 

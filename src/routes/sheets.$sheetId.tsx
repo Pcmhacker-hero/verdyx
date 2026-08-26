@@ -76,16 +76,28 @@ function SheetDetailPage() {
   const progressMut = useUpdateProgress(sheetId);
   const sheet = sheetQ.data ?? null;
   const notFound = !sheetQ.isLoading && !sheetQ.isError && sheetQ.data === null;
+  const [localProgress, setLocalProgress] = useState<Record<string, ProblemProgress>>({});
+
+  useEffect(() => {
+    if (!sheet?.progress) return;
+    const out: Record<string, ProblemProgress> = {};
+    for (const [k, v] of Object.entries(sheet.progress)) {
+      out[k] = { done: !!v.done, note: v.note ?? "", bookmarked: !!v.bookmarked };
+    }
+    setLocalProgress((prev) => ({ ...out, ...prev }));
+  }, [sheet?.progress]);
+
   const progress = useMemo(() => {
     const raw = sheet?.progress ?? {};
     const out: Record<string, ProblemProgress> = {};
     for (const [k, v] of Object.entries(raw)) {
       out[k] = { done: !!v.done, note: v.note ?? "", bookmarked: !!v.bookmarked };
     }
-    return out;
-  }, [sheet]);
+    return { ...out, ...localProgress };
+  }, [sheet?.progress, localProgress]);
 
   const saveProgress = (next: Record<string, ProblemProgress>) => {
+    setLocalProgress(next);
     progressMut.mutate(next);
   };
 
