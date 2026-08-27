@@ -33,7 +33,7 @@ import logoAsset from "@/assets/logo.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Verdiqx — Practice tools for competitive programmers" },
+      { title: "Verdiqy — Practice tools for competitive programmers" },
       {
         name: "description",
         content:
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Verdiqx — Practice tools for competitive programmers",
+        content: "Verdiqy — Practice tools for competitive programmers",
       },
       {
         property: "og:description",
@@ -205,14 +205,14 @@ function Hero() {
       <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
         <Link
           to="/"
-          aria-label="Verdiqx — home"
+          aria-label="Verdiqy — home"
           className="inline-flex items-center gap-2 rounded-full bg-white/95 py-1 pl-1 pr-4 text-sm font-semibold text-slate-900 backdrop-blur"
         >
           <span aria-hidden="true" className="relative grid size-6 place-items-center overflow-hidden rounded-full shadow-[0_6px_20px_-4px_rgba(56,132,255,0.55)]">
             <img src={logoAsset.url} alt="" className="size-full object-cover" />
             <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
           </span>
-          Verdiqx
+          Verdiqy
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-[rgb(var(--lp-ink)/80%)] md:flex">
           <a href="#features" className="hover:text-[rgb(var(--lp-ink))]">Features</a>
@@ -391,7 +391,7 @@ function Features() {
             </em>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[rgb(var(--lp-ink)/70%)]">
-            Stop juggling five tabs and a spreadsheet. Verdiqx pulls your
+            Stop juggling five tabs and a spreadsheet. Verdiqy pulls your
             problems, progress, contests and editorials into a single quiet
             surface.
           </p>
@@ -434,7 +434,7 @@ const STEPS = [
   {
     n: "03",
     title: "⚡ Practice and reflect",
-    body: "Solve, log mistakes, watch the editorial. Come back tomorrow — Verdiqx remembers where you left off.",
+    body: "Solve, log mistakes, watch the editorial. Come back tomorrow — Verdiqy remembers where you left off.",
   },
 ];
 
@@ -458,7 +458,7 @@ function HowItWorks() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-[rgb(var(--lp-ink)/65%)]">
-            Verdiqx is opinionated about what matters and quiet about what
+            Verdiqy is opinionated about what matters and quiet about what
             doesn't. You show up, we handle the rest.
           </p>
         </div>
@@ -602,7 +602,7 @@ function Showcase() {
 const QUOTES = [
   {
     quote:
-      "I stopped bookmarking problems. Verdiqx just knows what I've solved, what I skipped, and what to try next.",
+      "I stopped bookmarking problems. Verdiqy just knows what I've solved, what I skipped, and what to try next.",
     name: "Aditya R.",
     role: "Expert · Codeforces",
   },
@@ -707,7 +707,7 @@ function SiteFooter() {
           <span aria-hidden="true" className="relative grid size-6 place-items-center overflow-hidden rounded-full shadow-[0_6px_20px_-4px_rgba(56,132,255,0.55)]">
             <img src={logoAsset.url} alt="" className="size-full object-cover" />
           </span>
-          <span className="font-semibold">Verdiqx</span>
+          <span className="font-semibold">Verdiqy</span>
           <span className="text-[rgb(var(--lp-ink)/40%)]">— practice, tracked.</span>
         </div>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -717,7 +717,7 @@ function SiteFooter() {
           <Link to="/auth" className="hover:text-[rgb(var(--lp-ink))]">Sign in</Link>
         </div>
         <div className="text-xs text-[rgb(var(--lp-ink)/40%)]">
-          © {new Date().getFullYear()} Verdiqx
+          © {new Date().getFullYear()} Verdiqy
         </div>
       </div>
     </footer>
@@ -815,7 +815,7 @@ function ProblemSolution() {
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <div className="max-w-2xl">
           <p className="text-xs uppercase tracking-[0.2em] text-[rgb(var(--lp-ink)/55%)]">
-            Why Verdiqx
+            Why Verdiqy
           </p>
           <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-[rgb(var(--lp-ink))] sm:text-5xl">
             Practice is hard.{" "}
@@ -828,7 +828,7 @@ function ProblemSolution() {
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-red-400/20 bg-red-500/[0.04] p-8">
             <div className="text-xs uppercase tracking-[0.2em] text-red-300/80">
-              Without Verdiqx
+              Without Verdiqy
             </div>
             <ul className="mt-6 space-y-3 text-sm text-[rgb(var(--lp-ink)/75%)]">
               {pain.map((p) => (
@@ -841,7 +841,7 @@ function ProblemSolution() {
           </div>
           <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.04] p-8">
             <div className="text-xs uppercase tracking-[0.2em] text-emerald-300/80">
-              With Verdiqx
+              With Verdiqy
             </div>
             <ul className="mt-6 space-y-3 text-sm text-[rgb(var(--lp-ink)/85%)]">
               {cure.map((c) => (
@@ -971,12 +971,12 @@ function FeatureSpotlight() {
 
 function Compare() {
   const rows = [
-    { f: "Curated sheets by rating band", verdiqx: true, others: "Kind of" },
-    { f: "Mistake tags & spaced review", verdiqx: true, others: false },
-    { f: "Editorial videos inline", verdiqx: true, others: false },
-    { f: "Unified contest calendar", verdiqx: true, others: "Some" },
-    { f: "AI mentor without spoilers", verdiqx: true, others: false },
-    { f: "Free, no paywall", verdiqx: true, others: "Freemium" },
+    { f: "Curated sheets by rating band", verdiqy: true, others: "Kind of" },
+    { f: "Mistake tags & spaced review", verdiqy: true, others: false },
+    { f: "Editorial videos inline", verdiqy: true, others: false },
+    { f: "Unified contest calendar", verdiqy: true, others: "Some" },
+    { f: "AI mentor without spoilers", verdiqy: true, others: false },
+    { f: "Free, no paywall", verdiqy: true, others: "Freemium" },
   ];
   return (
     <section className="bg-[var(--lp-bg)] py-24 sm:py-32">
@@ -994,7 +994,7 @@ function Compare() {
         <div className="mt-12 overflow-hidden rounded-2xl border border-[rgb(var(--lp-ink)/10%)]">
           <div className="grid grid-cols-[1.6fr_1fr_1fr] border-b border-[rgb(var(--lp-ink)/10%)] bg-[rgb(var(--lp-ink)/3%)] text-xs uppercase tracking-widest text-[rgb(var(--lp-ink)/60%)]">
             <div className="px-6 py-4">Feature</div>
-            <div className="px-6 py-4 text-[rgb(var(--lp-ink))]">Verdiqx</div>
+            <div className="px-6 py-4 text-[rgb(var(--lp-ink))]">Verdiqy</div>
             <div className="px-6 py-4">Elsewhere</div>
           </div>
           {rows.map((r, i) => (
@@ -1147,7 +1147,7 @@ function Roadmap() {
 
 const FAQS = [
   {
-    q: "Is Verdiqx really free?",
+    q: "Is Verdiqy really free?",
     a: "Yes. Every feature above is free while we're in early access. No credit card, no seat limits, no dark-pattern trials.",
   },
   {
@@ -1164,7 +1164,7 @@ const FAQS = [
   },
   {
     q: "Can I import my own problem list?",
-    a: "Yes. Paste a list of problem URLs or IDs and Verdiqx builds a sheet with tags, ratings and editorials attached.",
+    a: "Yes. Paste a list of problem URLs or IDs and Verdiqy builds a sheet with tags, ratings and editorials attached.",
   },
 ];
 

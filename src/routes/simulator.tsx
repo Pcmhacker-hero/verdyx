@@ -33,7 +33,7 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/simulator")({
   head: () => ({
     meta: [
-      { title: "Custom Contest · Verdiqx" },
+      { title: "Custom Contest · Verdiqy" },
       {
         name: "description",
         content:
@@ -48,10 +48,10 @@ export const Route = createFileRoute("/simulator")({
  * STORAGE + TYPES
  * ============================================================ */
 
-const SAVED_CONTESTS_KEY = "verdiqx.custom-contests";
-const BOOKMARKS_KEY = "verdiqx.bookmarks";
+const SAVED_CONTESTS_KEY = "verdiqy.custom-contests";
+const BOOKMARKS_KEY = "verdiqy.bookmarks";
 
-const SOLVED_HANDLES_KEY = "verdiqx.solved-handles"; // { handle: string[] problemKeys }
+const SOLVED_HANDLES_KEY = "verdiqy.solved-handles"; // { handle: string[] problemKeys }
 
 type Source = "ai" | "sheet" | "bookmarks" | "handle";
 type Progression = "flat" | "ascending" | "wave";

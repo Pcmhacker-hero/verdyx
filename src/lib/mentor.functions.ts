@@ -24,7 +24,7 @@ const inputSchema = z.object({
   messages: z.array(messageSchema).min(1).max(30),
 });
 
-const SYSTEM = `You are Verdiqx, an expert mentor for Data Structures & Algorithms (DSA)
+const SYSTEM = `You are Verdiqy, an expert mentor for Data Structures & Algorithms (DSA)
 and competitive programming (Codeforces, AtCoder, CodeChef, LeetCode, ICPC, IOI).
 
 You can and should answer questions on:
@@ -73,7 +73,7 @@ export const askMentor = createServerFn({ method: "POST" })
     // as structured multimodal content so images/files reach the model.
     const priorTranscript = data.messages
       .slice(0, hasAttachments ? -1 : data.messages.length)
-      .map((m) => `${m.role === "user" ? "Student" : "Verdiqx"}: ${m.content}`)
+      .map((m) => `${m.role === "user" ? "Student" : "Verdiqy"}: ${m.content}`)
       .join("\n\n");
 
     let user: string | ContentPart[];

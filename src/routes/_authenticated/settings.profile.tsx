@@ -37,16 +37,16 @@ import {
 export const Route = createFileRoute("/_authenticated/settings/profile")({
   head: () => ({
     meta: [
-      { title: "Profile settings · Verdiqx" },
+      { title: "Profile settings · Verdiqy" },
       {
         name: "description",
         content:
-          "Update your avatar, display name, Codeforces handle, and the badges shown on your public Verdiqx profile.",
+          "Update your avatar, display name, Codeforces handle, and the badges shown on your public Verdiqy profile.",
       },
-      { property: "og:title", content: "Profile settings · Verdiqx" },
+      { property: "og:title", content: "Profile settings · Verdiqy" },
       {
         property: "og:description",
-        content: "Manage your Verdiqx profile: avatar, handle, and public badges.",
+        content: "Manage your Verdiqy profile: avatar, handle, and public badges.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -64,7 +64,7 @@ type BadgeOption = {
 };
 
 const BADGE_OPTIONS: BadgeOption[] = [
-  { id: "pro", label: "Pro", description: "Verdiqx Pro subscriber", icon: Sparkles },
+  { id: "pro", label: "Pro", description: "Verdiqy Pro subscriber", icon: Sparkles },
   { id: "streak", label: "On a streak", description: "Show your active-day streak", icon: Flame },
   { id: "mentor", label: "Mentor", description: "You help others in the community", icon: Shield },
   { id: "contest_winner", label: "Contest winner", description: "Placed top-3 in a contest", icon: Trophy },
@@ -209,7 +209,7 @@ function ProfileSettingsPage() {
           <div>
             <h1 className="text-2xl font-semibold tracking-tight">Profile settings</h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              Manage how you appear across Verdiqx and on your public profile.
+              Manage how you appear across Verdiqy and on your public profile.
             </p>
           </div>
           <Button asChild variant="outline" size="sm">

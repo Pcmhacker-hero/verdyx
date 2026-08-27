@@ -59,7 +59,7 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/mentor")({
   head: () => ({
     meta: [
-      { title: "Mentor · Verdiqx" },
+      { title: "Mentor · Verdiqy" },
       {
         name: "description",
         content:
@@ -231,7 +231,7 @@ const timeline = [
   {
     when: "Sun",
     kind: "review",
-    title: "Weekly retro with Verdiqx",
+    title: "Weekly retro with Verdiqy",
     detail: "I'll draft the retro. You approve or push back.",
     tone: "primary" as const,
   },
@@ -527,9 +527,9 @@ function MentorPageInner() {
   useEffect(() => {
     if (sentRef.current || pending) return;
     try {
-      const prompt = sessionStorage.getItem("verdiqx.mentor.pending-prompt");
+      const prompt = sessionStorage.getItem("verdiqy.mentor.pending-prompt");
       if (prompt) {
-        sessionStorage.removeItem("verdiqx.mentor.pending-prompt");
+        sessionStorage.removeItem("verdiqy.mentor.pending-prompt");
         sentRef.current = true;
         void send(prompt);
       }
@@ -651,7 +651,7 @@ function MentorHeader() {
         </div>
         <div className="leading-tight">
           <div className="flex items-center gap-2">
-            <h1 className="text-base font-semibold tracking-tight">Verdiqx</h1>
+            <h1 className="text-base font-semibold tracking-tight">Verdiqy</h1>
             <Badge
               variant="secondary"
               className="h-4 border-0 bg-primary/10 px-1.5 font-mono text-2xs font-medium text-primary"
@@ -868,7 +868,7 @@ function LiveConversation() {
       {pending && (
         <MentorTurn timestamp="Thinking…">
           <div className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-            <Loader2 className="size-3.5 animate-spin" /> Verdiqx is drafting a reply
+            <Loader2 className="size-3.5 animate-spin" /> Verdiqy is drafting a reply
           </div>
         </MentorTurn>
       )}
@@ -890,7 +890,7 @@ function MentorTurn({ children, timestamp }: { children: ReactNode; timestamp: s
       </div>
       <div className="min-w-0 flex-1 space-y-4 pb-2">
         <div className="flex items-baseline gap-2">
-          <span className="text-xs font-medium">Verdiqx</span>
+          <span className="text-xs font-medium">Verdiqy</span>
           <span className="text-2xs text-muted-foreground">{timestamp}</span>
         </div>
         {children}
@@ -1757,7 +1757,7 @@ function Composer() {
               }
             }}
             rows={1}
-            placeholder="Ask Verdiqx anything — 'What's my weakest topic under time pressure?'"
+            placeholder="Ask Verdiqy anything — 'What's my weakest topic under time pressure?'"
             className="min-h-[24px] w-full resize-none border-0 bg-transparent p-0 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0"
             disabled={pending}
           />
@@ -1827,7 +1827,7 @@ function Composer() {
         )}
       </form>
       <p className="mt-2 text-center text-2xs text-muted-foreground">
-        Verdiqx trains on your submissions, contest history, and time-of-day performance.{" "}
+        Verdiqy trains on your submissions, contest history, and time-of-day performance.{" "}
         <button className="underline-offset-2 hover:underline">What it doesn&apos;t see →</button>
       </p>
       <UnusedIconAnchor />

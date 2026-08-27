@@ -45,17 +45,17 @@ const rng = seededRandom(0xa17a5);
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
     meta: [
-      { title: "Admin · Verdiqx" },
+      { title: "Admin · Verdiqy" },
       {
         name: "description",
         content:
-          "Production admin dashboard for Verdiqx — analytics, revenue, subscriptions, contests, recommendations, search, feedback, monitoring, and feature flags.",
+          "Production admin dashboard for Verdiqy — analytics, revenue, subscriptions, contests, recommendations, search, feedback, monitoring, and feature flags.",
       },
-      { property: "og:title", content: "Admin · Verdiqx" },
+      { property: "og:title", content: "Admin · Verdiqy" },
       {
         property: "og:description",
         content:
-          "Operate Verdiqx end-to-end: growth, MRR, cohorts, incidents, and feature rollouts — all in one place.",
+          "Operate Verdiqy end-to-end: growth, MRR, cohorts, incidents, and feature rollouts — all in one place.",
       },
     ],
   }),

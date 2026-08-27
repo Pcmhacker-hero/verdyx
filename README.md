@@ -1,45 +1,45 @@
 <div align="center">
 
-# Verdiqx
+# Verdiqy
 
 ### AI-powered training platform for Codeforces and competitive programming.
 
 *Practice smarter. Debug faster. Rate higher.*
 
 <p>
-  <img src="https://verdyx.lovable.app/__l5e/assets-v1/c30864ae-38a9-4519-bc18-f0ddaf0f17b8/verdiqx-hero-preview.png" alt="Verdiqx — AI-powered Codeforces training platform" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/c30864ae-38a9-4519-bc18-f0ddaf0f17b8/verdiqy-hero-preview.png" alt="Verdiqy — AI-powered Codeforces training platform" width="920" />
 </p>
 
 <p>
-  <img src="https://verdyx.lovable.app/__l5e/assets-v1/da7c58e5-80c1-4c54-97c4-96fdb0b4e3f8/verdiqx-dashboard-preview.png" alt="Verdiqx — Codeforces Intelligence dashboard" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/da7c58e5-80c1-4c54-97c4-96fdb0b4e3f8/verdiqy-dashboard-preview.png" alt="Verdiqy — Codeforces Intelligence dashboard" width="920" />
 </p>
 
 <p>
-  <img src="https://verdyx.lovable.app/__l5e/assets-v1/daf699e8-f3e2-40ef-945c-964c58db3475/verdiqx-custom-contest-preview.png" alt="Verdiqx — Custom Contest builder" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/daf699e8-f3e2-40ef-945c-964c58db3475/verdiqy-custom-contest-preview.png" alt="Verdiqy — Custom Contest builder" width="920" />
 </p>
 
 <p>
-  <img src="https://verdyx.lovable.app/__l5e/assets-v1/76c1df20-4f64-4a9e-b473-78bc346d4a9e/verdiqx-contests-preview.png" alt="Verdiqx — Contest tracker calendar" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/76c1df20-4f64-4a9e-b473-78bc346d4a9e/verdiqy-contests-preview.png" alt="Verdiqy — Contest tracker calendar" width="920" />
 </p>
 
 <p>
-  <img src="https://verdyx.lovable.app/__l5e/assets-v1/a7efa4d7-7b3e-444f-b0c8-ad9ca6171efb/verdiqx-cheat-library-preview.png" alt="Verdiqx — Cheat Library" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/a7efa4d7-7b3e-444f-b0c8-ad9ca6171efb/verdiqy-cheat-library-preview.png" alt="Verdiqy — Cheat Library" width="920" />
 </p>
 
 <p>
-  <img src="https://verdyx.lovable.app/__l5e/assets-v1/fca7d4ac-1191-429a-8698-33898e75050f/verdiqx-video-solutions-preview.png" alt="Verdiqx — Video Solutions walkthrough" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/fca7d4ac-1191-429a-8698-33898e75050f/verdiqy-video-solutions-preview.png" alt="Verdiqy — Video Solutions walkthrough" width="920" />
 </p>
 
 <p>
-  <img src="https://verdyx.lovable.app/__l5e/assets-v1/b732727e-4014-44e1-921b-83d7ddd97b80/verdiqx-compare-preview.png" alt="Verdiqx — Compare two Codeforces profiles" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/b732727e-4014-44e1-921b-83d7ddd97b80/verdiqy-compare-preview.png" alt="Verdiqy — Compare two Codeforces profiles" width="920" />
 </p>
 
 <p>
-  <img src="https://verdyx.lovable.app/__l5e/assets-v1/a82171b5-d804-4eee-b61e-266b92a1dcbc/verdiqx-intelligence-preview.png" alt="Verdiqx — Codeforces Intelligence handle search" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/a82171b5-d804-4eee-b61e-266b92a1dcbc/verdiqy-intelligence-preview.png" alt="Verdiqy — Codeforces Intelligence handle search" width="920" />
 </p>
 
 <p>
-  <img src="https://verdyx.lovable.app/__l5e/assets-v1/3c26d1ec-6a80-4bc1-acb9-9f4a4095a883/verdiqx-profile-preview.png" alt="Verdiqx — Profile with activity heatmap and stats" width="920" />
+  <img src="https://verdyx.lovable.app/__l5e/assets-v1/3c26d1ec-6a80-4bc1-acb9-9f4a4095a883/verdiqy-profile-preview.png" alt="Verdiqy — Profile with activity heatmap and stats" width="920" />
 </p>
 
 <p>
@@ -76,7 +76,7 @@
 
 ## 📖 Overview
 
-**Verdiqx** is an AI-native training platform built around **Codeforces**. It turns
+**Verdiqy** is an AI-native training platform built around **Codeforces**. It turns
 a passive scroll through problem lists into a guided, measurable practice loop:
 it reads your submission history, spots weak topics, generates a personalized
 practice sheet at the right difficulty, and gives you a mentor that can read
@@ -85,7 +85,7 @@ problem screenshots, editorials, and your own code.
 ### Why it exists
 
 Competitive programmers plateau not for lack of problems — the problemset is
-infinite — but for lack of **the right next problem**. Verdiqx fixes that by
+infinite — but for lack of **the right next problem**. Verdiqy fixes that by
 combining Codeforces's public API with an AI mentor and rich analytics, so every
 practice session targets the tag or rating band that is actually holding you
 back.
@@ -99,7 +99,7 @@ back.
 
 ### What it solves
 
-| Problem | Verdiqx |
+| Problem | Verdiqy |
 | --- | --- |
 | "I don't know what to solve next." | AI recommendations from your rating + weak tags |
 | "The editorial is too terse." | AI problem explanations with worked intuition |
@@ -194,7 +194,7 @@ Key surfaces to explore:
 ## 📁 Folder Structure
 
 ```text
-verdiqx/
+verdiqy/
 ├── public/                         # Static assets, manifest, OG image, icons
 ├── scripts/                        # Icon generation & audit scripts
 ├── src/
@@ -225,7 +225,7 @@ verdiqx/
 │   │   ├── sheets.$sheetId.tsx     # Custom sheet detail
 │   │   ├── simulator.tsx           # Virtual contest simulator
 │   │   ├── videos.tsx              # Video solutions search
-│   │   ├── search.tsx              # Ask Verdiqx (AI search)
+│   │   ├── search.tsx              # Ask Verdiqy (AI search)
 │   │   ├── u.$handle.tsx           # Public profile
 │   │   └── _authenticated/         # Gated subtree: profile, settings, notifications,
 │   │                               #   mistakes, inbox, admin, admin.bug-reports
@@ -251,8 +251,8 @@ verdiqx/
 ### 1 — Clone
 
 ```bash
-git clone https://github.com/Pcmhacker-hero/verdiqx.git
-cd verdiqx
+git clone https://github.com/Pcmhacker-hero/verdiqy.git
+cd verdiqy
 ```
 
 ### 2 — Install
@@ -314,7 +314,7 @@ LOVABLE_API_KEY="lov_..."
 RESEND_API_KEY="re_..."
 ```
 
-> `SUPABASE_SERVICE_ROLE_KEY` is **not** required — Verdiqx uses the publishable
+> `SUPABASE_SERVICE_ROLE_KEY` is **not** required — Verdiqy uses the publishable
 > key plus RLS for all app-internal reads. Admin operations run through
 > authenticated server functions gated by the `has_role` security-definer function.
 
@@ -323,7 +323,7 @@ RESEND_API_KEY="re_..."
 ## 🧭 Usage
 
 1. **Sign in** — email/password or Google OAuth from `/auth`.
-2. **Connect your Codeforces handle** — Settings → Profile → CF handle. Verdiqx pulls your submissions and refreshes on demand.
+2. **Connect your Codeforces handle** — Settings → Profile → CF handle. Verdiqy pulls your submissions and refreshes on demand.
 3. **Track progress** — the dashboard surfaces rating, streak, mistake log, and the next problem to attempt.
 4. **Generate a practice sheet** — Problems → filter → "Save as sheet", or ask the AI to build one at a target rating.
 5. **Join contests** — Contests page shows the next round with a live countdown; register directly on Codeforces.
@@ -442,12 +442,12 @@ feature, or a whole subsystem, please:
 
 ## 📜 License
 
-Verdiqx is released under the **MIT License**. See [`LICENSE`](./LICENSE) for the full text.
+Verdiqy is released under the **MIT License**. See [`LICENSE`](./LICENSE) for the full text.
 
 ```
 MIT License
 
-Copyright (c) 2026 Verdiqx contributors
+Copyright (c) 2026 Verdiqy contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -484,5 +484,5 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 </p>
 
 <div align="center">
-  <sub>Built with ♥ for competitive programmers. If Verdiqx helps you climb, drop a ⭐ — it really does help.</sub>
+  <sub>Built with ♥ for competitive programmers. If Verdiqy helps you climb, drop a ⭐ — it really does help.</sub>
 </div>

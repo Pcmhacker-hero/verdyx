@@ -17,16 +17,16 @@ export const Route = createFileRoute("/auth")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Sign in · Verdiqx" },
+      { title: "Sign in · Verdiqy" },
       {
         name: "description",
         content:
-          "Sign in to Verdiqx — your personal competitive programming coach. Click Start Next and improve every day.",
+          "Sign in to Verdiqy — your personal competitive programming coach. Click Start Next and improve every day.",
       },
-      { property: "og:title", content: "Sign in · Verdiqx" },
+      { property: "og:title", content: "Sign in · Verdiqy" },
       {
         property: "og:description",
-        content: "Click Start Next. Solve. Repeat. Verdiqx keeps picking the exact problem you should do next.",
+        content: "Click Start Next. Solve. Repeat. Verdiqy keeps picking the exact problem you should do next.",
       },
     ],
   }),
@@ -196,11 +196,11 @@ function AuthPage() {
               Stop deciding what to solve.
             </h1>
             <p className="mt-4 max-w-md text-muted-foreground">
-              Sign in and click <span className="font-medium text-foreground">Start Next</span>. Verdiqx picks
+              Sign in and click <span className="font-medium text-foreground">Start Next</span>. Verdiqy picks
               the exact problem you should do — every time.
             </p>
           </div>
-          <p className="text-xs text-muted-foreground">© 2026 Verdiqx Labs</p>
+          <p className="text-xs text-muted-foreground">© 2026 Verdiqy Labs</p>
         </div>
       </div>
 
@@ -216,7 +216,7 @@ function AuthPage() {
             <div className="grid size-7 place-items-center rounded-md bg-foreground text-background">
               <span className="font-display text-xs font-bold">A</span>
             </div>
-            <span className="font-display text-sm font-semibold">Verdiqx</span>
+            <span className="font-display text-sm font-semibold">Verdiqy</span>
           </div>
 
           <h2 className="font-display text-2xl font-semibold tracking-tight">
@@ -314,7 +314,7 @@ function AuthPage() {
           </form>
 
           <p className="mt-5 text-center text-sm text-muted-foreground">
-            {mode === "signin" ? "New to Verdiqx?" : "Have an account?"}{" "}
+            {mode === "signin" ? "New to Verdiqy?" : "Have an account?"}{" "}
             <button
               onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
               className="font-medium text-foreground underline underline-offset-2 hover:text-primary"

@@ -44,10 +44,10 @@ import {
 const SHEETS_KEY = ["custom-sheets"] as const;
 const sheetKey = (id: string) => ["custom-sheet", id] as const;
 
-const LEGACY_SHEETS_KEY = "verdiqx.custom-sheets";
-const LEGACY_TRASH_KEY = "verdiqx.custom-sheets.trash";
-const LEGACY_MIGRATED_FLAG = "verdiqx.custom-sheets.migrated.v1";
-const legacyProgressKey = (sheetId: string) => `verdiqx.sheet-progress.${sheetId}`;
+const LEGACY_SHEETS_KEY = "verdiqy.custom-sheets";
+const LEGACY_TRASH_KEY = "verdiqy.custom-sheets.trash";
+const LEGACY_MIGRATED_FLAG = "verdiqy.custom-sheets.migrated.v1";
+const legacyProgressKey = (sheetId: string) => `verdiqy.sheet-progress.${sheetId}`;
 
 interface LegacyProblem {
   key: string;

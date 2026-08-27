@@ -11,7 +11,7 @@ import { listBugReportEvents } from "@/lib/bug-report-events-read.functions";
 export const Route = createFileRoute("/_authenticated/admin/bug-reports")({
   head: () => ({
     meta: [
-      { title: "Bug Report Analytics · Verdiqx" },
+      { title: "Bug Report Analytics · Verdiqy" },
       { name: "description", content: "Track Report a bug usage and submission outcomes." },
       { name: "robots", content: "noindex" },
     ],

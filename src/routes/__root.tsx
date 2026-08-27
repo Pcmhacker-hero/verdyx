@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Verdiqx — Practice tools for competitive programmers" },
+      { title: "Verdiqy — Practice tools for competitive programmers" },
       {
         name: "description",
         content:
@@ -97,15 +97,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Prakash" },
       { name: "theme-color", content: "#3884FF" },
-      { property: "og:title", content: "Verdiqx — Practice tools for competitive programmers" },
+      { property: "og:title", content: "Verdiqy — Practice tools for competitive programmers" },
       {
         property: "og:description",
         content: "Curated sheets, problem tracking, contest calendars and video walkthroughs — an organized workspace for competitive programmers.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Verdiqx" },
+      { property: "og:site_name", content: "Verdiqy" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Verdiqx — Practice tools for competitive programmers" },
+      { name: "twitter:title", content: "Verdiqy — Practice tools for competitive programmers" },
       { name: "twitter:description", content: "Curated sheets, problem tracking, contest calendars and video walkthroughs — an organized workspace for competitive programmers." },
       { property: "og:image", content: "/icon-512.png" },
       { name: "twitter:image", content: "/icon-512.png" },
@@ -142,7 +142,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('verdiqx-theme-v2');if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}else{document.documentElement.classList.remove('dark');document.documentElement.style.colorScheme='light';}}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('verdiqy-theme-v2');if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}else{document.documentElement.classList.remove('dark');document.documentElement.style.colorScheme='light';}}catch(e){}})();`,
           }}
         />
         <HeadContent />

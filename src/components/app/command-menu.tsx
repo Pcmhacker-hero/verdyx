@@ -57,7 +57,7 @@ export function CommandMenu({
       <DialogContent className="dark overflow-hidden border-white/10 bg-neutral-950 p-0 text-neutral-100 shadow-2xl sm:max-w-xl">
         <DialogTitle className="sr-only">Command menu</DialogTitle>
         <Command>
-          <CommandInput placeholder="Ask Verdiqx or jump to…" />
+          <CommandInput placeholder="Ask Verdiqy or jump to…" />
           <CommandList>
             <CommandEmpty>
               <div className="py-6 text-center">
@@ -71,7 +71,7 @@ export function CommandMenu({
             <CommandGroup heading="Quick actions">
               <CommandItem onSelect={() => go("/mentor")} keywords={["ai", "assistant", "atlas", "chat"]}>
                 <Wand2 className="size-4 text-primary" />
-                Ask Verdiqx anything…
+                Ask Verdiqy anything…
                 <CommandShortcut>G A</CommandShortcut>
               </CommandItem>
               <CommandItem onSelect={() => go("/problems")} keywords={["focus", "start", "practice"]}>
@@ -134,7 +134,7 @@ export function CommandMenu({
 
             <CommandGroup heading="You">
               <CommandItem onSelect={() => go("/mentor")}>
-                <Wand2 className="size-4" /> Ask Verdiqx
+                <Wand2 className="size-4" /> Ask Verdiqy
                 <CommandShortcut>G A</CommandShortcut>
               </CommandItem>
               <CommandItem onSelect={() => go("/mentor")}>

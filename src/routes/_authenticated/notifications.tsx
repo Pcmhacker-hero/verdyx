@@ -11,15 +11,15 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/_authenticated/notifications")({
   head: () => ({
     meta: [
-      { title: "Notifications · Verdiqx" },
+      { title: "Notifications · Verdiqy" },
       {
         name: "description",
-        content: "Stay current with contest reminders, mentor alerts, and progress milestones in Verdiqx.",
+        content: "Stay current with contest reminders, mentor alerts, and progress milestones in Verdiqy.",
       },
-      { property: "og:title", content: "Notifications · Verdiqx" },
+      { property: "og:title", content: "Notifications · Verdiqy" },
       {
         property: "og:description",
-        content: "Contest reminders, mentor alerts, and milestone updates for your Verdiqx workspace.",
+        content: "Contest reminders, mentor alerts, and milestone updates for your Verdiqy workspace.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -110,7 +110,7 @@ function NotificationsPage() {
               Notifications
             </h1>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-              Contest reminders, mentor alerts, and milestone updates from your Verdiqx workspace.
+              Contest reminders, mentor alerts, and milestone updates from your Verdiqy workspace.
             </p>
           </div>
           <Button size="sm" onClick={markAll} disabled={unread === 0}>

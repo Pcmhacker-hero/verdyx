@@ -26,7 +26,7 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/sheets/$sheetId")({
   head: () => ({
     meta: [
-      { title: "Sheet · Verdiqx" },
+      { title: "Sheet · Verdiqy" },
       {
         name: "description",
         content:
@@ -39,7 +39,7 @@ export const Route = createFileRoute("/sheets/$sheetId")({
 
 // ---------------- shared storage keys / types ----------------
 
-const BOOKMARKS_KEY = "verdiqx.bookmarks";
+const BOOKMARKS_KEY = "verdiqy.bookmarks";
 
 interface SheetProblem {
   key: string;
@@ -448,7 +448,7 @@ Walk me through:
 4. A clean C++ solution with brief comments.
 5. Common pitfalls / edge cases.`;
     try {
-      sessionStorage.setItem("verdiqx.mentor.pending-prompt", prompt);
+      sessionStorage.setItem("verdiqy.mentor.pending-prompt", prompt);
     } catch {
       /* ignore */
     }

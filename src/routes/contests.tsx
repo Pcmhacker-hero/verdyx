@@ -39,13 +39,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/contests")({
   head: () => ({
     meta: [
-      { title: "Contest Tracker · Verdiqx" },
+      { title: "Contest Tracker · Verdiqy" },
       {
         name: "description",
         content:
           "Every upcoming programming contest across Codeforces, AtCoder, CodeChef, LeetCode, HackerRank, and HackerEarth — with live countdowns, bookmarks, reminders, and AI prep.",
       },
-      { property: "og:title", content: "Contest Tracker · Verdiqx" },
+      { property: "og:title", content: "Contest Tracker · Verdiqy" },
       {
         property: "og:description",
         content:
@@ -133,10 +133,10 @@ const DIVISION_TAGS = [
   "Biweekly",
 ];
 
-const BOOKMARKS_KEY = "verdiqx.contest-bookmarks";
-const REMINDERS_KEY = "verdiqx.contest-reminders";
-const PARTICIPATED_KEY = "verdiqx.contest-participated";
-const USER_RATING_KEY = "verdiqx.user-rating";
+const BOOKMARKS_KEY = "verdiqy.contest-bookmarks";
+const REMINDERS_KEY = "verdiqy.contest-reminders";
+const PARTICIPATED_KEY = "verdiqy.contest-participated";
+const USER_RATING_KEY = "verdiqy.user-rating";
 
 /* ============================================================
  * DATA FETCH
@@ -1272,7 +1272,7 @@ function ContestModal({
         <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
           <div className="flex items-center gap-2 text-primary">
             <Sparkles className="size-4" />
-            <p className="text-sm font-semibold">Verdiqx AI · Should I participate?</p>
+            <p className="text-sm font-semibold">Verdiqy AI · Should I participate?</p>
           </div>
           <p className="mt-2 text-xs text-foreground">{rec.verdict}</p>
           <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-4">
@@ -1392,7 +1392,7 @@ function buildGoogleCalendarUrl(c: Contest): string {
     action: "TEMPLATE",
     text: `${c.platform}: ${c.name}`,
     dates: `${fmt(c.start)}/${fmt(c.end)}`,
-    details: `${c.name}\n${c.url}\n\nAdded from Verdiqx.`,
+    details: `${c.name}\n${c.url}\n\nAdded from Verdiqy.`,
     location: c.url,
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
@@ -1416,9 +1416,9 @@ function buildIcs(c: Contest): string {
   return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Verdiqx//Contest Tracker//EN",
+    "PRODID:-//Verdiqy//Contest Tracker//EN",
     "BEGIN:VEVENT",
-    `UID:${c.id}@verdiqx`,
+    `UID:${c.id}@verdiqy`,
     `DTSTAMP:${fmt(Date.now())}`,
     `DTSTART:${fmt(c.start)}`,
     `DTEND:${fmt(c.end)}`,

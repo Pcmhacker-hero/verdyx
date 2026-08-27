@@ -627,7 +627,7 @@
 [id*="lovable-watermark"],
 [class*="lovable-logo"],
 [id*="lovable-logo"],
-a[href*="lovable.app"][target="_blank"]:not([href*="verdiqx"]) {
+a[href*="lovable.app"][target="_blank"]:not([href*="verdiqy"]) {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;

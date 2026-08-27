@@ -30,13 +30,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/_authenticated/mistakes")({
   head: () => ({
     meta: [
-      { title: "Mistake Analyzer · Verdiqx" },
+      { title: "Mistake Analyzer · Verdiqy" },
       {
         name: "description",
         content:
           "AI review of your wrong submissions — clustered by root cause, explained like a senior competitive programmer, with targeted drills.",
       },
-      { property: "og:title", content: "Mistake Analyzer · Verdiqx" },
+      { property: "og:title", content: "Mistake Analyzer · Verdiqy" },
       {
         property: "og:description",
         content:
@@ -677,7 +677,7 @@ function SubmissionReview({ submission }: { submission: Submission }) {
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-xs text-muted-foreground">
-                Verdiqx Review · trained on 40k+ CF submissions
+                Verdiqy Review · trained on 40k+ CF submissions
               </div>
               <p className="mt-2 text-sm leading-relaxed text-foreground/90">
                 {submission.reviewer}
@@ -781,7 +781,7 @@ function RecommendationsPanel({ submission }: { submission: Submission }) {
           <Kbd>R</Kbd>
         </div>
         <div className="mt-1 flex items-center justify-between">
-          <span>Ask Verdiqx about this</span>
+          <span>Ask Verdiqy about this</span>
           <Kbd>A</Kbd>
         </div>
       </div>

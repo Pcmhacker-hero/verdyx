@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
-export const PROFILE_UPDATED_EVENT = "verdiqx:profile-updated";
+export const PROFILE_UPDATED_EVENT = "verdiqy:profile-updated";
 
 /** Notify all mounted useCurrentUser() consumers to reload name/avatar. */
 export function notifyProfileUpdated() {

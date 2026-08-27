@@ -35,7 +35,7 @@ export const Route = createFileRoute("/u/$handle")({
   head: ({ params }) => {
     const p = PROFILE;
     const url = `/u/${params.handle}`;
-    const title = `${p.name} · ${p.rating} on Codeforces · Verdiqx`;
+    const title = `${p.name} · ${p.rating} on Codeforces · Verdiqy`;
     const description = `${p.tagline} — ${p.stats.solves.toLocaleString()} problems solved, ${p.stats.contests} rated contests, ${p.streak}-day streak.`;
     return {
       meta: [
@@ -214,7 +214,7 @@ function PublicNav() {
           <span className="grid size-7 place-items-center rounded-md bg-foreground text-background">
             <Hexagon className="size-3.5" strokeWidth={2.4} />
           </span>
-          <span className="text-sm font-semibold tracking-tight">Verdiqx</span>
+          <span className="text-sm font-semibold tracking-tight">Verdiqy</span>
           <span className="hidden font-mono text-2xs uppercase tracking-[0.14em] text-muted-foreground sm:inline">
             · public profile
           </span>
@@ -224,7 +224,7 @@ function PublicNav() {
             to="/"
             className="hidden rounded-md border border-border/70 bg-card/40 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground sm:inline-block"
           >
-            Explore Verdiqx
+            Explore Verdiqy
           </Link>
           <Link
             to="/auth"
@@ -1020,7 +1020,7 @@ function Footer() {
           <span className="grid size-5 place-items-center rounded bg-foreground text-background">
             <Hexagon className="size-3" strokeWidth={2.4} />
           </span>
-          <span>Verdiqx · a quiet place for competitive programmers</span>
+          <span>Verdiqy · a quiet place for competitive programmers</span>
         </div>
         <div className="flex items-center gap-4">
           <Link to="/" className="hover:text-foreground">

@@ -343,7 +343,7 @@ function Logo() {
       <div className="grid size-7 place-items-center rounded-md bg-foreground text-background shadow-sm">
         <Layers className="size-3.5" strokeWidth={2.4} />
       </div>
-      <span className="text-sm font-semibold tracking-tight">Verdiqx</span>
+      <span className="text-sm font-semibold tracking-tight">Verdiqy</span>
     </div>
   );
 }
@@ -363,7 +363,7 @@ function Hero() {
             A design system built for velocity and trust.
           </h1>
           <p className="mt-4 max-w-xl text-base text-muted-foreground text-pretty">
-            Verdiqx is the shared language behind our product surfaces. Tokens for color, type, and
+            Verdiqy is the shared language behind our product surfaces. Tokens for color, type, and
             motion; primitives you can compose without ever reaching for a hex value.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-2">
@@ -1081,7 +1081,7 @@ function CommandPalette({
                 <CommandShortcut>C</CommandShortcut>
               </CommandItem>
               <CommandItem>
-                <Sparkles className="size-4" /> Ask Verdiqx
+                <Sparkles className="size-4" /> Ask Verdiqy
               </CommandItem>
             </CommandGroup>
           </CommandList>

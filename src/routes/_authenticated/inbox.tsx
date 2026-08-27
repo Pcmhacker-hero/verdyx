@@ -12,15 +12,15 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/_authenticated/inbox")({
   head: () => ({
     meta: [
-      { title: "Inbox · Verdiqx" },
+      { title: "Inbox · Verdiqy" },
       {
         name: "description",
-        content: "Review coaching updates, community replies, and practice reminders in your Verdiqx inbox.",
+        content: "Review coaching updates, community replies, and practice reminders in your Verdiqy inbox.",
       },
-      { property: "og:title", content: "Inbox · Verdiqx" },
+      { property: "og:title", content: "Inbox · Verdiqy" },
       {
         property: "og:description",
-        content: "Your Verdiqx inbox for coaching updates, community replies, and practice reminders.",
+        content: "Your Verdiqy inbox for coaching updates, community replies, and practice reminders.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -44,7 +44,7 @@ type Message = {
 const seedMessages: Message[] = [
   {
     id: "m1",
-    from: "Verdiqx Mentor",
+    from: "Verdiqy Mentor",
     initials: "AM",
     title: "Your DP mistake review is ready",
     body: "I found the repeated transition pattern behind yesterday's wrong answers.",
@@ -77,7 +77,7 @@ const seedMessages: Message[] = [
   },
   {
     id: "m4",
-    from: "Verdiqx Coach",
+    from: "Verdiqy Coach",
     initials: "AC",
     title: "Weekly focus plan updated",
     body: "Graph shortest paths moved ahead of number theory after your latest submissions.",

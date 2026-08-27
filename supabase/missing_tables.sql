@@ -1,5 +1,5 @@
 -- ============================================================
--- MISSING TABLES FOR VERDIQX (Custom Sheets, Submissions, Plans, Mentor)
+-- MISSING TABLES FOR VERDIQY (Custom Sheets, Submissions, Plans, Mentor)
 -- Run this in your Supabase SQL Editor: https://supabase.com/dashboard/project/obxczzulplwvxszjfjna/sql/new
 -- ============================================================
 

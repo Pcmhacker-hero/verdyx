@@ -3,7 +3,7 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Theme = "light" | "dark";
-const STORAGE_KEY = "verdiqx-theme-v2";
+const STORAGE_KEY = "verdiqy-theme-v2";
 
 function applyTheme(theme: Theme) {
   const root = document.documentElement;

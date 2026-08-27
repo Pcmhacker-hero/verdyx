@@ -35,13 +35,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/community")({
   head: () => ({
     meta: [
-      { title: "Community · Verdiqx" },
+      { title: "Community · Verdiqy" },
       {
         name: "description",
         content:
           "A focused learning community. Follow world-class programmers, share cheat sheets, roadmaps, and notes — no noise, just craft.",
       },
-      { property: "og:title", content: "Community · Verdiqx" },
+      { property: "og:title", content: "Community · Verdiqy" },
       {
         property: "og:description",
         content:

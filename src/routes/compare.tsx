@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/compare")({
   head: () => ({
     meta: [
-      { title: "Compare · Verdiqx" },
+      { title: "Compare · Verdiqy" },
       {
         name: "description",
         content:

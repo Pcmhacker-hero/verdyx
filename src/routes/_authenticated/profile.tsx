@@ -94,7 +94,7 @@ import { syncUserSubmissions } from "@/lib/codeforces.functions";
 export const Route = createFileRoute("/_authenticated/profile")({
   head: () => ({
     meta: [
-      { title: "Your profile · Verdiqx" },
+      { title: "Your profile · Verdiqy" },
       {
         name: "description",
         content:
@@ -325,10 +325,10 @@ function ProfilePage() {
     const url = p?.codeforces_handle
       ? `${window.location.origin}/u/${encodeURIComponent(p.codeforces_handle)}`
       : window.location.href;
-    const title = p?.codeforces_handle ? `${p.codeforces_handle} on Verdiqx` : "Verdiqx profile";
+    const title = p?.codeforces_handle ? `${p.codeforces_handle} on Verdiqy` : "Verdiqy profile";
     const text = p?.codeforces_handle
       ? `View ${p.codeforces_handle}'s competitive programming profile.`
-      : "View this Verdiqx profile.";
+      : "View this Verdiqy profile.";
 
     try {
       if (navigator.share) {
@@ -1776,7 +1776,7 @@ function HabitsTab() {
       : [
           {
             t: "No habit insights yet",
-            b: "More synced submissions are needed before Verdiqx can analyze your coding rhythm.",
+            b: "More synced submissions are needed before Verdiqy can analyze your coding rhythm.",
           },
         ]
     : [
@@ -2290,7 +2290,7 @@ function AboutCard({
               <span className="tabular font-semibold text-amber-700 dark:text-amber-300">{attempts}</span>
               <span className="text-muted-foreground">Attempts</span>
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 px-2.5 py-1 text-xs ring-1 ring-orange-500/30" title="Longest consecutive days visiting Verdiqx">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 px-2.5 py-1 text-xs ring-1 ring-orange-500/30" title="Longest consecutive days visiting Verdiqy">
               <span aria-hidden>🔥</span>
               <span className="tabular font-semibold text-orange-600 dark:text-orange-300">{siteStreak}</span>
               <span className="text-muted-foreground">Max Days</span>
@@ -2330,7 +2330,7 @@ function AboutCard({
         {/* Donut */}
         <div className="flex flex-col items-center justify-center gap-2 md:mx-4">
           <span className="rounded-full bg-primary/10 px-3 py-1 text-2xs font-medium uppercase tracking-wider text-primary">
-            On Verdiqx
+            On Verdiqy
           </span>
           <DonutStat value={solvedPct} label="Problems" number={solved} />
         </div>
@@ -2954,7 +2954,7 @@ function BookmarksTab() {
 
   const load = () => {
     try {
-      const raw = localStorage.getItem("verdiqx.bookmarks");
+      const raw = localStorage.getItem("verdiqy.bookmarks");
       setBookmarks(raw ? (JSON.parse(raw) as ProfileBookmark[]) : []);
     } catch {
       setBookmarks([]);
@@ -2964,7 +2964,7 @@ function BookmarksTab() {
   useEffect(() => {
     load();
     const onStorage = (e: StorageEvent) => {
-      if (e.key === "verdiqx.bookmarks") load();
+      if (e.key === "verdiqy.bookmarks") load();
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
@@ -2976,9 +2976,9 @@ function BookmarksTab() {
     );
     setBookmarks(next);
     try {
-      localStorage.setItem("verdiqx.bookmarks", JSON.stringify(next));
+      localStorage.setItem("verdiqy.bookmarks", JSON.stringify(next));
       // also flip the sheet-progress flag so the source stays in sync
-      const pKey = `verdiqx.sheet-progress.${sheetId}`;
+      const pKey = `verdiqy.sheet-progress.${sheetId}`;
       const raw = localStorage.getItem(pKey);
       if (raw) {
         const progress = JSON.parse(raw) as Record<

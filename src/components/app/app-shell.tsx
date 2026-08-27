@@ -106,7 +106,7 @@ const navSections: NavSection[] = [
   {
     label: "You",
     items: [
-      { label: "Ask Verdiqx", to: "/search", icon: Wand2, shortcut: "G A", key: "a", authRequired: true },
+      { label: "Ask Verdiqy", to: "/search", icon: Wand2, shortcut: "G A", key: "a", authRequired: true },
       { label: "Mentor", to: "/mentor", icon: Sparkles, shortcut: "G M", key: "m", badge: "2", authRequired: true },
       { label: "Community", to: "/community", icon: Users, shortcut: "G Y", key: "y" },
       
@@ -120,7 +120,7 @@ const DESIGN_SYSTEM_NAV: NavItem = { label: "Design System", to: "/design-system
 
 const isDev = import.meta.env.DEV;
 let sidebarCollapsedPreference = false;
-const SIDEBAR_COLLAPSED_STORAGE_KEY = "verdiqx-sidebar-collapsed";
+const SIDEBAR_COLLAPSED_STORAGE_KEY = "verdiqy-sidebar-collapsed";
 const SIGN_OUT_REDIRECT_DELAY_MS = 900;
 
 function clearAuthStorage() {
@@ -485,11 +485,11 @@ function Brand({ onNavigate }: { onNavigate?: () => void }) {
       className="flex h-14 items-center gap-2 px-4 rounded-md transition-colors hover:bg-surface-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <div className="relative size-7 overflow-hidden rounded-xl shadow-[0_6px_20px_-4px_rgba(56,132,255,0.55)]">
-        <img src={logoAsset.url} alt="Verdiqx logo" className="size-full object-cover" />
+        <img src={logoAsset.url} alt="Verdiqy logo" className="size-full object-cover" />
         <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-white/20" />
       </div>
       <div className="flex min-w-0 flex-col leading-tight">
-        <span className="truncate text-sm font-semibold tracking-tight">Verdiqx</span>
+        <span className="truncate text-sm font-semibold tracking-tight">Verdiqy</span>
         <span className="truncate text-2xs text-muted-foreground">alex's workspace</span>
       </div>
     </Link>
@@ -1057,16 +1057,16 @@ function Header({
             className="flex h-11 items-center gap-2.5 pl-4 pr-4 text-base font-semibold tracking-tight transition-colors hover:bg-surface-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <span className="relative size-7 overflow-hidden rounded-md shadow-[0_4px_14px_-4px_rgba(56,132,255,0.5)]">
-              <img src={logoAsset.url} alt="Verdiqx logo" className="size-full object-cover" />
+              <img src={logoAsset.url} alt="Verdiqy logo" className="size-full object-cover" />
             </span>
-            Verdiqx
+            Verdiqy
           </Link>
         </div>
       ) : null}
 
 
       <nav aria-label="Breadcrumb" className="flex min-w-0 flex-1 items-center gap-1.5 text-sm">
-        {(breadcrumb ?? [{ label: "Verdiqx" }]).map((c, i, arr) => (
+        {(breadcrumb ?? [{ label: "Verdiqy" }]).map((c, i, arr) => (
           <span key={i} className="flex min-w-0 items-center gap-1.5">
             {c.to ? (
               <Link
@@ -1101,7 +1101,7 @@ function Header({
           className="hidden h-8 items-center gap-2 rounded-md border border-border bg-surface-muted/60 px-2.5 text-xs text-muted-foreground transition-colors hover:bg-surface-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:inline-flex"
         >
           <Sparkles className="size-3.5 text-primary" />
-          Ask Verdiqx or jump to…
+          Ask Verdiqy or jump to…
           <span className="ml-4 flex items-center gap-1">
             <Kbd>⌘</Kbd>
             <Kbd>K</Kbd>

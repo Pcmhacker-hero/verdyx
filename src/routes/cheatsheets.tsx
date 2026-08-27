@@ -52,7 +52,7 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/cheatsheets")({
   head: () => ({
     meta: [
-      { title: "Cheat Library · Verdiqx" },
+      { title: "Cheat Library · Verdiqy" },
       {
         name: "description",
         content:

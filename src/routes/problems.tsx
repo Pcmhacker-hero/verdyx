@@ -57,13 +57,13 @@ import {
 export const Route = createFileRoute("/problems")({
   head: () => ({
     meta: [
-      { title: "CF Intelligence · Verdiqx" },
+      { title: "CF Intelligence · Verdiqy" },
       {
         name: "description",
         content:
           "Enter any Codeforces handle and instantly generate a structured practice journey from their solving history — profile, analytics, AI insights, and importable practice sheets.",
       },
-      { property: "og:title", content: "Codeforces Intelligence · Verdiqx" },
+      { property: "og:title", content: "Codeforces Intelligence · Verdiqy" },
       {
         property: "og:description",
         content:

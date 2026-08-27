@@ -1,12 +1,12 @@
 {
-  "name": "verdiqx",
+  "name": "verdiqy",
   "version": "1.0.0",
   "description": "AI-powered competitive programming intelligence and training platform for Codeforces",
   "author": "Prakash <https://github.com/Pcmhacker-hero>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pcmhacker-hero/verdiqx.git"
+    "url": "https://github.com/Pcmhacker-hero/verdiqy.git"
   },
   "private": true,
   "sideEffects": false,

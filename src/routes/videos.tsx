@@ -15,7 +15,7 @@ import { searchVideos, type VideoResult } from "@/lib/videos.functions";
 export const Route = createFileRoute("/videos")({
   head: () => ({
     meta: [
-      { title: "Video Solutions · Verdiqx" },
+      { title: "Video Solutions · Verdiqy" },
       {
         name: "description",
         content:
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/videos")({
   component: VideosPage,
 });
 
-const CACHE_KEY = "verdiqx.video-solutions.v1";
+const CACHE_KEY = "verdiqy.video-solutions.v1";
 const CACHE_TTL = 1000 * 60 * 60 * 24 * 30;
 
 interface CacheEntry {

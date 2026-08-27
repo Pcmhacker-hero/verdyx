@@ -42,13 +42,13 @@ const rng = seededRandom(0x5ea4c);
 export const Route = createFileRoute("/search")({
   head: () => ({
     meta: [
-      { title: "Ask Verdiqx · Global AI Search" },
+      { title: "Ask Verdiqy · Global AI Search" },
       {
         name: "description",
         content:
-          "Ask Verdiqx anything about competitive programming. Find rated problems, similar tasks, and clear explanations — in one place.",
+          "Ask Verdiqy anything about competitive programming. Find rated problems, similar tasks, and clear explanations — in one place.",
       },
-      { property: "og:title", content: "Ask Verdiqx · Global AI Search" },
+      { property: "og:title", content: "Ask Verdiqy · Global AI Search" },
       {
         property: "og:description",
         content:
@@ -386,8 +386,8 @@ function answerFor(parsed: Parsed): AnswerResult {
 
   return {
     intent: "unknown",
-    headline: "Ask Verdiqx anything",
-    body: "Try a natural question — rated problem search, similar-to lookups, concept explanations, or an author's toughest tasks. Verdiqx parses intent and returns real matches with sources.",
+    headline: "Ask Verdiqy anything",
+    body: "Try a natural question — rated problem search, similar-to lookups, concept explanations, or an author's toughest tasks. Verdiqy parses intent and returns real matches with sources.",
     problems: [],
     related: SUGGESTIONS,
   };
@@ -405,7 +405,7 @@ function SearchPage() {
       if (cancelled) return;
       if (!data.session) {
         toast.error("Login required", {
-          description: "Please sign in to use Ask Verdiqx.",
+          description: "Please sign in to use Ask Verdiqy.",
         });
         setAuthState("guest");
       } else {
@@ -462,8 +462,8 @@ function SearchPage() {
       setAiReply(reply);
       setReplyId(crypto.randomUUID());
     } catch (e) {
-      toast.error((e as Error).message ?? "Verdiqx couldn't respond");
-      setAiReply("Sorry — I couldn't reach Verdiqx just now. Please try again.");
+      toast.error((e as Error).message ?? "Verdiqy couldn't respond");
+      setAiReply("Sorry — I couldn't reach Verdiqy just now. Please try again.");
       setReplyId(crypto.randomUUID());
     } finally {
       setThinking(false);
@@ -482,7 +482,7 @@ function SearchPage() {
 
   if (authState !== "authed") {
     return (
-      <AppShell breadcrumb={[{ label: "Ask Verdiqx" }]}>
+      <AppShell breadcrumb={[{ label: "Ask Verdiqy" }]}>
         <div className="flex min-h-[60vh] items-center justify-center text-sm text-muted-foreground">
           {authState === "checking" ? "Checking your session…" : "Redirecting to sign in…"}
         </div>
@@ -491,7 +491,7 @@ function SearchPage() {
   }
 
   return (
-    <AppShell breadcrumb={[{ label: "Ask Verdiqx" }]}>
+    <AppShell breadcrumb={[{ label: "Ask Verdiqy" }]}>
       <div
         className={cn(
           "mx-auto w-full px-4 pb-16 md:px-8",
@@ -543,7 +543,7 @@ function LandingIntro() {
     <div className="mb-8 text-center">
       <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/60 px-2.5 py-1 text-2xs font-medium text-muted-foreground backdrop-blur">
         <Sparkles className="size-3 text-primary" />
-        Ask Verdiqx · natural language search
+        Ask Verdiqy · natural language search
       </div>
       <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
         What do you want to master today?
@@ -724,7 +724,7 @@ function SearchBar({
             </button>
           ) : null}
           <Button size="sm" onClick={onSubmit} disabled={!canSubmit} className="h-8 gap-1.5">
-            {submitted ? "Ask again" : "Ask Verdiqx"}
+            {submitted ? "Ask again" : "Ask Verdiqy"}
             <CornerDownLeft className="size-3" />
           </Button>
         </div>
@@ -988,7 +988,7 @@ function AnswerCard({
       <div className="relative">
         <div className="mb-3 flex items-center gap-2">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2 py-0.5 font-mono text-2xs font-medium text-primary">
-            <Sparkles className="size-3" /> Verdiqx answer
+            <Sparkles className="size-3" /> Verdiqy answer
           </span>
           <span className="font-mono text-2xs uppercase tracking-[0.14em] text-muted-foreground">
             intent · {intent.replace("-", " ")}
@@ -1152,11 +1152,11 @@ function ContextRail({ parsed, result }: { parsed: Parsed; result: AnswerResult 
     sources.push({ title: "Codeforces problem index", hint: `${result.problems.length} matches` });
   }
   if (result.concept)
-    sources.push({ title: "Verdiqx cheat sheet", hint: result.concept.title, hash: result.concept.id });
+    sources.push({ title: "Verdiqy cheat sheet", hint: result.concept.title, hash: result.concept.id });
   if (parsed.author)
     sources.push({ title: `@${parsed.author} · public submissions`, hint: "sorted by rating" });
   if (sources.length === 0)
-    sources.push({ title: "Verdiqx knowledge graph", hint: "no external calls" });
+    sources.push({ title: "Verdiqy knowledge graph", hint: "no external calls" });
 
   return (
     <aside className="hidden lg:block">
@@ -1188,7 +1188,7 @@ function ContextRail({ parsed, result }: { parsed: Parsed; result: AnswerResult 
 
         <section className="rounded-xl border border-dashed border-border/70 p-4">
           <p className="text-xs leading-relaxed text-muted-foreground">
-            Verdiqx parses your question locally, then routes to problems, concepts, or authors — no
+            Verdiqy parses your question locally, then routes to problems, concepts, or authors — no
             wasted round-trips.
           </p>
         </section>

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { searchVideos, type VideoResult } from "@/lib/videos.functions";
 import { CFSolutionBadge } from "./cf-solution-badge";
 
-const CACHE_KEY = "verdiqx.video-solutions.v1";
+const CACHE_KEY = "verdiqy.video-solutions.v1";
 const CACHE_TTL = 1000 * 60 * 60 * 24 * 30; // 30 days
 
 interface CacheEntry {
